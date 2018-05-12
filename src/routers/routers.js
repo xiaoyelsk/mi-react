@@ -5,6 +5,8 @@ import Index from '../components/index/index.js'
 import Classify from '../components/classify/classify.js'
 import Car from '../components/car/car.js'
 import Users from '../components/users/users.js'
+import Login from '../components/users/login/login.js'
+import Register from '../components/users/register/register.js'
 
 export default class Routers extends React.Component{
     render(){
@@ -14,6 +16,8 @@ export default class Routers extends React.Component{
                 <Route path="/classify" component={Classify} />
                 <Route path="/car" component={Car} />
                 <Route path="/users" component={Users} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
             </Router>
         )
     }
