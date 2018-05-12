@@ -1,0 +1,70 @@
+.login{
+    margin: 30px 30px;
+}
+.mi-login{
+    text-align: center;
+    img{
+       margin-left: 130px;
+       width: 48px;
+       height: 48px;
+    }
+    h5{
+        margin-top: 2px;
+    }
+}
+.mi-biaodan{
+    
+    div{
+        border-bottom: 1px solid #ccc;
+            input{
+            border: 0px;
+            outline:none;
+            cursor: pointer;
+            font-size: 16px;
+            color:#535353;
+            line-height: 20px;
+            }
+        }
+    }
+.mi-loginBut{
+    height: 82px;
+    display: block;
+    button{
+        height: 50px;
+        width: 100%;
+        margin-bottom: 6px;
+        border-radius:10px; 
+        line-height: 50px;
+        text-align: center;
+        font-size: 16px;
+
+    }
+    .mi-but1{color:#fff;background-color:#FF6700;margin-top: -60px; }
+    .mi-but2{color:#000;background-color: #fff}
+} 
+.mi-xuanze{
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 80px;
+    li{
+        float: left;
+        font-size: 14px;
+        border-right: 1px solid #ccc;
+         
+        a{
+            color:#535353;   
+        }
+       
+        span{
+             margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+    .mi-null{
+        border-right: none;  
+    }
+}
+
+.mi-qita{
+
+}
