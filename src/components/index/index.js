@@ -275,7 +275,7 @@ export default class Index extends React.Component{
                 }
             ]
         },
-        classify:[
+        miProduct:[
             {
                 img_url:'//i8.mifile.cn/v1/a1/f938ae9f-e54a-1fa1-a52d-62dfe534b579.webp?bg=E8D6BB'
             },
@@ -503,9 +503,9 @@ export default class Index extends React.Component{
                         <div className="f-more">更多小米电视产品 > </div>
                     </div>
 
-                    <ul className="f-classify">
+                    <ul className="f-miProduct">
                         {
-                            this.state.classify.map((item,idx)=>{
+                            this.state.miProduct.map((item,idx)=>{
                                 return <li key={idx}>
                                     <img src={item.img_url} />
                                 </li>
