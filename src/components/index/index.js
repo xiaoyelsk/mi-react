@@ -317,7 +317,7 @@ export default class Index extends React.Component{
     render(){
         return (
             <div id="index">
-                <ul className="header">
+                <ul className="index-header">
                     <li><img src='src/components/img/logo.png'/></li>
                     <li>
                         <i className="fa fa-search fdj" aria-hidden="true"></i>
@@ -325,7 +325,7 @@ export default class Index extends React.Component{
                     </li>
                     <li><i className="fa fa-user-o" aria-hidden="true"></i></li>
                 </ul>
-                <div className="main">
+                <div className="index-main">
                     <div className="swiper-container">
                         <div className="swiper-wrapper">
                             {
