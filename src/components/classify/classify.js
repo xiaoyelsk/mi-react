@@ -1,11 +1,16 @@
 import './classify.scss'
 import React from 'react'
 import Footer from '../footer/footer.js'
+import $ from 'jquery'
+
 
 export default class Classify extends React.Component{
     // 返回到首页
     backIndex(){
         this.props.router.push('/')
+    }
+    componentDidMount(){
+        $('.classify').addClass('ative').siblings('a').removeClass('ative')
     }
     render(){
         return (
