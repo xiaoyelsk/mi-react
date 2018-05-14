@@ -11,8 +11,8 @@ import Register from '../components/users/register/register.js'
 
 import Datelist from '../components/datelist/goods.js'
 
-
-
+import ServerLogin from '../components/server/serverlogin.js'
+import ServerHome from '../components/server/serverhome.js'
 
 
 
@@ -27,6 +27,8 @@ export default class Routers extends React.Component{
                 <Route path="/users" component={Users} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <Route path="/serverlogin" component={ServerLogin} />
+                <Route path="/serverhome" component={ServerHome} />
             </Router>
         )
     }
