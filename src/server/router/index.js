@@ -20,8 +20,13 @@ app.all('*', function(req, res, next) {
 //全局
 app.use(bp.urlencoded({extended:false}));
 
+
+const user = require('./user.js')
+
+user.account(app);
+
 module.exports = {
     start(_port = 88){
-        app.linten(_port)
+        app.listen(_port)
     }
 }

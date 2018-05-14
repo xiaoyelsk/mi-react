@@ -1,7 +1,7 @@
 import axios from 'axios'
-import router from '../router/router.js'
+import router from '../routers/routers.js'
 
-const baseUrl = 'http://10.3.133.238:88/'
+const baseUrl = 'http://localhost:88/'
 let filterUrl = (_url) => {
     if(_url && _url.startsWith('http')){
         return _url;
@@ -48,7 +48,7 @@ export default {
                     router.push({name:'login'});   
                     return false;
                 }               
-                console.log(res)
+                
                 resolve(res.data)
             }).catch(error => {
                 

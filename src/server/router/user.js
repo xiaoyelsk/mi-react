@@ -6,16 +6,17 @@ module.exports = {
         //注册
         app.post('/register',async (req,res) =>{
             let username = req.body.username;
-            let password = req.body.passowrd;
-
+            let password = req.body.password;
+            
             let result = await db.select('user',{username});
-
+            
             if(result.status){
                 res.send(apiResult(false));
+                
             } else {
                 let result = await db.insert('user',{username,password})
-                    console.log(result);
-                send(result);
+            
+                res.send(result);
             }
         });
         //登录
