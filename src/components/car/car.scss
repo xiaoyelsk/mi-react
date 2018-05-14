@@ -1,10 +1,27 @@
-  
-.tou{
-    height: 0.78125rem;background-color:#ccc;
+.big{
+    position:relative;
+}
+.tou{    
+    height: 0.625rem;background-color:#F2F2F2;position:fixed;width:100%;
+    ul{display:flex;justify-content: space-between;align-items:center;
+        li{
+            font-size:0.25rem;line-height: 0.625rem; 
+
+        }
+        li:nth-child(1){
+            padding-left:0.15625rem;font-size:24px;color:#959595;
+        }
+        li:nth-child(3){
+            padding-right:0.15625rem;font-size:0.3125rem;
+            color:#959595;
+        }
+
+    }
+
 
 }
 .dl{
-    height: 0.625rem;
+    height: 0.625rem;padding-top:0.625rem;
 h2{font-size:20px;display:inline-block;margin-left:0.15625rem;line-height: 0.625rem;
 
 }
@@ -77,8 +94,8 @@ span{
                     }
                 }
             }
-            li:nth-child(3){
-                background-color:#FF6700;line-height:0.666667rem; color:#fff;
+            li:nth-child(3) a{
+                background-color:#FF6700;line-height:0.46875rem; color:#fff;font-size:16px;
 
             }
         }

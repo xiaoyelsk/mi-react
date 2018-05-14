@@ -1,17 +1,22 @@
 import './goods.scss'
+import ReactDOM from 'react-dom'
 
 import React from 'react'
 
-import {Link} from 'react-router'
+
+import {Router,Route, hashHistory, browserHistory,Link} from 'react-router'
 
 import './daojishi.js'
 
 export default class Goods extends React.Component{
+    state={ goods_list:[]}
     render(){
         return (
             <div>
                 <div className="main">
                     <div className="main_t">
+                    
+
                     </div>
                     <div className="time">
                         <span className="tip">￥1599
@@ -23,7 +28,10 @@ export default class Goods extends React.Component{
 
                     </div>
                     <div className="show">
-                        <h2 className="cont">小米</h2>
+                        <h2 className="cont">
+
+                      
+                            </h2>
                         <p className="title">[5月18日上午10点 开售]前置2000万“治愈系”自拍/后置2000万 AI双摄/标配骁龙660 AIE处理器</p>
                         <p className="price">￥1599</p>
 
@@ -84,5 +92,9 @@ export default class Goods extends React.Component{
         )
     }
 }
+ReactDOM.render(
+    <Goods />,
+    document.getElementById('app')
+)
 
 // import lunbo from './lunbo.js'
