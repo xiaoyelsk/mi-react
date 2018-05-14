@@ -23,57 +23,57 @@ export default class users extends React.Component{
                 </div>
                 <div className="wo-main">
                     <div className="w-indent">
-                        <div className="w-dingdan">我的订单<span className="w-alldingdan">全部订单<i className="fa fa-angle-double-right" ></i></span></div>
+                        <div className="w-dingdan">我的订单<span className="w-alldingdan">全部订单<i className="fa fa-angle-right youjiantou"></i></span></div>
                     </div>
                     <ul className="w-fukuan">
                         <li>
-                            <img src="./src/components/img/wode7.png" />
+                          <i className="fa fa-window-maximize zibig"></i>
                             <span>待付款</span>
                         </li>
                         <li>
-                            <img src="./src/components/img/wode8.png" />
+                          <i className="fa fa-truck zibig " ></i>
                             <span>待收货</span>
                         </li> 
                         <li>
-                            <img src="./src/components/img/wode9.png" />
+                        <i className="fa fa-wrench zibig"></i>
                             <span>退换修</span>
                         </li> 
                     </ul>
-                    <ul className="w-huiyuan w-xiangtong">
+                    <ul className="w-huiyuan w-xiangtong zibig">
                         <li className="w-bb">
-                            <img src="./src/components/img/wode1.png" />
-                            <div>会员中心<i className="fa fa-angle-double-right" ></i></div>
+                            <i className="fa fa-user-o zibig" ></i>
+                            <div>会员中心<i className="fa fa-angle-right"></i></div>
                             
                         </li>
                         <li>
-                            <img src="./src/components/img/wode2.png" />
-                            <div>我的优惠 <i className="fa fa-angle-double-right" ></i></div>
+                           <i className="fa fa-window-maximize zibig"></i>
+                            <div>我的优惠 <i className="fa fa-angle-right"></i></div>
                            
                         </li> 
                     </ul>
                     <ul className="w-fuwu w-xiangtong">
                         <li className="w-bb" >
-                            <img src="./src/components/img/wode3.png" />
-                            <div>服务中心<i className="fa fa-angle-double-right" ></i></div>
+                           <i className="fa fa-heartbeat zibig" ></i>
+                            <div>服务中心<i className="fa fa-angle-right"></i></div>
                             
                         </li>
                             <li>
-                                <img src="./src/components/img/wode4.png" />
-                                <div>小米之家<i className="fa fa-angle-double-right" ></i></div>
+                               <i className="fa fa-home zibig"></i>
+                                <div>小米之家<i className="fa fa-angle-right"></i></div>
                                 
                             </li> 
                     </ul>
                     <div className="w-pipe w-xiangtong2">
                             <li>
-                                <img src="./src/components/img/wode5.png" />
-                                <div>F码通道<i className="fa fa-angle-double-right" ></i></div>
+                               <i className="fa fa-square-o zibig " ></i>
+                                <div>F码通道<i className="fa fa-angle-right"></i></div>
                                 
                             </li> 
                     </div>
                     <div className="w-setting w-xiangtong2">
                             <li>
-                                <img src="./src/components/img/wode6.png" />
-                                <div>设置<i className="fa fa-angle-double-right shezhi" ></i></div>
+                                <i className="fa fa-cog zibig" ></i>
+                                <div>设置<i className="fa fa-angle-right shezhi"></i></div>
                                
                             </li> 
                     </div>
