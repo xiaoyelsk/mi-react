@@ -1,0 +1,62 @@
+.register{
+    margin: 20px 20px;
+    h3{
+        margin-left: 80px;
+        margin-bottom: 40px;
+    }
+    .mi-register{ 
+       
+        div{
+            border-bottom: 1px solid #ccc;
+                .mi-quhao{
+                    font-size: 16px;
+                    color:#535353;
+                }
+                input{
+                border: 0px;
+                outline:none;
+                cursor: pointer;
+                font-size: 16px;
+                color:#535353;
+                line-height: 20px;
+                }
+            }
+            .mi-tishi{
+                font-size: 12px;
+                color:hsl(0, 93%, 48%);
+                margin-top: -20px;
+            }
+            .mi-checkbox{
+                width: 16px;
+                height: 16px;
+                background: #FFB500;
+                border-radius: 50%;
+                margin-right: 4px;
+            }
+            .mi-xieyi{
+                font-size: 12px;
+                color:#535353;
+            }
+        }
+        .mi-nav{
+            margin-top: 230px;
+            margin-left: 40px;
+            li{
+                float: left;
+                font-size: 12px;
+               
+                border-right: 1px solid #ccc;
+                a{
+                    color:#535353;
+                    span{
+                        margin-left: 10px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .mi-wenti{
+                border-right:none 0;
+            }
+        }
+}
+

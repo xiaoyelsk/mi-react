@@ -1,0 +1,64 @@
+.consig{
+    // margin: 20px 20px;
+    
+    .consig-head{
+        height: 50px;
+        width: 100%;
+        background-color:hsla(0, 19%, 93%, 0.863);
+        .jiesuan{
+            font-size: 30px;
+            margin-left: 20px;
+            color:#666;
+            
+        }
+        span{
+            font-size: 20px;
+            color:#535353;
+            line-height: 50px;
+            margin-left: 125px;
+            
+        }
+    }
+    .consig-main{
+        margin: 20px 20px;
+        div{
+            border-bottom: 1px solid #ccc;
+            line-height: 40px;
+             label{
+                font-size: 16px;
+                color:#535353;
+                margin-right: 8px;
+            }
+            input{
+                border: 0px;
+                outline:none;
+                cursor: pointer; 
+            }
+            .consig-tacitlyApprove{
+                font-size: 16px;
+                color:#535353;
+                .consig-morenMap{
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 5px;
+                    margin-left: 180px;
+                }
+            }
+        }
+       
+    }
+    .consig-saveMap{
+        width: 100%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 16px;
+        border: 0px;
+        outline:none;
+        cursor: pointer;
+        color:#fff;
+        background-color: #FF6700;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
