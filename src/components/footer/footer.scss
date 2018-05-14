@@ -2,13 +2,15 @@
     width: 100%;
     height:0.666667rem;
     display:flex;
+   
     position:fixed;
     bottom:0;
     border-top:1px solid #ddd;
+    background:#fff;
     li{
         flex:1;
         text-align:center;
-        font-size:0.213333rem;
+        font-size:0.16rem;
         a{
             height: 100%;
             display:flex;
@@ -17,11 +19,11 @@
             padding-top:0.066667rem;
             color:#828282;
             i{
-                font-size:0.266667rem;
+                font-size:0.296667rem;
             }
         }
         .ative{
-            color:#f90;
+            color:#F56C02;
         }
     }
 }
