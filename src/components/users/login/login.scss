@@ -16,6 +16,10 @@
     
     div{
         border-bottom: 1px solid #ccc;
+            .mi-quhao{
+                font-size: 16px;
+                color:#535353;
+            }
             input{
             border: 0px;
             outline:none;
@@ -24,6 +28,25 @@
             color:#535353;
             line-height: 20px;
             }
+        }
+        .mi-mima1{
+            margin-top: 18px;
+        }
+        .mi-tishi1{
+            font-size: 12px;
+            color:hsl(0, 93%, 48%);
+            border-bottom: none 0;
+            margin-top: -20px;
+        }
+        .mi-tishi2{
+            font-size: 12px;
+            color:hsl(0, 93%, 48%);
+            border-bottom: none 0;
+            margin-top: -20px;
+        }
+        .mi-Vcode{
+            font-size: 10px;
+            color:#FF6700;
         }
     }
 .mi-loginBut{
@@ -37,10 +60,13 @@
         line-height: 50px;
         text-align: center;
         font-size: 16px;
+        border: 0px;
+        outline:none;
+        cursor: pointer;
 
     }
-    .mi-but1{color:#fff;background-color:#FF6700;margin-top: -60px; }
-    .mi-but2{color:#000;background-color: #fff}
+    .mi-but1{color:#fff;background-color:#FF6700; }
+    .mi-but2{color:#000;background-color: #fff;border: 1px solid #ccc;}
 } 
 .mi-xuanze{
     height: 30px;
