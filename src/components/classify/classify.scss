@@ -72,30 +72,30 @@
             padding:0.026667rem 0.2rem;
             .f-item{
                 overflow:hidden;
-                margin-bottom:40px;
+                margin-bottom:0.533333rem;
                 li:first-child{
-                    width:260px;
-                    height:105px;
-                    margin-bottom:10px;
+                    width:3.466667rem;
+                    height:1.4rem;
+                    margin-bottom:0.133333rem;
                     img{
                         width:100%;
                     }
                 }
                 li:nth-child(2){
-                    width:260px;
-                    height:66px;
+                    width:3.466667rem;
+                    height:0.88rem;
                     text-align:center;
-                    line-height:66px;
+                    line-height:0.88rem;
                     span{
                         color:#3c3c3c;
-                        font-size:14px;
+                        font-size:0.186667rem;
                         position:relative;
                     }
                     span::before,span::after{
                         content:'';
                         display:block;
-                        width:20px;
-                        height:2px;
+                        width:0.266667rem;
+                        height:0.026667rem;
                         background:#e0e0e0;
                         position:absolute;
                         top:50%;
@@ -109,17 +109,18 @@
                 }
                 li:nth-child(3),li:nth-child(4),li:nth-child(5),li:nth-child(6){
                     float:left;
-                    width:52px;
+                    width:1.066667rem;
                     text-align:center;
-                    margin-right:52px;
-                    margin-top:20px;
+                    margin-right:0.133333rem;
+                    margin-top:0.266667rem;
                     img{
-                        width:100%;
+                        width:70%;
+                        margin:0 auto;
                     }
                     span{
                         color:#333;
-                        font-size:12px;
-                        margin-top:12px;
+                        font-size:0.16rem;
+                        margin-top:0.16rem;
                     }
                 }
                 li:nth-child(5){
@@ -127,7 +128,7 @@
                 }
             }
             .f-item:last-child{
-                height:520px;
+                height:6.933333rem;
             }
         }
     }
