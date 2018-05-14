@@ -7,8 +7,20 @@ import './index.scss'
 // 引入swiper模块、css
 import Swiper from 'swiper'
 import '../../../node_modules/swiper/dist/css/swiper.css'
+// 引入httpclient模块
+// import http from '../../utils/httpclient.js'
 
 export default class Index extends React.Component{
+    // 跳到列表
+    toList(){
+        this.props.router.push('/list');
+    }
+    // 跳到详情
+    toDetails(product_id){
+        this.props.router.push('/goods(/product_id)');
+        console.log(product_id);
+    }
+
     state = {
         // 轮播图数据
         bannerImg:[
@@ -392,17 +404,17 @@ export default class Index extends React.Component{
                 type:'miProduct',
                 type_text:'种类'
             },
-             {
+            {
                 img_url:'//i8.mifile.cn/v1/a1/f938ae9f-e54a-1fa1-a52d-62dfe534b579.webp?bg=E8D6BB',
                 type:'miProduct',
                 type_text:'种类'
             },
-             {
+            {
                 img_url:'//i8.mifile.cn/v1/a1/f938ae9f-e54a-1fa1-a52d-62dfe534b579.webp?bg=E8D6BB',
                 type:'miProduct',
                 type_text:'种类'
             },
-             {
+            {
                 img_url:'//i8.mifile.cn/v1/a1/f938ae9f-e54a-1fa1-a52d-62dfe534b579.webp?bg=E8D6BB',
                 type:'miProduct',
                 type_text:'种类'
@@ -433,6 +445,9 @@ export default class Index extends React.Component{
         });
       
         $('.home').addClass('ative').siblings('a').removeClass('ative')
+
+        // 获取后端数据
+        
     }
     render(){
         return (
@@ -450,7 +465,7 @@ export default class Index extends React.Component{
                         <div className="swiper-wrapper">
                             {
                                 this.state.bannerImg.map((item,idx)=>{
-                                    return  <div className="swiper-slide" key={idx}>
+                                    return  <div className="swiper-slide" key={idx} onClick={this.toList.bind(this)}>
                                                 <img src={item.img_url}/>
                                             </div>
                                 })
@@ -462,13 +477,13 @@ export default class Index extends React.Component{
                     <ul className="f-nav">
                         {
                             this.state.navImg.map((item,idx)=>{
-                                return <li key={idx}><img src={item.img_url}/></li>
+                                return <li key={idx} onClick={this.toList.bind(this)}><img src={item.img_url}/></li>
                             })
                         }
                     </ul>
 
-                    <div className="f-channel">
-                        <div className="channel-l channel-box">
+                    <div className="f-channel" onClick={this.toList.bind(this)}>
+                        <div className="channel-l channel-box" >
                             <img src={this.state.channel[0].img_url}/>
                         </div>
                         <ul className="channel-r channel-box">
@@ -480,12 +495,12 @@ export default class Index extends React.Component{
                     <div className="f-dailySelection f-doubleStyle">
                         {
                             this.state.dailySelection.bigImg.map((item,idx)=>{
-                                return <div className="f-big" key={idx}><img src={item.img_url} /></div>
+                                return <div className="f-big" key={idx}><img src={item.img_url} onClick={this.toList.bind(this)}/></div>
                             })
                         }
                         <ul className="products">
                             {this.state.dailySelection.productData.map((item,idx)=>{
-                                return  <li key={idx}>
+                                return  <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                             <img src={item.img_url}/>
                                             <div className="f-info">
                                                 <p className="name">{item.product_name}</p>
@@ -500,12 +515,12 @@ export default class Index extends React.Component{
                     <div className="f-recommend f-doubleStyle">
                         {
                             this.state.recommend.bigImg.map((item,idx)=>{
-                                return <div className="f-big" key={idx}><img src={item.img_url} /></div>
+                                return <div className="f-big" key={idx}><img src={item.img_url} onClick={this.toList.bind(this)}/></div>
                             })
                         }
                         <ul className="products">
                             {this.state.recommend.productData.map((item,idx)=>{
-                                return  <li key={idx}>
+                                return  <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                             <img src={item.img_url}/>
                                             <div className="f-info">
                                                 <p className="name">{item.product_name}</p>
@@ -520,12 +535,12 @@ export default class Index extends React.Component{
                     <div className="f-starSingle f-doubleStyle">
                         {
                             this.state.starSingle.bigImg.map((item,idx)=>{
-                                return <div className="f-big" key={idx}><img src={item.img_url} /></div>
+                                return <div className="f-big" key={idx} onClick={this.toList.bind(this)}><img src={item.img_url} /></div>
                             })
                         }
                         <ul className="products">
                             {this.state.starSingle.productData.map((item,idx)=>{
-                                return  <li key={idx}>
+                                return  <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                             <img src={item.img_url}/>
                                             <div className="f-info">
                                                 <p className="name">{item.product_name}</p>
@@ -540,14 +555,14 @@ export default class Index extends React.Component{
                     <div className="f-newProduct f-doubleStyle">
                         {
                             this.state.newProduct.bigImg.map((item,idx)=>{
-                                return  <div className="f-big" key={idx}>
+                                return  <div className="f-big" key={idx} onClick={this.toList.bind(this)}>
                                             <img src={item.img_url } style={item.img_url ? {display:'block'}:{display:'none'}}/>
                                         </div>
                             })
                         }
                         <ul className="products">
                             {this.state.newProduct.productData.map((item,idx)=>{
-                                return  <li key={idx}>
+                                return  <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                             <img src={item.img_url}/>
                                             <div className="f-info">
                                                 <p className="name">{item.product_name}</p>
@@ -563,7 +578,7 @@ export default class Index extends React.Component{
                     <div className="f-miIntelligence f-doubleStyle">
                         {
                             this.state.miIntelligence.bigImg.map((item,idx)=>{
-                                return  <div className="f-big" key={idx}>
+                                return  <div className="f-big" key={idx} onClick={this.toList.bind(this)}>
                                             <img src={item.img_url } style={item.img_url ? {display:'block'}:{display:'none'}}/>
                                         </div>
                             })
@@ -606,14 +621,14 @@ export default class Index extends React.Component{
                     <div className="f-miTelevision f-doubleStyle">
                         {
                             this.state.miTelevision.bigImg.map((item,idx)=>{
-                                return  <div className="f-big" key={idx}>
+                                return  <div className="f-big" key={idx} onClick={this.toList.bind(this)}>
                                             <img src={item.img_url } style={item.img_url ? {display:'block'}:{display:'none'}}/>
                                         </div>
                             })
                         }
                         <ul className="products">
                             {this.state.miTelevision.productData.map((item,idx)=>{
-                                return  <li key={idx}>
+                                return  <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                             <img src={item.img_url}/>
                                             <div className="f-info">
                                                 <p className="name">{item.product_name}</p>
@@ -629,7 +644,7 @@ export default class Index extends React.Component{
                     <ul className="f-miProduct">
                         {
                             this.state.miProduct.map((item,idx)=>{
-                                return <li key={idx}>
+                                return <li key={idx} onClick={this.toList.bind(this)}>
                                     <img src={item.img_url} />
                                 </li>
                             })

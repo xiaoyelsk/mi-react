@@ -38,7 +38,7 @@ export default class Routers extends React.Component{
                 <Route path="/register" component={Register} />
                 <Route path="/settleAccounts" component={SettleAccounts} />
                 <Route path="/consig" component={Consig} />
-                <Route path="/list/:type" component={List} />
+                <Route path="/list(/:type)" component={List} />
                 <Route path="/serverlogin" component={ServerLogin} />
                 <Route path="/serverhome" component={ServerHome} />
             </Router>

@@ -4,10 +4,16 @@ import React from 'react'
 
 import Footer from '../footer/footer.js'
 
+import $ from 'jquery'
+
 export default class List extends React.Component{
     // 回到分类
     backClassify(){
         this.props.router.push('/classify')
+    }
+    // 跳到详情页:将商品id传给详情页
+    toDetails(product_id){
+        this.props.router.push('/goods(/:product_id)');
     }
 
     state = {
@@ -106,6 +112,9 @@ export default class List extends React.Component{
         // 获取列表传过来的参数
         let product_type = this.props.params.type;
         console.log(product_type)
+        if(product_type == undefined){
+            $('.main-product').hide()
+        }
     }
 
     render(){
@@ -121,7 +130,7 @@ export default class List extends React.Component{
                         {
                             this.state.productData.map((item,idx)=>{
                                 return (
-                                    <li key={idx}>
+                                    <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                         <div className="product-img">
                                             <img src={item.img_url}/>
                                         </div>
@@ -139,7 +148,7 @@ export default class List extends React.Component{
                         {
                             this.state.loveData.map((item,idx)=>{
                                 return (
-                                    <li key={idx}>
+                                    <li key={idx} onClick={this.toDetails.bind(this,item.product_id)}>
                                         <img src={item.img_url}/>
                                         <div className="love-info">
                                             <p className="name" style={item.product_name ? {display:'block' } : {display:'none'}}>
