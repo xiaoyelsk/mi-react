@@ -14,64 +14,53 @@ export default class Index extends React.Component{
         bannerImg:[
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/37dfdc929ee9a4313facb0b23ebcd721.jpg?bg=FFFFFF',
-                type:'banner',
-                type:'轮播图'
+                type:'banner'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/92e3eacec734cb422f602df91b66c1da.jpg?bg=FFFFFF',
-                type:'banner',
-                type:'轮播图'
+                type:'banner'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/1e76cdf0ac3a01fff59eca92a28ac568.jpg?bg=FFFFFF',
-                type:'banner',
-                type:'轮播图'
+                type:'banner'
             }
         ],
         // 导航栏数据
         navImg:[
             {
                 img_url:'//i8.mifile.cn/v1/a1/6d64ef02-bb5c-da49-45cb-7d6861885b29.webp?bg=F1F7E4',
-                type:'nav',
-                type:'导航栏'
+                type:'nav'
             },
             {
                 img_url:'//i8.mifile.cn/v1/a1/d29e748c-0177-5b4c-d2ab-401070713bac.webp?bg=FCF8EB',
-                type:'nav',
-                type:'导航栏'
+                type:'nav'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/9173298cc0297ce1803c43485e525358.jpg?bg=FFFFFF',
-                type:'nav',
-                type:'导航栏'
+                type:'nav'
             },
             {
                 img_url:'//i8.mifile.cn/v1/a1/e560f98a-48bb-25a1-daa2-72bff8cc7c69.webp?bg=EBF6FC',
-                type:'nav',
-                type:'导航栏'
+                type:'nav'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/938f75d98244629b0d29bfc9c4323f8d.png?thumb=1&w=144&h=152',
-                type:'nav',
-                type:'导航栏'
+                type:'nav'
             }
         ],
         // 通道数据 
         channel:[
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/9e05bf36fa50a26264e0307f74351e27.jpg?bg=FFFFFF',
-                type:'chanel',
-                type:'通道'
+                type:'chanel'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/04e0136baa0b83859e6cc2e997a9a8eb.jpg?bg=FFFFFF',
-                type:'chanel',
-                type:'通道'
+                type:'chanel'
             },
             {
                 img_url:'//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/22fb1734aa79d4ae26e92f63bf14ada3.jpg?bg=FFFFFF',
-                type:'chanel',
-                type:'通道'
+                type:'chanel'
             }
         ],
         // 每日精选 == 列表的手机
