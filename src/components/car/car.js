@@ -7,8 +7,14 @@ export default class car extends React.Component{
     render(){
         return (
             <div>
-            
+            <div className="big">
             <div className="tou">
+            <ul>
+            <Link to="/goods" ><li className="fa fa-chevron-left"></li></Link>
+            <li>购物车</li>
+            <li className="fa fa-search"></li>
+            </ul>
+
             </div>
             <div className="dl">
             <h2>登录后享受更多优惠</h2>
@@ -33,9 +39,10 @@ export default class car extends React.Component{
                         </div>
                <ul className="foot">        
                         <li><Link to="/"><i className="fa fa-home"></i><span>首页</span></Link></li>
-                        <li><Link to="/car"><i className="fa fa-shopping-cart" aria-hidden="true"></i><span>继续购物</span></Link></li>
-                        <li>去结算</li>
+                        <li><Link to="/classify"><i className="fa fa-shopping-cart" aria-hidden="true"></i><span>继续购物</span></Link></li>
+                        <li><Link to="/resigter">去结算</Link></li>
                     </ul>
+                    </div>
             </div>
         )
     }
