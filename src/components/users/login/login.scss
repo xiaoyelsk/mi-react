@@ -45,7 +45,7 @@
             margin-top: -20px;
         }
         .mi-Vcode{
-            font-size: 10px;
+            font-size: 14px;
             color:#FF6700;
         }
     }
@@ -91,6 +91,15 @@
     }
 }
 
-.mi-qita{
-
+.lan{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    background-color: hsla(0, 15%, 94%, 0.87);
+    top: 0;
+        i{
+            font-size: 80px;
+            color:orange;
+            margin: 250px 140px;
+        }
 }

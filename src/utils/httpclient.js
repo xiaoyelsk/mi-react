@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../routers/routers.js'
 
-const baseUrl = 'http://localhost:88/'
+const baseUrl = 'http://10.3.133.39:88/'
 let filterUrl = (_url) => {
     if(_url && _url.startsWith('http')){
         return _url;

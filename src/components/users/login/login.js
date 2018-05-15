@@ -1,25 +1,30 @@
 import './login.scss'
 import React from 'react'
 import {Link} from 'react-router'
+import http from '../../../utils/httpclient'
+import $ from 'jquery'
+
+
 export default class Login extends React.Component{
+    //懒加载
+    componentDidMount(){
+       
+            $(".lan").delay(800).hide(0);     
+    }
    constructor(props) {
        super(props)
        this.state = {
-            
             phone:' 手机号码',
             password:'密码',
             code:'验证码',
             userLogin:'立即登陆/\注册',
             userPassword:'用户名密码登陆',
             tishi:'',
-            
             duiyingma1:'点击刷新'
-
        }
    }
    change = (e) => {
     //    console.log(e.target)手机号码
-       
        this.setState({phone:e.target.value})
     }
    change1 = (e) => {
@@ -54,19 +59,33 @@ export default class Login extends React.Component{
         this.setState({ phone:'手机号码 '})
 
         // // 判断
-        console.log( this.refs.code.value)
-        console.log(this.duiyingma1)
-        
-        
+
         // console.log(this.refs.phone.value)
        if(this.refs.phone.value==''){
             this.setState({ tishi:'请输入手机号码! '})
             return;
 
+       }else if(this.refs.psd.value==''){
+            this.setState({ tishi:'请输入密码! '})
+            return;  
        }else if(this.refs.code.value!== this.duiyingma1){
             this.setState({ tishi2:'验证码有误! '})
+            return;
         }
-        
+        let data = {
+            username:this.refs.phone.value,
+            password:this.refs.psd.value
+        }
+        console.log(data)
+        http.post('login',data).then((res)=>{
+            console.log(res)
+            if(res==true){
+                this.props.router.push('/')
+            } else {
+                alert('用户名或密码错误！')
+            }
+        })
+      
     }
     render(){
         return (
@@ -111,7 +130,10 @@ export default class Login extends React.Component{
                     
                     </div>
                   
-                 </div> 
+                 </div>
+                 <div className="lan">
+                        <i className="fa fa-spinner fa-pulse"></i>	
+                 </div>
             </div>
         )
     }
