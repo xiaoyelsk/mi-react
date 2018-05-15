@@ -13,7 +13,7 @@ export default class List extends React.Component{
     }
     // 跳到详情页:将商品id传给详情页
     toDetails(product_id){
-        this.props.router.push('/goods(/:product_id)');
+        this.props.router.push('/goods/'+product_id);
     }
 
     state = {
