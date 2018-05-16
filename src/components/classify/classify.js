@@ -32,6 +32,10 @@ export default class Classify extends React.Component{
     toList(type_text){
         this.props.router.push('/list/'+type_text);
     } 
+    // 跳到搜索组件
+    toSearch(){
+        this.props.router.push('/search');
+    }
     
     // 数据
     state = {
@@ -49,7 +53,6 @@ export default class Classify extends React.Component{
 
         // 获取后台数据
         http.post('getProduct',{}).then(res=>{
-            console.log(res)
             if(res.status){
                 let data = res.data;
                 // 总数量
@@ -101,7 +104,7 @@ export default class Classify extends React.Component{
                 <ul className="f-header animate-route">
                     <li onClick={this.backIndex.bind(this)}> <i className="fa fa-angle-left" aria-hidden="true"></i> </li>
                     <li><span>分类</span></li>
-                    <li><i className="fa fa-search"></i></li>
+                    <li onClick={this.toSearch.bind(this)}><i className="fa fa-search"></i></li>
                 </ul>
                 <div className="f-main animate-route">
                     <div className="f-navBar">
