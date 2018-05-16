@@ -9,7 +9,7 @@ export default class Login extends React.Component{
     //懒加载
     componentDidMount(){
        
-            $(".lan").delay(800).hide(0);     
+            $(".lan").delay(800).hide(0);            
     }
    constructor(props) {
        super(props)
@@ -79,6 +79,9 @@ export default class Login extends React.Component{
         console.log(data)
         http.post('login',data).then((res)=>{
             console.log(res)
+            //token
+            window.localStorage.setItem('un',res.data.username);
+            window.localStorage.setItem('pd',res.data.password);
             if(res==true){
                 this.props.router.push('/')
             } else {

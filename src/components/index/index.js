@@ -418,8 +418,8 @@ export default class Index extends React.Component{
     componentDidMount(){
         // 轮播图
         var mySwiper = new Swiper ('.swiper-container', {
-            direction: 'horizontal',
-            loop:true,
+            direction: 'horizontal',//方向设置，垂直滚动
+            loop:true,//循环滚动
             autoplay: {
                 delay: 3000,
                 stopOnLastSlide: false,
