@@ -1,12 +1,16 @@
 .register{
-    margin: 20px 20px;
+   
     h3{
-        margin-left: 80px;
+        margin-left: 100px;
+       padding-top: 20px;
         margin-bottom: 40px;
     }
     .mi-register{ 
        
         div{
+            margin-top: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
             border-bottom: 1px solid #ccc;
                 .mi-quhao{
                     font-size: 16px;
@@ -28,6 +32,8 @@
             }
             .mi-check{
                     .mi-checkbox{
+                        margin-left: 30px;
+                        margin-right: 30px;
                         width: 16px;
                         height: 16px;
                         border: 0px;
@@ -64,5 +70,8 @@
                 border-right:none 0;
             }
         }
+    .mi-loginBut{
+        margin-top: 20px;
+    }
 }
 

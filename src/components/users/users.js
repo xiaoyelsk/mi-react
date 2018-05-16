@@ -7,8 +7,7 @@ import $ from 'jquery'
 
 export default class users extends React.Component{
     state = {
-        login:'登陆',
-        register:'注册'
+        login:'',
     }
     componentDidMount(){
         $('.users').addClass('ative').siblings('a').removeClass('ative')
@@ -17,20 +16,12 @@ export default class users extends React.Component{
             this.un = window.localStorage.getItem('un')
             this.pd = window.localStorage.getItem('pd')
             
-            // console.log(this.dizhi)
+            console.log(this.un)
             this.setState({login:this.un})
             this.setState({register:''})
+            
     }
-    tuichu(){
-        // this.props.router.push('/login')
-        window.localStorage.removeItem('un')
-        window.localStorage.removeItem('pd')
-        window.localStorage.removeItem('mz');
-        window.localStorage.removeItem('dizhi');
-        this.setState({login:'登陆'})
-        this.setState({register:'注册'})
-        
-    }
+   
     render(){
         return (
             <div>
@@ -38,9 +29,10 @@ export default class users extends React.Component{
                         <div className="w-headportrait">
                             <img src="https://s1.mi.com/m/images/m/default.png" className="w-tou" />
                         </div>
+                        <div className="w-headlogin1"><span>{this.state.login}</span></div>
                         <div className="w-headlogin">
-                            <Link to="/login"><span>{this.state.login} \</span> </Link>
-                            <Link to="/register"><span>{this.state.register}</span></Link>
+                            <Link to="/login"><span>登陆\</span> </Link>
+                            <Link to="/register"><span>注册</span></Link>
                         </div>
                 </div>
                 <div className="wo-main">
@@ -95,12 +87,15 @@ export default class users extends React.Component{
                     <div className="w-setting w-xiangtong2">
                             <li>
                                 <i className="fa fa-cog zibig" ></i>
-                                <div>设置<i className="fa fa-angle-right shezhi"></i></div>   
+                                <Link to="/quit" className="U-aa">
+                                    <div>
+                                            设置
+                                            <i className="fa fa-angle-right shezhi"></i>
+                                    </div> 
+                                 </Link> 
                             </li> 
                     </div>
-                    <div className="tuichu">
-                            <input type="button" value="退出登陆" className="tuichulogin" onClick={this.tuichu.bind(this)}/>
-                    </div>
+                    
                 </div>
                 <Footer />
 
