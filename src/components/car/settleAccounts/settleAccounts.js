@@ -49,6 +49,10 @@ export default class SettleAccounts extends React.Component{
             this.setState({mz:this.mz})
             this.setState({addmap:this.dizhi})
 
+            if( this.mz == null && this.dizhi == null ){
+                this.setState({addmap:'添加收货地址'})
+            }
+
         //计算总数、总价
         // console.log(this.state.productData[0].product_price)
             var totalPrice=0;
@@ -101,7 +105,9 @@ export default class SettleAccounts extends React.Component{
                 </div>
                 <div className="settle-main">
                     <div className="settle-shouhuo">
-                        <h5>{this.state.mz}{this.state.addmap}<Link to='/consig'><i className="fa fa-angle-right shouhuo"></i></Link></h5>  
+                        <h5>{this.state.mz}{this.state.addmap}
+                            <Link to='/consig'><i className="fa fa-angle-right shouhuo"></i></Link>
+                        </h5>  
                     </div>
                     <div className="settle-zhifu">
                         <ul className="settle-zffs" >
