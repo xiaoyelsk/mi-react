@@ -9,7 +9,6 @@ module.exports = {
         });
         //获取商品
         app.post('/getProduct',async (req,res) =>{
-
             if(req.body.id){
                 let product_id = req.body.id;
 
@@ -20,9 +19,7 @@ module.exports = {
                 res.send(result)
 
             } else {
-
                 let result = await db.select('goodslist');
-
                 res.send(result);
             }
 
@@ -48,21 +45,34 @@ module.exports = {
 
             let username = req.body.username;
 
-            let product_id = req.body.product_id;
-            let img_url = req.body.img_url;
-            let product_name = req.body.product_name;
-            let product_brief = req.body.product_brief;
-            let product_org_price = req.body.product_org_price;
-            let product_price = req.body.product_price;
-            let product_qty = req.body.product_qty;
+            let p_id = Number(req.body.p_id);
+            let img = req.body.img;
+            let p_name = req.body.p_name;
+            let p_price = req.body.p_price;
+            let p_qty = req.body.qty;
 
-            let result = await db.insert('ProductCar',{username,product_id,img_url,product_name,product_brief,product_org_price,product_price,product_qty})
+            let result_id = await db.select('ProductCar',{p_id});
 
-            if(result.status){
-                res.send(result.status)
-            } else {
-                res.send(apiResult(false,result))
+            if(result_id.status){
+
+                let qty = result_id.data[0].qty;
+
+                qty = Number(p_qty) + Number(qty);
+
+                let resultcar = await db.update('ProductCar',{p_id},{qty});
+
+                res.send(resultcar.status);
+            }else{
+
+                let result = await db.insert('ProductCar',{username,p_id,img,p_name,p_price,qty:p_qty})
+
+                    if(result.status){
+                        res.send(result.status)
+                    } else {
+                        res.send(apiResult(false,result))
+                    }
             }
+
 
         });
 
@@ -70,8 +80,9 @@ module.exports = {
         app.post('/searchProduct',async (req,res)=>{
 
             // 获取关键字
-            const keyword  = req.body.keyword;console.log(keyword)
-            const reg = new RegExp(keyword,'i');
+            let keyword  = req.body.keyword;
+            console.log(keyword);
+            let reg = new RegExp(keyword,'i');
             // 调用数据库模块
             let result = await db.search('goodslist',reg);
             res.send(result);

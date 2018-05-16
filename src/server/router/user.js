@@ -30,8 +30,10 @@ module.exports = {
 
             let result = await db.select('user',{username,password});
 
+            console.log(result)
+
             if(result.status){
-                res.send(result.status);
+                res.send(result);
             } else {
                 res.send(result);
             }

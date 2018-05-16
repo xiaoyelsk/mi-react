@@ -29,7 +29,7 @@ module.exports = {
     async select(_collection,_condition = {}){
         try{
             let items = await db.collection(_collection).find(_condition).toArray();
-            return apiResult(items.length > 0,items)
+            return apiResult(items.length > 0,items);
         } catch(error) {
             return apiResult(false,error);
         }
