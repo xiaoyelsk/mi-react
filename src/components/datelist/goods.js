@@ -1,17 +1,30 @@
 import './goods.scss'
+import ReactDOM from 'react-dom'
 
 import React from 'react'
 
-import {Link} from 'react-router'
 
-import './daojishi.js'
+import {Router,Route, hashHistory, browserHistory,Link} from 'react-router'
+
+// import './daojishi.js'
 
 export default class Goods extends React.Component{
+    componentDidMount(){
+        // 获取列表传过来的参数
+        let id = this.props.params.product_id;
+        console.log(id)
+        
+    }
+
+
+
     render(){
         return (
             <div>
                 <div className="main">
                     <div className="main_t">
+                    {}
+                   
                     </div>
                     <div className="time">
                         <span className="tip">￥1599
@@ -23,7 +36,10 @@ export default class Goods extends React.Component{
 
                     </div>
                     <div className="show">
-                        <h2 className="cont">小米</h2>
+                        <h2 className="cont">
+
+                      
+                            </h2>
                         <p className="title">[5月18日上午10点 开售]前置2000万“治愈系”自拍/后置2000万 AI双摄/标配骁龙660 AIE处理器</p>
                         <p className="price">￥1599</p>
 
@@ -83,6 +99,44 @@ export default class Goods extends React.Component{
 
         )
     }
+    componentDidMount(){
+        var countDown = document.getElementById('countDown');
+        var end = Date.parse('2018-05-18 15:50:20');
+        showTime();
+        var timer = setInterval(showTime,1000);
+        function showTime(){
+            // 获取当前时间
+            var now = Date.now();
+            // 计算差值
+            var offset = Math.floor((end - now)/1000);//毫秒
+            // 把时间转换成：xx天xx时xx分xx秒
+           
+            if(offset <= 0){
+                // 清除定时器
+                clearInterval(timer);
+                // 隐藏倒计时
+                countDown.style.display = 'none';
+            }
+            var sec = offset%60;
+            var min = Math.floor(offset/60)%60;
+            var hour = Math.floor(offset/60/60)%24;
+            var day = Math.floor(offset/60/60/24);
+
+            sec = sec<10? '0'+sec : sec;
+            min = min<10? '0'+min : min;
+            hour = hour<10? '0'+hour : hour;
+            // day = day<10? '0'+day : day;
+
+            countDown.innerHTML = day + '天' + hour + ':'+ min + ':' + sec;
+
+                }
+
+
+    }
 }
+// ReactDOM.render(
+//     <Goods />,
+//     document.getElementById('app')
+// )
 
 // import lunbo from './lunbo.js'
