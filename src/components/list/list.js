@@ -32,6 +32,61 @@ export default class List extends React.Component{
             http.post('searchProduct',{keyword:product_type}).then(res=>{
                 // 判断返回结果是否为true
                 if(res.status){
+        
+        http.post('getProduct',{}).then(res=>{
+            let data = res.data;
+            // 列表数据
+            let productData = [];
+            let proTemp = [];
+            // 猜你喜欢数据：新品
+            let loveData = [];
+            let loveTemp = [];
+
+            // 电视
+            let aData = [];
+            let aTemp = [];
+            // 智能
+            let bData = [];
+            let bTemp = [];
+            // 路由
+            let cData = [];
+            let cTemp = [];
+            if(res.status){
+                let data = res.data;
+                for(var i=0;i<data.length;i++){
+                    let type_text = data[i].type_text;
+                    if(type_text == product_type){
+                        proTemp.push(data[i]);
+                    }else if(type_text == '新品'){
+                        loveTemp.push(data[i]);
+                    }else if(type_text == '电视'){
+                        aTemp.push(data[i]);
+                    }else if(type_text == '智能'){
+                        bTemp.push(data[i]);
+                    }else if(type_text == '路由'){
+                        cTemp.push(data[i]);
+                    }
+                }
+                // 封一个进行二次数据抽取函数
+                function getData(temp,data){
+                    for(var i =0;i<temp.length;i++){
+                        if(i < 2){
+                            continue;
+                        }else{
+                            data.push(temp[i])
+                        }
+                    }
+                }
+                getData(proTemp,productData);
+                getData(loveTemp,loveData);
+                getData(aTemp,aData);
+                getData(bTemp,bData);
+                getData(cTemp,cData);
+
+                // 判断是否有传参过来
+                if(product_type == undefined){
+                    $('.main-product').hide();
+                    // 随机显示猜你喜欢板块
                     this.setState({
                         productData:res.data,
                         title:product_type

@@ -78,6 +78,24 @@ export default class Index extends React.Component{
     }
 
     componentDidMount(){
+
+        // 轮播图
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal',//方向设置，垂直滚动
+            loop:true,//循环滚动
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination',
+              clickable :true,
+            }
+        });
+      
+
         $('.home').addClass('ative').siblings('a').removeClass('ative')
         
         // 获取后端数据

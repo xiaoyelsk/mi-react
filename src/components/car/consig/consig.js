@@ -1,7 +1,7 @@
 import './consig.scss'
 import React from 'react'
 import {Link} from 'react-router'
-
+import http from '../../../utils/httpclient'
 
 export default class Consig extends React.Component{
     constructor(props) {
@@ -25,7 +25,27 @@ export default class Consig extends React.Component{
          } 
     change4 = (e) => {
             this.setState({minutemap:e.target.value})
-         }         
+         } 
+    baocun(){
+              let data={
+                    nickname:this.refs.name.value,
+                    username:this.refs.phone.value,
+                    map:this.refs.map.value,
+                    minutemap:this.refs.minutemap.value
+            }  
+            console.log(data) 
+            http.post('update',data).then((res)=>{
+                console.log(res)
+                if(res.status){
+                    window.localStorage.setItem('mz',res.data.nickname);
+                    window.localStorage.setItem('dizhi',res.data. minutemap);
+                    this.props.router.push('/settleAccounts')
+                } else {
+                    alert('收货地址有误！')
+                }
+            })
+         }
+             
     render(){
         return (
             <div className="consig">
@@ -36,22 +56,22 @@ export default class Consig extends React.Component{
                     <from>
                         <div>
                             <label>收货人:</label>
-                            <input type="type" className="consig-name" placeholder={this.state.name} onChange={this.change1} />
+                            <input type="type" className="consig-name" placeholder={this.state.name} onChange={this.change1} ref="name"/>
                         </div>
                         <br/>
                         <div>
                             <label>手机号码:</label>
-                            <input type="type" className="consig-phone" placeholder={this.state.phone} onChange={this.change2} />
+                            <input type="type" className="consig-phone" placeholder={this.state.phone} onChange={this.change2} ref="phone"/>
                         </div>
                         <br/>
                         <div>
                             <label>所在地区:</label>
-                            <input type="type" className="consig-map" placeholder={this.state.map} onChange={this.change3} />
+                            <input type="type" className="consig-map" placeholder={this.state.map} onChange={this.change3} ref="map"/>
                         </div>
                         <br/>
                         <div>
                             <label>详细地址:</label>
-                            <input type="type" className="consig-minutemap" placeholder={this.state.minutemap} onChange={this.change4} />
+                            <input type="type" className="consig-minutemap" placeholder={this.state.minutemap} onChange={this.change4} ref="minutemap"/>
                         </div>
                         <br/>
                         <div>
@@ -65,7 +85,7 @@ export default class Consig extends React.Component{
                     </from>
                 </div>
 
-                 <div className="consig-foot">
+                 <div className="consig-foot" onClick={this.baocun.bind(this)}>
                         <input type="button"  value="保存地址" className="consig-saveMap"/>
                 </div>
             </div>
