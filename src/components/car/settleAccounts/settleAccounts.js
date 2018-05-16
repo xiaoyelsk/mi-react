@@ -104,11 +104,15 @@ export default class SettleAccounts extends React.Component{
                     <p><Link to='/car'><i className="fa fa-angle-left jiesuan"></i></Link><span>用户结算</span></p> 
                 </div>
                 <div className="settle-main">
-                    <div className="settle-shouhuo">
-                        <h5>{this.state.mz}{this.state.addmap}
-                            <Link to='/consig'><i className="fa fa-angle-right shouhuo"></i></Link>
-                        </h5>  
-                    </div>
+                   
+                        <div className="settle-shouhuo">
+                            <Link to='/consig'> 
+                                <h5>{this.state.mz}{this.state.addmap}
+                                    <i className="fa fa-angle-right shouhuo"></i>
+                                </h5> 
+                            </Link>   
+                        </div>
+                         
                     <div className="settle-zhifu">
                         <ul className="settle-zffs" >
                             <div ref="xianshi">

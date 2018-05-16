@@ -19,11 +19,11 @@ export default class Register extends React.Component{
     
     change = (e) => {
         //    console.log(e.target)手机号码
-           this.setState({phone:e.target.placeholder})
+           this.setState({phone:e.target.value})
         }
     change1 = (e) => {
         // console.log(e.target)密码
-        this.setState({password:e.target.placeholder})
+        this.setState({password:e.target.value})
         }
     zhucebut(){
             console.log(this.refs.checkbox.checked) 
@@ -32,6 +32,7 @@ export default class Register extends React.Component{
                 return;
             }else if(!/^1[3-8]\d{9}$/i.test(this.refs.phone.value)){
                 this.setState({ tishi:'手机不合法! '})
+                return;
             }else if(this.refs.psd.value==''){
                 this.setState({ tishi:'请输入密码! '})
                 return;
@@ -71,7 +72,7 @@ export default class Register extends React.Component{
                         </div>
                         <br/>
                         <div>
-                            <input type="type" className="mi-password" placeholder={this.state.password} onChange={this.change1} ref="psd"/>                        
+                            <input type="password" className="mi-password" placeholder={this.state.password} onChange={this.change1} ref="psd"/>                        
                         </div>
                         <br/>
                         <p className="mi-tishi">{this.state.tishi}</p>

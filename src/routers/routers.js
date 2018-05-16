@@ -10,6 +10,7 @@ import Login from '../components/users/login/login.js'
 import Register from '../components/users/register/register.js'
 import SettleAccounts from '../components/car/settleAccounts/settleAccounts.js'
 import Consig from '../components/car/consig/consig.js'
+import Quit from '../components/users/quit/quit.js'
 
 import Datelist from '../components/datelist/goods.js'
 
@@ -43,6 +44,7 @@ export default class Routers extends React.Component{
                 <Route path="/search" component={Search} />
                 <Route path="/serverlogin" component={ServerLogin} />
                 <Route path="/serverhome" component={ServerHome} />
+                <Route path="/quit" component={Quit} />
             </Router>
         )
     }
