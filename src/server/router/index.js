@@ -22,8 +22,10 @@ app.use(bp.urlencoded({extended:false}));
 
 
 const user = require('./user.js')
+const products = require('./product.js')
 
 user.account(app);
+products.edit(app);
 
 module.exports = {
     start(_port = 88){

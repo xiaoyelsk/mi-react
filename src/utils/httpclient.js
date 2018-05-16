@@ -1,5 +1,4 @@
 import axios from 'axios'
-import router from '../routers/routers.js'
 
 const baseUrl = 'http://10.3.133.39:88/'
 let filterUrl = (_url) => {
@@ -8,6 +7,19 @@ let filterUrl = (_url) => {
     }
     return baseUrl + _url;
 }
+
+// loading效果
+import '../components/css/base.css'
+import $ from 'jquery';
+let $loadingBox =  $('<div></div>');
+let $icon = $('<i></i>');
+// 创建元素并添加类名
+$loadingBox.addClass('loading');
+$icon.addClass('fa fa-spinner fa-pulse loading-icon');
+// 插入到页面
+$('body').append($loadingBox.append($icon))
+// 默认隐藏
+$loadingBox.hide();
 
 export default {
     get(_url, _params = {}){
@@ -26,8 +38,8 @@ export default {
             // }).catch((error) => {
             //     reject(error)
             // })
-
-
+            // 显示loading
+            $loadingBox.show();
             axios({
                 url: filterUrl(_url),
                 method: 'post',
@@ -45,11 +57,13 @@ export default {
                 }], 
             }).then(res => {
                 if(!res.data.status && res.data.message == "unauth"){
-                    router.push({name:'login'});   
+                    
                     return false;
                 }               
                 
                 resolve(res.data)
+                // 隐藏loading
+                $loadingBox.delay(500).hide(0);
             }).catch(error => {
                 
                 reject(error)

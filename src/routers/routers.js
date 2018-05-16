@@ -16,8 +16,10 @@ import Datelist from '../components/datelist/goods.js'
 // 列表组件
 import List from '../components/list/list.js'
 
+
 import ServerLogin from '../components/server/serverlogin.js'
 import ServerHome from '../components/server/serverhome.js'
+
 
 
 
@@ -29,13 +31,14 @@ export default class Routers extends React.Component{
                 <Route path="/" component={Index} />
                 <Route path="/classify" component={Classify} />
                 <Route path="/car" component={Car} />
-                <Route path="/goods" component={Datelist} />
+                <Route path="/goods(/:product_id)" component={Datelist} />
+              
                 <Route path="/users" component={Users} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/settleAccounts" component={SettleAccounts} />
                 <Route path="/consig" component={Consig} />
-                <Route path="/list/:type" component={List} />
+                <Route path="/list(/:type)" component={List} />
                 <Route path="/serverlogin" component={ServerLogin} />
                 <Route path="/serverhome" component={ServerHome} />
             </Router>
