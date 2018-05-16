@@ -31,7 +31,7 @@
     .list-main{
         flex:1;
         overflow-x:hidden;
-        margin-bottom:50px;
+        margin-bottom:0.666667rem;
         .main-product{
             overflow:hidden;
             li{
@@ -116,6 +116,29 @@
             li:nth-child(2n){
                 margin-right:2px;
             }
+        }
+        .emtyTips{
+            padding-top:100px;
+            text-align:center;
+            display:none;
+            p{
+                font-size:16px;
+                color:#666;
+                span{
+                    color:red;
+                    padding:0 10px;
+                }
+            }
+            .tipsImg{
+                width:100px;
+                margin:0 auto;
+                margin-bottom:50px;
+               img{
+                    width:100%;
+                } 
+
+            }
+            
         }
     }
 }
