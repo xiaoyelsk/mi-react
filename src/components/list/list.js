@@ -24,6 +24,7 @@ export default class List extends React.Component{
         // 获取列表传过来的参数
         let product_type = this.props.params.type;
         console.log(product_type)
+        console.log(this)
         
         http.post('getProduct',{}).then(res=>{
             let data = res.data;

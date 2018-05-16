@@ -2,6 +2,7 @@ import './register.scss'
 
 import React from 'react'
 import {Link} from 'react-router'
+import http from '../../../utils/httpclient'
 
 
 
@@ -36,10 +37,25 @@ export default class Register extends React.Component{
                 return;
             }else if(!/^[^\s]{5,19}$/.test(this.refs.psd.value)){
                 this.setState({ tishi:'密码不合法! '})
-            }else if(this.refs.checkbox.value==''){
+                return;
+            }else if(this.refs.checkbox.checked==''){
                 this.setState({ tishi:'请勾选协议! '})
+                return;
             }
-            this.props.router.push('/')
+            let data = {
+                username:this.refs.phone.value,
+                password:this.refs.psd.value
+            }
+            console.log(data)
+            http.post('register',data).then((res)=>{
+                if(res.status){
+                    this.props.router.push('/login')
+                } else {
+                    alert('手机号码已被注册！')
+                }
+            })
+            
+            // this.props.router.push('/')
                
          }   
     render(){
@@ -62,7 +78,7 @@ export default class Register extends React.Component{
                         <p className="mi-loginBut" >
                             <button className="mi-but1" onClick={this.zhucebut.bind(this)}>{this.state.zhuce}</button><br/> 
                         </p>
-                        <p>
+                        <p className="mi-check" >
                             <input type="checkbox" className="mi-checkbox" ref="checkbox"/><span className="mi-xieyi">注册账号证明您同意并愿意遵守小米<Link><u>用户协议</u></Link>和<Link><u>隐私政策</u></Link></span>
                         </p>
                     </from>
