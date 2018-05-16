@@ -65,7 +65,9 @@ export default {
                 // 隐藏loading
                 $loadingBox.delay(500).hide(0);
             }).catch(error => {
-                console.log(error)
+
+
+                $loadingBox.delay(500).hide(0);
                 reject(error)
             })            
         })
