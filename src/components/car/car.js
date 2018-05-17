@@ -130,7 +130,7 @@ export default class car extends React.Component{
                                           售价:<i className="goods_price">{item.p_price}</i>元 <br/>                      
                                         <div className="qty">
                                             <b className="fa fa-minus-square minus"></b>
-                                            <span>0</span>
+                                            <span>{item.qty}</span>
                                             <b className="fa fa-plus-square add"></b>   
                                         </div>
                                             <span className="fa fa-trash-o del"  onClick={this.shanchu}></span> 
