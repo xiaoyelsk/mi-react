@@ -19,7 +19,24 @@ export default class Index extends React.Component{
     toDetails(product_id){
         this.props.router.push('/goods/'+product_id);
     }
-
+    // 跳到搜索组件
+    toSearch(){
+        this.props.router.push('/search');
+    }
+    // 回到顶部效果
+    toTop(){
+        $('.index-main').animate({scrollTop:0},500);
+    }
+    showButton(){
+        // 封一个显示隐藏回到顶部按钮的函数
+        let len = $('.index-main').scrollTop();
+        let $toTop = $('#toTop');
+        if(len > 500){
+            $toTop.fadeIn();
+        }else{
+            $toTop.fadeOut();
+        }
+    }
     state = {
         // 轮播图数据
         bannerImg:[],
@@ -61,8 +78,26 @@ export default class Index extends React.Component{
     }
 
     componentDidMount(){
-        $('.home').addClass('ative').siblings('a').removeClass('ative')
 
+        // 轮播图
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal',//方向设置，垂直滚动
+            loop:true,//循环滚动
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination',
+              clickable :true,
+            }
+        });
+      
+
+        $('.home').addClass('ative').siblings('a').removeClass('ative')
+        
         // 获取后端数据
         http.post('getProduct',{}).then(res=>{
             if(res.status){
@@ -184,11 +219,11 @@ export default class Index extends React.Component{
                     <li><img src='src/components/img/logo.png'/></li>
                     <li>
                         <i className="fa fa-search fdj" aria-hidden="true"></i>
-                        <input type="text" className="f-search" placeholder="搜索商品" />
+                        <input type="text" className="f-search" placeholder="搜索商品" onClick={this.toSearch.bind(this)}/>
                     </li>
                     <li><i className="fa fa-user-o" aria-hidden="true"></i></li>
                 </ul>
-                <div className="index-main animate-route">
+                <div className="index-main animate-route" onScroll={this.showButton.bind(this)}>
                     <div className="swiper-container">
                         <div className="swiper-wrapper">
                             {
@@ -396,7 +431,9 @@ export default class Index extends React.Component{
                             })
                         }
                     </ul>
-
+                </div>
+                <div className="index-toTop" id="toTop" onClick={this.toTop.bind(this)}>
+                    <i className="fa fa-arrow-up" aria-hidden="true"></i>
                 </div>
                 <Footer />
             </div>

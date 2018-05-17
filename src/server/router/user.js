@@ -7,6 +7,10 @@ module.exports = {
         app.post('/register',async (req,res) =>{
             let username = req.body.username;
             let password = req.body.password;
+
+            let nickname = '';
+            let map = '';
+            let minutemap = '';
             
             let result = await db.select('user',{username});
             
@@ -26,11 +30,26 @@ module.exports = {
 
             let result = await db.select('user',{username,password});
 
+            console.log(result)
+
             if(result.status){
-                res.send(result.status);
+                res.send(result);
             } else {
                 res.send(result);
             }
+        });
+        //修改
+        app.post('/update',async (req,res) =>{
+
+            let username = req.body.username;
+
+            let nickname = req.body.nickname;
+            let map = req.body.map;
+            let minutemap = req.body.minutemap;
+
+            let result = await db.update('user',{username},{nickname,map,minutemap})
+
+            res.send(apiResult(result.status,{nickname,minutemap}))
         })
     }
 }
