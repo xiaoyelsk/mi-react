@@ -19,11 +19,13 @@ export default class Quit extends React.Component{
                 <div className="tuichu1">
                     <Link to="/users"><i className="fa fa-angle-left quit-icon"></i></Link>
                     <input type="button" value="个人中心" className="tuichulogin1"/>
-                    <i className="fa fa-search quit-icon1"></i>
+                    <Link to="/search"><i className="fa fa-search quit-icon1"></i></Link>
                 </div>
                 <div className="manage">
-                    <p>地址管理</p>
-                    <i className="fa fa-angle-right quit-icon2" ></i>
+                    <Link to="/shippingAddress"> 
+                        <p>地址管理</p>
+                        <i className="fa fa-angle-right quit-icon2" ></i>
+                    </Link>
                 </div>
                 <div className="QU-main"></div>
                 <div className="tuichu">

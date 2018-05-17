@@ -1,22 +1,14 @@
-
-.quit{
+.shippingAddress{
     display: flex;
     flex-direction: column;
     height: 100%;
-    .tuichu1{
+    .SA-head{
         .quit-icon{
             position: absolute;
             top: 6px;
             left: 20px;
             font-size: 40px;
             color: rgb(169, 162, 162);
-        }
-        .quit-icon1{
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: rgb(194, 186, 186);
-           
         }
         .tuichulogin1{
             height: 50px;
@@ -31,43 +23,21 @@
             background-color:#f2f2f2 ;
         }
     }
-    .manage{
-        
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        a{
-            color:#000;
-            p{
-                    margin-left: 20px;
-                    font-size: 16px;
-                    }
-                    .quit-icon2{
-                        position: absolute;
-                        top: 60px;
-                        right: 20px;
-                        font-size: 20px;
-                    }
-        }
-       
-        
-       
+    .SA-main{
+        flex:1;
     }
-    .QU-main{
-        flex: 1;
-    }
-
-    .tuichu{
-        .tuichulogin{
+    .SA-foot{
+        .SA-footAdd{
             height: 50px;
             width: 100%;
             border: 0px;
             outline:none;
             cursor: pointer;
-            color: #535353;
+            color:#fff ;
             text-align: center;
             line-height: 20px;
             font-size: 16px;
-            background-color:#f2f2f2 ;
+            background-color:#FF6700; ;
         }
     }
 }
