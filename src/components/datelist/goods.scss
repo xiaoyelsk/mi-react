@@ -1,7 +1,10 @@
 
 .main{height:46.875rem;overflow:hidden;
     .main_t{
-        height:4.6875rem; background-color:pink;
+        height:4.6875rem;
+        img{
+            width: 100%;height:auto;
+        }
     }
     .time{
         height: 0.71875rem;
@@ -41,7 +44,7 @@
             font-size:18px;
         }
         .title{margin-top: 0.09375rem;
-            font-size:12px;
+            font-size:18px;
         }
         .price{font-size:24px;color:#FF6C09;margin-top: 0.09375rem;font-weight:bold;}
     }
@@ -98,27 +101,42 @@
             font-size:16px;margin-top: 0.15625rem;
         }
     }
-    .tuijian{
+    .tuijian{height:15.625rem;
         p{
             text-align:center;height:0.625rem;line-height: 0.625rem;
         }
+        ul{height:15.625rem;
+
+
         li{
             float: left;width: 2.34375rem;height:3.125rem; padding-left: 0.15625rem;
-            img{
-                width:2.1875rem;height:2.1875rem;
+
+            .tp{
+
+               img{
+                    width:2.1875rem;height:2.1875rem;
+                } 
             }
-            h4{
-                font-size:16px;
+            .t-info{
+            
+                    h4{
+                        font-size:16px;padding-left:0.3125rem;  
+                    }
+                    span{
+                        font-size:14px; color:red;padding-left:0.3125rem;
+                
+                    }
             }
-            span{
-                font-size:14px;
-            }
+            
+            
 
         }
         li:nth-child(2n-1){
+            padding-left: 0.234375rem;
             
         }
     }
+}
 
 
 }

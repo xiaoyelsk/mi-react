@@ -32,7 +32,7 @@ export default class Routers extends React.Component{
             <Router history={hashHistory}>
                 <Route path="/" component={Index} />
                 <Route path="/classify" component={Classify} />
-                <Route path="/car" component={Car} />
+                <Route path="/car(/:p_id)" component={Car} />
                 <Route path="/goods(/:product_id)" component={Datelist} />
               
                 <Route path="/users" component={Users} />
