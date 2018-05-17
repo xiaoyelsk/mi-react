@@ -16,7 +16,7 @@ export default class users extends React.Component{
             this.un = window.localStorage.getItem('un')
             this.pd = window.localStorage.getItem('pd')
             
-            console.log(this.un)
+            // console.log(this.un)
             this.setState({login:this.un})
             this.setState({register:''})
             
@@ -37,20 +37,28 @@ export default class users extends React.Component{
                 </div>
                 <div className="wo-main">
                     <div className="w-indent">
-                        <div className="w-dingdan">我的订单<span className="w-alldingdan">全部订单<i className="fa fa-angle-right youjiantou"></i></span></div>
+                        <Link to="/order" className="w-abiaoqian">
+                            <div className="w-dingdan">我的订单<span className="w-alldingdan">全部订单<i className="fa fa-angle-right youjiantou"></i></span></div>
+                        </Link>
                     </div>
                     <ul className="w-fukuan">
                         <li>
-                          <i className="fa fa-window-maximize zibig"></i>
-                            <span>待付款</span>
+                            <Link to="/order" className="w-abiaoqian">
+                                <i className="fa fa-window-maximize zibig"></i>
+                                <span>待付款</span>
+                            </Link>
                         </li>
                         <li>
-                          <i className="fa fa-truck zibig " ></i>
-                            <span>待收货</span>
+                            <Link to="/order" className="w-abiaoqian"> 
+                                <i className="fa fa-truck zibig " ></i>
+                                <span>待收货</span>
+                            </Link>
                         </li> 
                         <li>
-                        <i className="fa fa-wrench zibig"></i>
-                            <span>退换修</span>
+                            <Link to="/order" className="w-abiaoqian">    
+                                <i className="fa fa-wrench zibig"></i>
+                                    <span>退换修</span>
+                            </Link>
                         </li> 
                     </ul>
                     <ul className="w-huiyuan w-xiangtong zibig">

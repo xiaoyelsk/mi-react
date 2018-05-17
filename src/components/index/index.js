@@ -17,6 +17,7 @@ export default class Index extends React.Component{
     }
     // 跳到详情
     toDetails(product_id){
+        // console.log(product_id)
         this.props.router.push('/goods/'+product_id);
     }
     // 跳到搜索组件
