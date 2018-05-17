@@ -37,7 +37,7 @@ export default class Routers extends React.Component{
                 <Route path="/classify" component={Classify} />
                 <Route path="/car(/:p_id)" component={Car} />
                 <Route path="/goods(/:product_id)" component={Datelist} />
-              
+            
                 <Route path="/users" component={Users} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
