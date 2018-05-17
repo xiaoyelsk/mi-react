@@ -1,0 +1,38 @@
+   .main-love{
+            overflow:hidden;
+            display:flex;
+            flex-wrap:wrap;
+            
+            li{
+                width:49.5%;
+                margin-top:0.026667rem;padding-left: 0.15625rem;
+                img{
+                    width:100%;
+                }
+                .love-info{
+                    padding:0.2rem;
+                    p{line-height:0.293333rem;}
+                    .name{
+                        font-size: 0.186667rem;
+                        color: rgba(0,0,0,0.87);
+                    }
+                    .brief{
+                        font-size: 0.16rem;
+                        color: rgba(0,0,0,0.54)
+                    }
+                    .price{
+                        font-size:0.186667rem;
+                        color:#ea625b;
+                    }
+                }
+            }
+            li:first-child{
+               width:100%;
+               img{width:100%;height:auto;}
+            }
+            li:nth-child(2n){
+                margin-right:0.026667rem;
+            }
+        }
+
+    

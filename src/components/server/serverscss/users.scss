@@ -1,17 +1,14 @@
 .k_user{
-    overflow:hidden;
+    overflow:auto;
     width:85%;
     height: 600px;
     border:1px solid #ccc;
     float:right;
     table{
         width: 100%;
-        border-collapse:collapse;
+        // border-collapse:collapse;
         display:flex;
         flex-direction:column;
- 
-        
-        
         tr{display:flex;}
         td,th{
             width:200px;
@@ -19,14 +16,17 @@
             font-size:12px;
             text-align:center;
             border-right:1px solid #ccc;
+            white-space: nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis
         }
+        th:last-child{width: 200px;}
         thead{
             width: 100%;
             tr{
+                border-bottom:1px solid #ddd;
             }
         }
-        .tableBox{
-            overflow-x:hidden;
         tbody{
             display:flex;
             flex-direction:column;
@@ -39,6 +39,5 @@
                 }
             }
         }
-    }
     }
 }

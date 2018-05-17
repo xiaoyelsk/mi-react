@@ -1,0 +1,23 @@
+   .emtyTips{
+            padding-top:1.333333rem;
+            text-align:center;
+            display:none;
+            p{
+                font-size:0.213333rem;
+                color:#666;
+                span{
+                    color:red;
+                    padding:0 0.133333rem;
+                }
+            }
+            .tipsImg{
+                width:1.333333rem;
+                margin:0 auto;
+                margin-bottom:0.666667rem;
+               img{
+                    width:100%;
+                } 
+
+            }
+            
+        }
