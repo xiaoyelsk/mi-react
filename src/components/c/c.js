@@ -26,9 +26,7 @@ export default class Nav extends React.Component{
                                         <img src={idx == 0 ? loveImg:item.img_url}/>
                                       
                                         <span className="love-info" >
-                                            <p className="name">
-                                                {item.product_name}
-                                            </p>
+                                            
                                              <p className="brief" style={item.product_brief ? {display:'block' } : {display:'none'}}>
                                                 {item.product_brief}
                                             </p>
