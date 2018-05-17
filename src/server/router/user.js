@@ -1,5 +1,23 @@
 const db = require('../api/db.js')
 const apiResult = require('../api/apiResult.js')
+const jwt = require('jsonwebtoken');
+
+// 判断用户是否已登陆
+let filter = function(req,res,next){
+    // 获取前端的token
+    let token = req.headers['auth'];
+    if(!token){
+        res.send(apiResult(false,{},'unauth'));
+    }else{
+        jwt.verify(token,'1234',(error,result)=>{
+            if(error){
+                res.send(apiResult(false,{},'unauth'));
+            }else{
+                next();
+            }
+        })
+    }
+}
 
 module.exports = {
     account(app){
@@ -30,11 +48,13 @@ module.exports = {
 
             let result = await db.select('user',{username,password});
 
-            console.log(result)
-
+            // 如果用户存在则设置token
             if(result.status){
-                res.send(result);
-            } else {
+
+                let token = jwt.sign({username},'1234',{'expiresIn':60*60})
+
+                res.send(apiResult(result.status,{token,username}));
+            }else{
                 res.send(result);
             }
         });

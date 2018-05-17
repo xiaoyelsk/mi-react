@@ -7,7 +7,7 @@ module.exports = {
         app.post('/addProduct',(req,res) =>{
 
         });
-        //获取商品
+        //获取全部商品
         app.post('/getProduct',async (req,res) =>{
             if(req.body.id){
                 let product_id = req.body.id;
@@ -22,9 +22,17 @@ module.exports = {
                 let result = await db.select('goodslist');
                 res.send(result);
             }
-
             
         });
+        //获取Car商品
+        app.post('/getProductCar', async (req,res) =>{
+
+            let username = req.body.username;
+
+            let result = await db.select('ProductCar',{username});
+
+            res.send(result);
+        })
         //删除商品
         app.post('/delProduct',async (req,res) =>{
             let id = req.body.id;
@@ -37,7 +45,36 @@ module.exports = {
 
         //修改商品
         app.post('/upProduct',async (req,res) =>{
-            let id = Number(req.body.id);
+
+            let username = req.body.username;
+
+            let p_id = Number(req.body.id);
+
+            let type = req.body.type;
+
+            let result = await db.select('ProductCar',{username})
+
+            let qty;
+
+            if(result.status){
+                    
+                let rest = result.data.map(async (item) =>{
+                    if(item.p_id == p_id){
+                        if(type == "+"){
+                            qty = item.qty + 1;
+                            console.log(qty)
+                        } else {
+                            qty = item.qty - 1;
+                        }
+
+                        let resultqty = await db.update('ProductCar',{p_id},{qty})
+                        console.log(resultqty)
+                        return resultqty;
+                    }
+                })
+
+                res.send(rest.status);
+            }
 
         });
         //添加商品加入购物车
