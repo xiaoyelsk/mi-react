@@ -224,7 +224,8 @@ export default class Goods extends React.Component{
                     p_name:this.state.p_name,
                     p_id:this.state.p_id,
                     p_price:this.state.p_price,
-                    username:'admin'
+                    username:'admin',
+                    isSelected:true
               }  
           
                 console.log(data)

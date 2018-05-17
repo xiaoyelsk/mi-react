@@ -1,143 +1,186 @@
-.big{
-    position:relative;
-}
-.tou{    
-    height: 0.625rem;background-color:#F2F2F2;position:fixed;width:100%;z-index:100;
-    ul{display:flex;justify-content: space-between;align-items:center;
+.f-car{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    .car-header{
+        height:50px;
+        background:#f2f2f2;
+        display:flex;
+        justify-content:space-around;
         li{
-            font-size:0.25rem;line-height: 0.625rem; 
-
-        }
-        li:nth-child(1){
-            padding-left:0.15625rem;font-size:24px;color:#959595;
-        }
-        li:nth-child(3){
-            padding-right:0.15625rem;font-size:0.3125rem;
-            color:#959595;
-        }
-
-    }
-
-
-}
-.dl{
-    height: 0.625rem;padding-top:0.625rem;
-h2{font-size:20px;display:inline-block;margin-left:0.15625rem;line-height: 0.625rem;
-
-}
-span{
-    font-size:12px;margin-left: 1.5625rem;
-    a{
-       color:#ccc; 
-    }
-}
-}
-.gouwu{margin-top: 0.78125rem;
-    .quanxuan{height:0.234375rem;
-        .alls{
-                width:0.234375rem;height:0.234375rem;
-                display:inline-block;padding-left: 0.15625rem;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            text-align:center;
+            color:#666;
+            i{
+                color:#666;
             }
+        }
+        li:first-child{
+            width:0.8rem;
+            font-size:34px;
+            
+        }
+        li:nth-child(2){
+            flex:1;
             span{
-                font-size:14px;
+                font-size:0.24rem;
             }
+        }
+        li:last-child{
+            width:0.8rem;
+            font-size:26px;
+        }
     }
-    
-    .gwc{
-        .lis{height:1.5rem;padding:0.234375rem;
-            overflow:hidden;position:relative;
-            .all{
-                width:0.234375rem;height:0.234375rem;position:absolute;top:0.75rem;left:0.09375rem;
-            }
-            .p-img{
+    .car-main{
+        flex:1;
+        overflow-x:hidden;
+        .main-emtyCar{
+            display:none;
+            height:0.8rem;
+            background:#ebebeb;
+            padding-left:0.933333rem;
+            .car-img{
                 float:left;
+                width:0.8rem;
+                padding-right:0.133333rem;
                 img{
-                    width:1.25rem;height: 1.5rem;padding-left:0.15625rem;
+                    width:100%;
                 }
             }
-              h4{
-                font-size:14px;margin-top: 0.078125rem;padding-left: 1.40625rem;
-            }
-            .bigs{float:left;height:1.5625rem;width:71%;font-size:18px;padding-left: 0.15625rem;
-            b{
-                font-size:20px;font-weight:0;
-            }
-            .qty{
-                    float: left;font-size:20px;
-                 i{font-size:18px;}
-
-                }
-                .del{
-                    display:inline-block;float: right;font-size:24px;padding-left: 1.5625rem;
-                }
-            }
-
-        }
-
-
-    }
-}
-
-  .tuijian{ margin-top: 0.46875rem;
-
-   
-        p{
-            text-align:center;height:0.625rem;line-height: 0.625rem;
-        }
-
-        .product{ height:10.9375rem;
-
-            li{
-                float: left;width: 2.34375rem;height:3.125rem; padding-left: 0.15625rem;
-               .tp{
-
-                   img{
-                        width:2.1875rem;height:2.1875rem;
-                    } 
-                }
-                .info{
-                
-                    h4{
-                        font-size:16px;padding-left:0.3125rem;  
-                    }
-                    span{
-                        font-size:14px; color:red;  padding-left:0.3125rem;
-                
-                    }
-                } 
-            }
-        
-        }
-       
-    }
-        .foot{
-                width:100%;
-                height:0.666667rem;
+            .car-box{
+                height:60px;
                 display:flex;
-                position:fixed;
-                bottom:0;
-                border-top:1px solid #ddd;
+                flex-direction:column;
+                justify-content:center;
+                p{
+                    font-size:16px;
+                    color:rgba(0,0,0,0.27);
+                    a{
+                        border:1px solid #ccc;
+                        padding:4px 5px;
+                        color:#333;
+                    }
+                }
+            }
+        }
+        .all-check{
+            height:40px;
+            display:flex;
+            label{
+                input{
+                    width:36px;
+                }
+                span{
+                    font-size:18px;
+                }
+            }
+        }
+        .main-user{
             li{
-                flex:1;
-                text-align:center;
-                font-size:0.213333rem;
-                a{
-                    height: 100%;
+                display:flex;
+                padding:8px 0;
+                border-bottom:1px solid #ccc;
+                .user-input{
+                    width:40px;
+                    padding-left:10px;
                     display:flex;
                     flex-direction:column;
-                    line-height:0.3rem;
-                    padding-top:0.066667rem;
-                    i{
-                        font-size:0.266667rem;
-                        color:#828282;
+                    justify-content:center;
+                    input{
+                        // width:40px;
                     }
-                    span{
-                        color:#A4A4A4;
+                }
+                .user-img{
+                    width:80px;
+                    img{
+                        width:100%;
+                    }
+                }
+                .user-info{
+                    flex:1;
+                    padding-left:15px;
+                    p{
+                        font-size:16px;
+                        line-height:26px;
+                    }
+                    .handleCount{
+                        display:flex;
+                        justify-content:space-between;
+                        padding-right:20px;
+                        .countBox{
+                            width:100px;
+                            height:30px;
+                            border:1px solid #ccc;
+                            display:flex;
+                            .qty{
+                                font-size:16px;
+                            }
+                            span{
+                                flex:1;
+                                text-align:center;
+                                display:flex;
+                                flex-direction:column;
+                                justify-content:center;
+                                border-right:1px solid #ccc;
+                                color:#333;
+                            }
+                            span:nth-of-type(1){
+                                background:#f2f2f2;
+                            }
+                            span:nth-of-type(3){
+                                border-right:0 none;
+                                background:#f2f2f2;
+                            }
+                        }
+                        .delIcon{
+                            color:#666;
+                        }
                     }
                 }
             }
-            li:nth-child(3) a{
-                background-color:#FF6700;line-height:0.46875rem; color:#fff;font-size:16px;
-
+        }
+    }
+    .car-footer{
+        height:52px;
+        background:#fff;
+        display:flex;
+        li{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            text-align:center;
+            a{
+                text-decoration:none;
             }
         }
+        li:first-child{
+            p{
+                font-size:14px;
+            }
+            .totalPrice{
+                span{
+                    color:#ff5722;
+                    font-size:20px;
+                    font-weight:bold;
+                }
+            }
+        }
+        li:nth-child(2){
+            background:#f2f2f2;
+            a{
+                font-size:18px;
+                color:#333;
+            }
+        }
+        li:last-child{
+            background:#ff5722;
+            a{
+                color:#fff;
+                font-size:18px;
+            }
+        }
+    }
+}
