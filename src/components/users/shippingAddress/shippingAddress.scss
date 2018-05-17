@@ -25,6 +25,42 @@
     }
     .SA-main{
         flex:1;
+        ul li{
+            position: relative;
+            height: 90px;
+           margin: 20px 20px;
+            
+            border:1px solid #ccc;
+            .shangxin{  
+                p{
+                    font-size: 16px;
+                color:red;
+                margin:10px 10px;
+                border-bottom: 1px solid #ccc;
+                }
+                .Shanchu{
+                    font-size: 14px;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    color:#535353;
+                }
+                
+            }
+            .shangxia{
+                margin-left: 20px;
+                color:hsl(0, 2%, 32%);
+                font-size: 18px;
+
+            }
+            
+            .Syoujiantou{
+                position: absolute;
+                right: 30px;
+                top: 46px;
+            }
+
+        }
     }
     .SA-foot{
         .SA-footAdd{
