@@ -58,7 +58,14 @@ module.exports = {
                 res.send(result);
             }
         });
-        //修改
+        //获取所有用户
+        app.get('/getUser', async (req,res) =>{
+
+            let result = await db.select('user')
+
+            res.send(result.data)
+        })
+        //修改用户地址
         app.post('/update',async (req,res) =>{
 
             let username = req.body.username;
@@ -70,6 +77,44 @@ module.exports = {
             let result = await db.update('user',{username},{nickname,map,minutemap})
 
             res.send(apiResult(result.status,{nickname,minutemap}))
+        });
+        //插入用户地址
+        app.post('/addSite',async (req,res) =>{
+
+            let username = req.body.username;
+
+            let nickname = req.body.nickname;
+            let pohone = req.body.pohone;
+            let map = req.body.map;
+            let minutemap = req.body.minutemap;
+            let morenmap = req.body.morenmap;
+
+            let result = await db.insert('userSite',{username,pohone,map,minutemap,morenmap})
+
+            if(result.status){
+                res.send(apiResult(result.status))
+            } else {
+                res.send(apiResult(false))
+            }
+
+        });
+        //获取用户地址
+        app.post('/getSite',async (req,res) =>{
+            let username = req.body.username;
+
+            let result = await db.select('userSite',{username})
+
+            res.send(result)
         })
+        //删除用户地址
+        app.post('/delSite',async (req,res) =>{
+
+            let minutemap = req.body.minutemap;
+
+            let result = await db.delete('userSite',{minutemap});
+
+            res.send(result.status);
+        })
+
     }
 }

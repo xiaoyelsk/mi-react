@@ -1,4 +1,4 @@
-import {Router,Route,hashHistory} from 'react-router'
+import {Router,Route,hashHistory,IndexRoute} from 'react-router'
 import React from 'react'
 
 import Index from '../components/index/index.js'
@@ -21,6 +21,8 @@ import Search from '../components/search/search.js';
 
 import ServerLogin from '../components/server/serverlogin.js'
 import ServerHome from '../components/server/serverhome.js'
+import Serverproduct from '../components/server/serverproduct.js'
+import Serverusers from '../components/server/serverusers.js'
 
 
 
@@ -43,7 +45,11 @@ export default class Routers extends React.Component{
                 <Route path="/list(/:type)(/:num)" component={List} />
                 <Route path="/search" component={Search} />
                 <Route path="/serverlogin" component={ServerLogin} />
-                <Route path="/serverhome" component={ServerHome} />
+                <Route path="/serverhome" component={ServerHome}>
+                        <IndexRoute component={Serverusers} />
+                        <Route path="/serverhome/serveruser" component={Serverusers} />
+                        <Route path="/serverhome/serverproduct" component={Serverproduct} />
+                </Route>
                 <Route path="/quit" component={Quit} />
             </Router>
         )
