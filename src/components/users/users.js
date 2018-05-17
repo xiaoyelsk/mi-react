@@ -6,9 +6,22 @@ import $ from 'jquery'
 
 
 export default class users extends React.Component{
+    state = {
+        login:'',
+    }
     componentDidMount(){
         $('.users').addClass('ative').siblings('a').removeClass('ative')
+       
+        // 登陆用户的写入
+            this.un = window.localStorage.getItem('un')
+            this.pd = window.localStorage.getItem('pd')
+            
+            console.log(this.un)
+            this.setState({login:this.un})
+            this.setState({register:''})
+            
     }
+   
     render(){
         return (
             <div>
@@ -16,8 +29,9 @@ export default class users extends React.Component{
                         <div className="w-headportrait">
                             <img src="https://s1.mi.com/m/images/m/default.png" className="w-tou" />
                         </div>
+                        <div className="w-headlogin1"><span>{this.state.login}</span></div>
                         <div className="w-headlogin">
-                            <Link to="/login"><span>登陆\ </span> </Link>
+                            <Link to="/login"><span>登陆\</span> </Link>
                             <Link to="/register"><span>注册</span></Link>
                         </div>
                 </div>
@@ -73,10 +87,15 @@ export default class users extends React.Component{
                     <div className="w-setting w-xiangtong2">
                             <li>
                                 <i className="fa fa-cog zibig" ></i>
-                                <div>设置<i className="fa fa-angle-right shezhi"></i></div>
-                               
+                                <Link to="/quit" className="U-aa">
+                                    <div>
+                                            设置
+                                            <i className="fa fa-angle-right shezhi"></i>
+                                    </div> 
+                                 </Link> 
                             </li> 
                     </div>
+                    
                 </div>
                 <Footer />
 

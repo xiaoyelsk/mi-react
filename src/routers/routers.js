@@ -10,11 +10,13 @@ import Login from '../components/users/login/login.js'
 import Register from '../components/users/register/register.js'
 import SettleAccounts from '../components/car/settleAccounts/settleAccounts.js'
 import Consig from '../components/car/consig/consig.js'
+import Quit from '../components/users/quit/quit.js'
 
 import Datelist from '../components/datelist/goods.js'
 
-// 列表组件
-import List from '../components/list/list.js'
+// 方汉佳
+import List from '../components/list/list.js';
+import Search from '../components/search/search.js';
 
 
 import ServerLogin from '../components/server/serverlogin.js'
@@ -38,9 +40,11 @@ export default class Routers extends React.Component{
                 <Route path="/register" component={Register} />
                 <Route path="/settleAccounts" component={SettleAccounts} />
                 <Route path="/consig" component={Consig} />
-                <Route path="/list(/:type)" component={List} />
+                <Route path="/list(/:type)(/:num)" component={List} />
+                <Route path="/search" component={Search} />
                 <Route path="/serverlogin" component={ServerLogin} />
                 <Route path="/serverhome" component={ServerHome} />
+                <Route path="/quit" component={Quit} />
             </Router>
         )
     }

@@ -8,6 +8,19 @@ let filterUrl = (_url) => {
     return baseUrl + _url;
 }
 
+// loading效果
+import '../components/css/base.css'
+import $ from 'jquery';
+let $loadingBox =  $('<div></div>');
+let $icon = $('<i></i>');
+// 创建元素并添加类名
+$loadingBox.addClass('loading');
+$icon.addClass('fa fa-spinner fa-pulse loading-icon');
+// 插入到页面
+$('body').append($loadingBox.append($icon))
+// 默认隐藏
+$loadingBox.hide();
+
 export default {
     get(_url, _params = {}){
         return new Promise((resolve, reject) => {
@@ -25,8 +38,8 @@ export default {
             // }).catch((error) => {
             //     reject(error)
             // })
-
-
+            // 显示loading
+            $loadingBox.show();
             axios({
                 url: filterUrl(_url),
                 method: 'post',
@@ -49,8 +62,12 @@ export default {
                 }               
                 
                 resolve(res.data)
+                // 隐藏loading
+                $loadingBox.delay(500).hide(0);
             }).catch(error => {
-                
+
+
+                $loadingBox.delay(500).hide(0);
                 reject(error)
             })            
         })

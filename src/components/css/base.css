@@ -43,18 +43,18 @@ body,html{height: 100%;}
 @keyframes fadeRoute {
   from {
     opacity: 0;
-    transform:translateX(10.0rem)
+    transform:translateX(10.0rem);
   }
 
   to {
     opacity: 1;
-    transform:translateX(0.0rem)
+    transform:translateX(0.0rem);
   }
 }
 
-/*纵向*/
+/*横向右*/
 .animate2-route{
-  animation-duration: .2s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-name: fadeRoute2;
 }
@@ -62,11 +62,29 @@ body,html{height: 100%;}
 @keyframes fadeRoute2{
   from {
     opacity: 0;
-    transform:translateY(10.0rem)
+    transform:translateX(-10.0rem);
   }
 
   to {
     opacity: 1;
-    transform:translateY(0.0rem)
+    transform:translateX(0.0rem);
   }
+}
+/*loading*/
+.loading{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    background-color: hsla(0, 15%, 94%, 0.21);
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+.loading-icon{
+    position:absolute;
+    left:40%;
+    top:40%;
+    font-size: 80px;
+    color:orange;
 }

@@ -1,7 +1,9 @@
 .login{
-    margin: 30px 30px;
+   
 }
 .mi-login{
+    padding-top: 30px;
+    margin: 0 30px;
     text-align: center;
     img{
        margin-left: 130px;
@@ -13,8 +15,10 @@
     }
 }
 .mi-biaodan{
-    
+   
     div{
+        margin-left: 30px;
+        margin-right: 30px;
         border-bottom: 1px solid #ccc;
             .mi-quhao{
                 font-size: 16px;
@@ -45,11 +49,12 @@
             margin-top: -20px;
         }
         .mi-Vcode{
-            font-size: 10px;
+            font-size: 14px;
             color:#FF6700;
         }
     }
 .mi-loginBut{
+    margin: 0 30px;
     height: 82px;
     display: block;
     button{
@@ -69,6 +74,7 @@
     .mi-but2{color:#000;background-color: #fff;border: 1px solid #ccc;}
 } 
 .mi-xuanze{
+    margin: 0 30px;
     height: 30px;
     margin-top: 30px;
     margin-left: 80px;
@@ -91,6 +97,22 @@
     }
 }
 
+// .lan{
+//     width: 100%;
+//     height: 100%;
+//     position:fixed;
+//     background-color: hsla(0, 15%, 94%, 0.87);
+//     top: 0;
+//         i{
+//             font-size: 80px;
+//             color:orange;
+//             margin: 250px 140px;
+//         }
+// }
+.mi-Scode{
+    width: 200px;
+    height: 50px;
+}
 .mi-qita{
-
+    margin-left: 30px;
 }

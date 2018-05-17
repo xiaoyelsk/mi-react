@@ -1,12 +1,16 @@
 .register{
-    margin: 20px 20px;
+   
     h3{
-        margin-left: 80px;
+        margin-left: 100px;
+       padding-top: 20px;
         margin-bottom: 40px;
     }
     .mi-register{ 
        
         div{
+            margin-top: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
             border-bottom: 1px solid #ccc;
                 .mi-quhao{
                     font-size: 16px;
@@ -26,13 +30,21 @@
                 color:hsl(0, 93%, 48%);
                 margin-top: -20px;
             }
-            .mi-checkbox{
-                width: 16px;
-                height: 16px;
-                background: #FFB500;
-                border-radius: 50%;
-                margin-right: 4px;
+            .mi-check{
+                    .mi-checkbox{
+                        margin-left: 30px;
+                        margin-right: 30px;
+                        width: 16px;
+                        height: 16px;
+                        border: 0px;
+                        outline:none;
+                        cursor: pointer;
+                        background-color: #FF6700;;
+                        border-radius: 10px;
+                        margin-right: 8px;
+                    }
             }
+            
             .mi-xieyi{
                 font-size: 12px;
                 color:#535353;
@@ -58,5 +70,8 @@
                 border-right:none 0;
             }
         }
+    .mi-loginBut{
+        margin-top: 20px;
+    }
 }
 
