@@ -36,6 +36,10 @@ export default class Search extends React.Component{
             this.props.router.push('/list/'+keyword+'/'+numType);
         }
     }
+    // 不带参数直接跳到列表页
+    toList(){
+        this.props.router.push('/list');
+    }
     render(){
         return (
             <div className="f-search">
@@ -49,7 +53,7 @@ export default class Search extends React.Component{
                 <main className="search-main animate2-route">
                     <ul className="main-hot">
                         <li>热门搜索</li>
-                        <li><img src="https://i8.mifile.cn/b2c-mimall-media/38af6033fa4409e3844029d76b60cdc6.jpg?bg=FFFFFF"/></li>
+                        <li onClick={this.toList.bind(this)}><img src="https://i8.mifile.cn/b2c-mimall-media/38af6033fa4409e3844029d76b60cdc6.jpg?bg=FFFFFF"/></li>
                     </ul>
                     <ul className="main-keyword">
                         {

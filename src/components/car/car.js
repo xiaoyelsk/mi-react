@@ -4,119 +4,117 @@ import $ from 'jquery'
 
 import Footer from '../footer/footer.js'
 import {Link}from'react-router'
-
+import http from '../../utils/httpclient.js'
 export default class car extends React.Component{
+     state={
+        datas:[],
+        dateset:[],
+        total:0,
+
+          count:1
+    }
+
     componentDidMount(){
         $('.car').addClass('ative').siblings('a').removeClass('ative')
-    }
 
-     states = {
-        productData:[
-            {
-                img_url:"//i8.mifile.cn/v1/a1/ba867a66-0670-f246-5b63-1b05bf9d4d66.webp",
-                product_brief:"聚热快，受热匀，适用多种炉具",
-                product_id:"7530",
-                product_name:"知吾煮汤锅 米家定制",
-                product_org_price:"99",
-                product_price:"99",
-                type:'xinpin',
-                qty:1,
-            
-                type_text:'新品'
-            },
-            {
-                img_url:"//i8.mifile.cn/v1/a1/ba867a66-0670-f246-5b63-1b05bf9d4d66.webp",
-                product_brief:"聚热快，受热匀，适用多种炉具",
-                product_id:"7530",
-                product_name:"知吾煮汤锅 米家定制",
-                product_org_price:"99",
-                product_price:"99",
-                type:'xinpin',
-                qty:1,
-                type_text:'新品'
-            },
-            {
-                img_url:"//i8.mifile.cn/v1/a1/ba867a66-0670-f246-5b63-1b05bf9d4d66.webp",
-                product_brief:"聚热快，受热匀，适用多种炉具",
-                product_id:"7530",
-                product_name:"知吾煮汤锅 米家定制",
-                product_org_price:"99",
-                product_price:"99",
-                type:'xinpin',
-                qty:1,
-                type_text:'新品'
-            },
-            {
-                img_url:"//i8.mifile.cn/v1/a1/ba867a66-0670-f246-5b63-1b05bf9d4d66.webp",
-                product_brief:"聚热快，受热匀，适用多种炉具",
-                product_id:"7530",
-                product_name:"知吾煮汤锅 米家定制",
-                product_org_price:"99",
-                product_price:"99",
-                type:'xinpin',
-                qty:1,
-                type_text:'新品'
-            }
-           
-        ]
-    }
+         // let id = this.props.params.p_id;
+         //    console.log(id)
+            // http.post('getProductCar',{username:"admin"}).then((res)=>{
+            //     console.log (res)
+            //     this.setState({
+            //         datas:res.data,
+                   
 
-// increment(){
-//         this.setState({
-//             count: this.state.count + 1
-//         })
-//     }
+            //     })
+            //         let dataList = res.data;
+            //         let prl = [];
+            //     for(var i=0;i<dataList.length;i++){
+            //         prl.push(dataList[i]);
+                   
 
- constructor(...args){
-        super(...args);
-        var that = this;
+            //     }
+            //         this.datas=prl;
+            //         console.log(this.datas)
 
-   this.state={
-        count:1,
-        total:0
-         
-    };
-    this.change = (e) =>{
-        this.setState({count:e.target.value});
-        // if(this.state.count>1){}
-    }
-        this.toMinus=()=>{
-            if(this.state.count>1){
-                this.setState({
-                    count:this.state.count-1
-                });
-            }
+
+
+
+
+                    //触发add按钮
+                $(".add").click(function(){  
+                   
+                    var num = $(this).parent().children("span");
+                    console.log(num)
+                    //点击时数量添加
+                    num.text(parseInt(num.text())+1);
+                    //商品总数数量
+                    var totalNum = parseInt($(".totalNum").text());
+                    totalNum++
+                    $(".totalNum").text(totalNum);
+
+                    //计算 总价
+                    // var goods_price =parseInt($("#goods_price").text());
+                    var goods_price = parseInt($(this).parent().parent().children(".goods_price").text());
                 
-        }
-
-      this.toAdd=()=>{
-        this.setState({
-       
-            count: this.state.count + 1
-        });
+                    console.log(goods_price)
+                    $(".totalPrice").text(parseInt($(".totalPrice").text())+goods_price);
+                })
 
 
+                //触发减按钮
+                $(".minus").click(function(){
+                    //商品数量减减
+                    var num = $(this).parent().children("span");
+                    if(parseInt(num.text())){
+                        num.text(parseInt(num.text())-1);
+                        //商品数量总数
+                        var totalNum = parseInt($(".totalNum").text());
+                        totalNum--
+                        $(".totalNum").text(totalNum);
+
+                        //计算总数
+                        // var goods_price = parseInt($("#goods_price").text());
+                      var goods_price = parseInt($(this).parent().parent().children(".goods_price").text());
+
+                        $(".totalPrice").text(parseInt($(".totalPrice").text())-goods_price);
+                    } else{
+                         num.text("0");
+                    }
+                });
+
+                //删除
+              
+                $(".lis").on('click',".del",function(){
+                    console.log(23333)
+                    $(this).parent().parent().parent().remove();
+                })
+                
+    // });
+
+        http.post('getproduct').then((res)=>{
+             this.setState({
+                    dateset:res.data
+                })
+            let datal = res.data;
+
+            let pro = [];
+                for(var i=0;i<datal.length;i++){
+                
+                    if(datal[i].type_text == "电视"){
+                        pro.push(datal[i]);
+                    }
+                }
+                this.dateset=pro;
+          })
     }
-
-
-
-
- // this.subTotal =()=>{
-
- //    total+=productData.qty*productData. product_price;
-
-   
- // }
-        
-
- }
+          
     render(){
         return (
             <div>
                 <div className="big">
                     <div className="tou">
                         <ul>
-                            <Link to="/goods" ><li className="fa fa-chevron-left"></li></Link>
+                            <Link to="/goods" ><li className="fa fa-paper-plane-o"></li></Link>
                              <li>购物车</li>
                             <li className="fa fa-search"></li>
                         </ul>
@@ -128,67 +126,118 @@ export default class car extends React.Component{
 
                     </div>
                     <div className="gouwu">
+                        <div className="quanxuan">
+                        <input type="checkbox" className="alls"/>
+                        <span>全选</span>
+                        </div>
                         <ul className="gwc">
-                            {
-                                this.states.productData.map((item,idx)=>{
-                                    return (
-                                        <li data-guid={item.product_id}>
-                                            <div className="p-img">
-                                                <img src={item.img_url}/>
-                                            </div>
-                                            <div className="big">
-                                            <div className="p-info">
-                                                <h4>{item.product_name}</h4>
-                                              
-                                                <span>售价：{item.product_price}元</span>
-                                            </div>
-                                            <div className="num">
-                                                <div className="qty">
-                                                    <button class="minus" onClick={this.toMinus.bind(this)}>-</button>
-                                                <input  type="text" value={this.state.count}   onChange={this.change.bind(this)}/>
-                                                     <button class="add" onClick={this.toAdd.bind(this)}>+</button> 
-                                                </div>
-                                                    <span className="fa fa-trash-o del"></span> 
-                                                </div>
-                                            </div>
-                                        </li>
-                                    )
-                                })
-                            }
+                            <li className="lis">
+                                <input type="checkbox"className="all" />
+
+                                <div className="p-img">
+                                    <img src='src/components/img/a.jpg'/>
+                                </div>
+                                <h4>xiaomi </h4>
+                                <div className="bigs">
+                                    售价:<i className="goods_price">53</i>元 <br/>                       
+                                    <div className="qty">
+                                        <b className="fa fa-minus-square minus"></b>
+                                                 
+                                        <span>0</span>
+                                        <b className="fa fa-plus-square add"></b>   
+                                    </div>
+                                    <span className="fa fa-trash-o del"  onClick={this.shanchu}></span>                   
+                                    </div>
+                            </li>
+                            <li className="lis">
+                                <input type="checkbox"className="all" />
+
+                                <div className="p-img">
+                                    <img src='src/components/img/a.jpg'/>
+                                </div>
+                                <h4>xiaomi </h4>
+                                <div className="bigs">
+                                    售价:<i className="goods_price">123</i>元  <br/>                                
+                                    <div className="qty">
+                                        <b className="fa fa-minus-square minus"></b>  
+                                        <span>0</span>
+                                        <b className="fa fa-plus-square add"></b>     
+                                    </div>
+                                    <span className="fa fa-trash-o del"  onClick={this.shanchu}></span> 
+                                        </div>
+                                    </li>
+                                 <li className="lis">
+                                    <input type="checkbox"className="all" />
+                                    <div className="p-img">
+                                            <img src='src/components/img/a.jpg'/>
+                                    </div>
+                                    <h4>xiaomi </h4>
+                                    <div className="bigs">
+                                          售价:<i className="goods_price">153</i>元 <br/>                             
+                                        <div className="qty">
+                                            <b className="fa fa-minus-square minus"></b>
+                                                 
+                                            <span>0</span>
+                                            <b className="fa fa-plus-square add"></b>
+                                    
+                                        </div>  
+                                        <span className="fa fa-trash-o del"  onClick={this.shanchu}></span>
+                                    </div>
+                                    </li>
                         </ul>
                     </div>
                     <div className="tuijian">
                         <p>猜你喜欢</p>
                         <ul className="product">
-                            {
-                                this.states.productData.map((item,idx)=>{
-                                    return (
-                                        <li>
-                                            <div className="product-img">
-                                                <img src={item.img_url}/>
-                                            </div>
-                                            <div className="product-info">
-                                                <h4>{item.product_name}</h4>
-                                               
-                                                <span>￥{item.product_price}</span>
-                                            </div>
-                                        </li>
-                                    )
-                                })
-                            }
+                                   {
+                            this.state.dateset.map((item,idx)=>{
+                                return (
+                                    <li key={idx}>
+                                        <div className="tp">
+                                            <img src={item.img_url}/>
+                                        </div>
+                                        <div className="info">
+                                            <h4>{item.type}</h4>
+                                         
+                                            <span>￥{item.product_id}元</span>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                        }
+
+
+                        
                         </ul>
                     </div>
-                    <ul className="foot">        
-                        <li className="subTotal" data-column="SubTotal">共计
-                        </li>
-                        <li><Link to="/classify"><i className="fa fa-shopping-cart" aria-hidden="true"></i><span>继续购物</span></Link></li>
+                    <ul className="foot">  
+                      <li className="total" >共计：<span className="totalNum">0</span>件          
+                    <p>总价￥<span className="totalPrice">0</span>元</p>
+                    </li>
+                        <li><Link to="/classify">
+                        <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <span>继续购物</span></Link></li>
                         <li><Link to="/resigter">去结算</Link></li>
+             
                     </ul>
                 </div>
             </div>
         )
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 //key={idx} onClick={this.toDetails.bind(this,item.product_id)}
 //key={idx} onClick={this.toDetails.bind(this,item.product_id)}
-//<span className="nums">5</span>
+//<span className="nums">5</span>    // <input  type="text" value="1" />
+//  // <li className="total" >共计：<span className="totalNum">0</span>件

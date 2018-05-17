@@ -3,8 +3,8 @@ const apiResult = require('../api/apiResult.js')
 
 module.exports = {
     edit(app){
-        //插入商品
-        app.post('/addProduct',(req,res) =>{
+        //插入商  品
+        app.post('/addproduct',(req,res) =>{
 
         });
         //获取全部商品

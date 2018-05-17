@@ -133,7 +133,7 @@ export default class Classify extends React.Component{
                                                 return (
                                                     <li key={idx} onClick={this.toList.bind(this,item.type_text)}>
                                                         <img src={item.img_url } style={item.img_url && idx==1?{display:'none'} :{display:'block'}} />
-                                                        <span style={item.product_name ?{display:'block'} :{display:'none'}}>
+                                                        <span style={item.product_name && idx > 0 ?{display:'block'} :{display:'none'}}>
                                                             {item.product_name ? item.product_name.slice(0,8) : ''}
                                                         </span>
                                                        

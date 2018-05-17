@@ -1,19 +1,27 @@
 import './goods.scss'
+import '../../../node_modules/swiper/dist/css/swiper.css'
 import ReactDOM from 'react-dom'
 
 import React from 'react'
+import Swiper from 'swiper'
 
-
+import http from '../../utils/httpclient.js'
 import {Router,Route, hashHistory, browserHistory,Link} from 'react-router'
 
-// import './daojishi.js'
-
 export default class Goods extends React.Component{
-    componentDidMount(){
-        // 获取列表传过来的参数
-        let id = this.props.params.product_id;
-        console.log(id)
-        
+    state={
+           
+        img:[],
+        p_brief:"",
+        p_id:"",
+        p_name:"",
+        p_price:"",
+        type:"",
+        text:"",
+        goods:[]
+
+
+     
     }
 
 
@@ -22,12 +30,21 @@ export default class Goods extends React.Component{
         return (
             <div>
                 <div className="main">
-                    <div className="main_t">
-                    {}
-                   
+                    <div className="main_t swiper-container">
+                        <div className="swiper-wrapper">
+                            {
+                                this.state.img.map((item,idx)=>{
+                                    return  <div className="swiper-slide" key={idx} >
+                                        <img src={item}/>
+                                            </div>
+                                })
+                            }
+
+                        </div>
+                       <div className="swiper-pagination"></div>
                     </div>
                     <div className="time">
-                        <span className="tip">￥1599
+                        <span className="tip">￥{this.state.p_price}
                             <span className="pl">
                                 <p>距活动结束</p>
                                 <div id="countDown"></div>
@@ -37,16 +54,15 @@ export default class Goods extends React.Component{
                     </div>
                     <div className="show">
                         <h2 className="cont">
-
-                      
-                            </h2>
-                        <p className="title">[5月18日上午10点 开售]前置2000万“治愈系”自拍/后置2000万 AI双摄/标配骁龙660 AIE处理器</p>
-                        <p className="price">￥1599</p>
+                            {this.state.p_name}
+                        </h2>
+                        <p className="title">{this.state.p_brief}</p>
+                        <p className="price">￥{this.state.p_price}</p>
 
                     </div>
                     <div className="pz">
                         <ul>
-                            <li><i>已选</i><span>小米6X 4GB+64GB 冰蓝x1</span></li>
+                            <li><i>已选</i><span>{this.state.p_name}</span></li>
                             <li><i>送至</i><span>北京市 东城区</span></li>
                             <li><span>7天无理由退货 &nbsp;   15天质量问题换货&nbsp;     365天保修</span> </li>
                         </ul>
@@ -81,11 +97,22 @@ export default class Goods extends React.Component{
                     <div className="tuijian">
                         <p>为你推荐</p>
                         <ul>
-                            <li><img src="src/components/img/a.jpg"/><h4>小米5x64GB</h4><span>￥1499</span></li>
-                            <li><img src="src/components/img/a.jpg"/><h4>小米5x64GB</h4><span>￥1499</span></li>
-                            <li><img src="src/components/img/a.jpg"/><h4>小米5x64GB</h4><span>￥1499</span></li>
-                            <li><img src="src/components/img/a.jpg"/><h4>小米5x64GB</h4><span>￥1499</span></li>
-                            <li><img src="src/components/img/a.jpg"/><h4>小米5x64GB</h4><span>￥1499</span></li>
+                             {
+                            this.state.goods.map((item,idx)=>{
+                                return (
+                                    <li key={idx}>
+                                        <div className="tp">
+                                            <img src={item.img_url}/>
+                                        </div>
+                                        <div className="t-info">
+                                            <h4>{item.type}</h4>
+                                         
+                                            <span>￥{item.product_id}元</span>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                        }
                         </ul>
                     </div>
                 </div>
@@ -93,7 +120,8 @@ export default class Goods extends React.Component{
                 <ul className="foot">        
                     <li><Link to="/"><i className="fa fa-home"></i><span>首页</span></Link></li>
                     <li><Link to="/car"><i className="fa fa-shopping-cart" aria-hidden="true"></i><span>购物车</span></Link></li>
-                     <li>加入购物车</li>
+                     <li onClick={this.toCar.bind(this)}>加入购物车</li>
+
                 </ul>      
             </div>
 
@@ -128,15 +156,90 @@ export default class Goods extends React.Component{
             // day = day<10? '0'+day : day;
 
             countDown.innerHTML = day + '天' + hour + ':'+ min + ':' + sec;
+        }
+        // 获取列表传过来的参数
+        let id = this.props.params.product_id;
+            console.log(id)
+          http.post('getproduct',{id}).then((res)=>{
+                console.log (res)
+            if(res.status){
+               this.setState({
+                    img:[
+                        res.data[0].img_url,
+                        res.data[0].img_url2
+                    ],
+                    p_brief:res.data[0].product_brief,
+                    p_name:res.data[0].product_name,
+                    p_id:res.data[0].product_id,
+                    p_price:res.data[0].product_price
+               })
 
+            var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                loop:true,
+                autoplay: {
+                    delay: 3000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: false,
+                },
+                // 如果需要分页器
+                pagination: {
+                  el: '.swiper-pagination',
+                  clickable :true,
                 }
+            });
+            }
 
+          })
+
+
+
+          http.post('getproduct').then((res)=>{
+             this.setState({
+                    goods:res.data
+                })
+            let datal = res.data;
+
+            let pro = [];
+         
+                for(var i=0;i<datal.length;i++){
+                    // let type_text = data[i].type_text;
+                    if(datal[i].type_text == "路由"){
+                        pro.push(datal[i]);
+                    }
+                }
+                this.goods=pro;
+                // console.log(this.goods)
+          })
 
     }
-}
-// ReactDOM.render(
-//     <Goods />,
-//     document.getElementById('app')
-// )
+    toCar(){
 
-// import lunbo from './lunbo.js'
+        let user=window.localStorage.getItem("username");
+                // this.props.router.push('/car/'+ p_id);
+                // console.log(p_id)
+           let data = {
+                    img:this.state.img[0],
+                    qty:1,
+                    p_name:this.state.p_name,
+                    p_id:this.state.p_id,
+                    p_price:this.state.p_price,
+                    username:'admin'
+              }  
+          
+                console.log(data)
+            http.post('addProductCar',data).then((res)=>{
+
+                console.log(res)
+
+            })
+    }
+
+
+
+
+
+
+
+
+}

@@ -3,7 +3,7 @@
     display:flex;
     flex-direction:column;
     .list-header{
-        height:50px;
+        height:0.666667rem;
         background: #f2f2f2;
         display:flex;
         justify-content:space-around;
@@ -20,12 +20,12 @@
         }
         li:nth-child(2){
             flex:1;
-            font-size:18px;
+            font-size:0.24rem;
             color:#666;
         }
         li:last-child{
             width:0.8rem;
-            font-size:24px;
+            font-size:0.32rem;
         }
     }
     .list-main{
@@ -35,14 +35,14 @@
         .main-product{
             overflow:hidden;
             li{
-                height:160px;
+                height:2.133333rem;
                 display:flex;
                 .product-img{
-                    margin-bottom:2px;
-                    width:160px;
+                    margin-bottom:0.026667rem;
+                    width:2.133333rem;
                     img{
-                        width:160px;
-                        height:158px;
+                        width:2.133333rem;
+                        height:2.106667rem;
                     }
                 }
                 .product-info{
@@ -50,21 +50,21 @@
                     display:flex;
                     flex-direction:column;
                     justify-content:center;
-                    padding:0 16px;
-                    border-bottom:2px solid #f2f2f2;
+                    padding:0 0.213333rem;
+                    border-bottom:0.026667rem solid #f2f2f2;
 
                     p:nth-of-type(1){
-                        font-size:16px;
-                        line-height:30px;
+                        font-size:0.213333rem;
+                        line-height:0.4rem;
                     }
                     p:nth-of-type(2){
-                        font-size:14px;
-                        line-height:20px;
+                        font-size:0.186667rem;
+                        line-height:0.266667rem;
                         color:rgba(0,0,0,0.54);
                     }
                     p:nth-of-type(3){
-                        font-size:16px;
-                        line-height:40px;
+                        font-size:0.213333rem;
+                        line-height:0.533333rem;
                         color:#ff6000;
                     }
                 }
@@ -94,7 +94,7 @@
                 }
                 .love-info{
                     padding:0.2rem;
-                    p{line-height:22px;}
+                    p{line-height:0.293333rem;}
                     .name{
                         font-size: 0.186667rem;
                         color: rgba(0,0,0,0.87);
@@ -114,25 +114,25 @@
                img{width:100%;height:auto;}
             }
             li:nth-child(2n){
-                margin-right:2px;
+                margin-right:0.026667rem;
             }
         }
         .emtyTips{
-            padding-top:100px;
+            padding-top:1.333333rem;
             text-align:center;
             display:none;
             p{
-                font-size:16px;
+                font-size:0.213333rem;
                 color:#666;
                 span{
                     color:red;
-                    padding:0 10px;
+                    padding:0 0.133333rem;
                 }
             }
             .tipsImg{
-                width:100px;
+                width:1.333333rem;
                 margin:0 auto;
-                margin-bottom:50px;
+                margin-bottom:0.666667rem;
                img{
                     width:100%;
                 } 
