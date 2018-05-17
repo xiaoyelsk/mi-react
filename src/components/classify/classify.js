@@ -30,6 +30,7 @@ export default class Classify extends React.Component{
 
     // 跳转到列表
     toList(type_text){
+        console.log(type_text)
         this.props.router.push('/list/'+type_text);
     } 
     // 跳到搜索组件

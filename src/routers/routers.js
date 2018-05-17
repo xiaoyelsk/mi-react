@@ -11,12 +11,15 @@ import Register from '../components/users/register/register.js'
 import SettleAccounts from '../components/car/settleAccounts/settleAccounts.js'
 import Consig from '../components/car/consig/consig.js'
 import Quit from '../components/users/quit/quit.js'
+import ShippingAddress from '../components/users/shippingAddress/shippingAddress.js'
+import SAconsig from '../components/users/SAconsig/SAconsig.js'
 
 import Datelist from '../components/datelist/goods.js'
 
 // 方汉佳
 import List from '../components/list/list.js';
 import Search from '../components/search/search.js';
+import Order from '../components/order/order.js'
 
 
 import ServerLogin from '../components/server/serverlogin.js'
@@ -45,6 +48,11 @@ export default class Routers extends React.Component{
                 <Route path="/serverlogin" component={ServerLogin} />
                 <Route path="/serverhome" component={ServerHome} />
                 <Route path="/quit" component={Quit} />
+                <Route path="/order" component={Order} />
+                <Route path="/shippingAddress" component={ShippingAddress} />
+                <Route path="/SAconsig" component={SAconsig} />
+                
+                
             </Router>
         )
     }
