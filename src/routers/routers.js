@@ -14,6 +14,8 @@ import Quit from '../components/users/quit/quit.js'
 import ShippingAddress from '../components/users/shippingAddress/shippingAddress.js'
 import SAconsig from '../components/users/SAconsig/SAconsig.js'
 
+
+
 import Datelist from '../components/datelist/goods.js'
 
 // 方汉佳
@@ -57,6 +59,7 @@ export default class Routers extends React.Component{
                 <Route path="/order" component={Order} />
                 <Route path="/shippingAddress" component={ShippingAddress} />
                 <Route path="/SAconsig" component={SAconsig} />
+                
                 
                 
             </Router>
