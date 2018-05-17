@@ -35,12 +35,12 @@ span{
 .gouwu{margin-top: 0.78125rem;
     .quanxuan{height:0.234375rem;
         .alls{
-                width:0.234375rem;height:0.234375rem;display:inline-block;padding-left: 0.15625rem;
+                width:0.234375rem;height:0.234375rem;
+                display:inline-block;padding-left: 0.15625rem;
             }
             span{
                 font-size:14px;
             }
-
     }
     
     .gwc{
@@ -48,9 +48,7 @@ span{
             overflow:hidden;position:relative;
             .all{
                 width:0.234375rem;height:0.234375rem;position:absolute;top:0.75rem;left:0.09375rem;
-
             }
-
             .p-img{
                 float:left;
                 img{
@@ -64,7 +62,7 @@ span{
             b{
                 font-size:20px;font-weight:0;
             }
-                .qty{
+            .qty{
                     float: left;font-size:20px;
                  i{font-size:18px;}
 
@@ -72,9 +70,7 @@ span{
                 .del{
                     display:inline-block;float: right;font-size:24px;padding-left: 1.5625rem;
                 }
-
-         
-        }
+            }
 
         }
 
@@ -89,35 +85,28 @@ span{
             text-align:center;height:0.625rem;line-height: 0.625rem;
         }
 
-          .product{ height:10.9375rem;
+        .product{ height:10.9375rem;
 
             li{
-            float: left;width: 2.34375rem;height:3.125rem; padding-left: 0.15625rem;
-           .tp{
+                float: left;width: 2.34375rem;height:3.125rem; padding-left: 0.15625rem;
+               .tp{
 
-               img{
-                    width:2.1875rem;height:2.1875rem;
-                } 
-            }
-            .info{
-            
+                   img{
+                        width:2.1875rem;height:2.1875rem;
+                    } 
+                }
+                .info{
+                
                     h4{
                         font-size:16px;padding-left:0.3125rem;  
                     }
                     span{
-                        font-size:14px; color:red;padding-left:0.3125rem;
+                        font-size:14px; color:red;  padding-left:0.3125rem;
                 
                     }
+                } 
             }
-            
-           
-        }
-        li:nth-child(2n-1){
-            
-        }
-
-
-
+        
         }
        
     }
