@@ -10,35 +10,26 @@ export default class car extends React.Component{
         datas:[],
         dateset:[],
         total:0,
-
           count:1
     }
 
     componentDidMount(){
         $('.car').addClass('ative').siblings('a').removeClass('ative')
 
-         // let id = this.props.params.p_id;
-         //    console.log(id)
-            // http.post('getProductCar',{username:"admin"}).then((res)=>{
-            //     console.log (res)
-            //     this.setState({
-            //         datas:res.data,
-                   
-
-            //     })
-            //         let dataList = res.data;
-            //         let prl = [];
-            //     for(var i=0;i<dataList.length;i++){
-            //         prl.push(dataList[i]);
-                   
-
-            //     }
-            //         this.datas=prl;
-            //         console.log(this.datas)
-
-
-
-
+         let id = this.props.params.p_id;
+            console.log(id)
+            http.post('getProductCar',{username:"admin"}).then((res)=>{
+                console.log (res)
+                this.setState({
+                    datas:res.data,
+                })
+                    let dataList = res.data;
+                    let prl = [];
+                for(var i=0;i<dataList.length;i++){
+                    prl.push(dataList[i]);
+                }
+                    this.datas=prl;
+                    console.log(this.datas)
 
                     //触发add按钮
                 $(".add").click(function(){  
@@ -55,12 +46,10 @@ export default class car extends React.Component{
                     //计算 总价
                     // var goods_price =parseInt($("#goods_price").text());
                     var goods_price = parseInt($(this).parent().parent().children(".goods_price").text());
-                
+        
                     console.log(goods_price)
                     $(".totalPrice").text(parseInt($(".totalPrice").text())+goods_price);
                 })
-
-
                 //触发减按钮
                 $(".minus").click(function(){
                     //商品数量减减
@@ -84,22 +73,21 @@ export default class car extends React.Component{
 
                 //删除
               
-                $(".lis").on('click',".del",function(){
-                    console.log(23333)
-                    $(this).parent().parent().parent().remove();
-                })
+                // $(".lis").on('click',".del",function(){
+                   
+                //     $(this).parent().parent().remove();
+                //      console.log(this)
+                // })
                 
-    // });
+    });
 
         http.post('getproduct').then((res)=>{
              this.setState({
                     dateset:res.data
                 })
             let datal = res.data;
-
             let pro = [];
                 for(var i=0;i<datal.length;i++){
-                
                     if(datal[i].type_text == "电视"){
                         pro.push(datal[i]);
                     }
@@ -118,12 +106,10 @@ export default class car extends React.Component{
                              <li>购物车</li>
                             <li className="fa fa-search"></li>
                         </ul>
-
                     </div>
                     <div className="dl">
                         <h2>登录后享受更多优惠</h2>
                         <span><Link to="/login" >去登录</Link></span>
-
                     </div>
                     <div className="gouwu">
                         <div className="quanxuan">
@@ -131,59 +117,28 @@ export default class car extends React.Component{
                         <span>全选</span>
                         </div>
                         <ul className="gwc">
-                            <li className="lis">
-                                <input type="checkbox"className="all" />
-
-                                <div className="p-img">
-                                    <img src='src/components/img/a.jpg'/>
-                                </div>
-                                <h4>xiaomi </h4>
-                                <div className="bigs">
-                                    售价:<i className="goods_price">53</i>元 <br/>                       
-                                    <div className="qty">
-                                        <b className="fa fa-minus-square minus"></b>
-                                                 
-                                        <span>0</span>
-                                        <b className="fa fa-plus-square add"></b>   
-                                    </div>
-                                    <span className="fa fa-trash-o del"  onClick={this.shanchu}></span>                   
-                                    </div>
-                            </li>
-                            <li className="lis">
-                                <input type="checkbox"className="all" />
-
-                                <div className="p-img">
-                                    <img src='src/components/img/a.jpg'/>
-                                </div>
-                                <h4>xiaomi </h4>
-                                <div className="bigs">
-                                    售价:<i className="goods_price">123</i>元  <br/>                                
-                                    <div className="qty">
-                                        <b className="fa fa-minus-square minus"></b>  
-                                        <span>0</span>
-                                        <b className="fa fa-plus-square add"></b>     
-                                    </div>
-                                    <span className="fa fa-trash-o del"  onClick={this.shanchu}></span> 
+                                 {
+                            this.state.datas.map((item,idx)=>{
+                                return (
+                                    <li key={idx} className="lis">
+                                        <input type="checkbox"className="all" />
+                                        <div className="p-img">
+                                            <img src={item.img}/>
                                         </div>
-                                    </li>
-                                 <li className="lis">
-                                    <input type="checkbox"className="all" />
-                                    <div className="p-img">
-                                            <img src='src/components/img/a.jpg'/>
-                                    </div>
-                                    <h4>xiaomi </h4>
-                                    <div className="bigs">
-                                          售价:<i className="goods_price">153</i>元 <br/>                             
+                                              <h4>{item.p_name}</h4>
+                                        <div className="bigs">
+                                          售价:<i className="goods_price">{item.p_price}</i>元 <br/>                      
                                         <div className="qty">
                                             <b className="fa fa-minus-square minus"></b>
-                                                 
                                             <span>0</span>
-                                            <b className="fa fa-plus-square add"></b>
-                                    
-                                        </div>  
-                                        <span className="fa fa-trash-o del"  onClick={this.shanchu}></span>
-                                    </div>
+                                            <b className="fa fa-plus-square add"></b>   
+                                        </div>
+                                            <span className="fa fa-trash-o del"  onClick={this.shanchu}></span> 
+                                        </div>
                                     </li>
+                                )
+                            })
+                        }
                         </ul>
                     </div>
                     <div className="tuijian">
@@ -206,8 +161,6 @@ export default class car extends React.Component{
                             })
                         }
 
-
-                        
                         </ul>
                     </div>
                     <ul className="foot">  
