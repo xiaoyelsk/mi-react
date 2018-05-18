@@ -6,7 +6,7 @@ export default class Quit extends React.Component{
     tuichu(){
         this.props.router.push('/')
         window.localStorage.removeItem('un')
-        window.localStorage.removeItem('pd')
+        window.localStorage.removeItem('token')
         window.localStorage.removeItem('mz');
         window.localStorage.removeItem('dizhi');
        $('.w-headlogin').show()

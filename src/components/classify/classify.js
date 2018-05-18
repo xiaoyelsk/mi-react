@@ -16,7 +16,7 @@ export default class Classify extends React.Component{
         if(idx){
             // 找到锚点元素
             let ele = document.getElementById(idx);
-
+            // console.log(ele) 每个分类的ul
             // 跳转到锚点
             if(ele){
                 ele.scrollIntoView({
