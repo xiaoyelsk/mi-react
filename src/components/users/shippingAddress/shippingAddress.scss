@@ -27,37 +27,47 @@
         flex:1;
         ul li{
             position: relative;
-            height: 90px;
+            height: 110px;
            margin: 20px 20px;
             
             border:1px solid #ccc;
-            .shangxin{  
+            .shangxin{
+                margin-top: 10px;
+                margin-bottom: 10px;  
                 p{
-                    font-size: 16px;
-                color:red;
-                margin:10px 10px;
-                border-bottom: 1px solid #ccc;
+                    line-height: 30px;
+                    margin:10px 10px;
+                    border-bottom: 1px solid #ccc;
+                    span{
+                          font-size: 16px;
+                          margin-left: 10px;            
+                            color:red;
+                            margin-right: 20px;
+                           padding-bottom: 10px;
+                    }
+                  
                 }
                 .Shanchu{
                     font-size: 14px;
                     position: absolute;
                     right: 20px;
-                    top: 10px;
+                    top: 20px;
                     color:#535353;
                 }
                 
             }
             .shangxia{
+                margin: 10px;
                 margin-left: 20px;
                 color:hsl(0, 2%, 32%);
-                font-size: 18px;
+                font-size: 14px;
 
             }
             
             .Syoujiantou{
                 position: absolute;
                 right: 30px;
-                top: 46px;
+                top: 56px;
             }
 
         }

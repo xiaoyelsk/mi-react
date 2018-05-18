@@ -36,8 +36,11 @@ export default class ShippingAddress extends React.Component{
         }
      })
    }
-   xiugai(){
-       this.props.router.push("/SAconsig")
+   xiugai(_id){
+       console.log(_id)
+       this.props.router.push("/SAconsig/" +_id)
+    
+    //    this.props.router.push("/SAconsig")
    }
     render(){
         return (
@@ -52,13 +55,14 @@ export default class ShippingAddress extends React.Component{
                                 this.state.addmap.map((item,index)=>{
                                     return (<li key={index}>
                                                 <div className="shangxin">
-                                                    <p>{item.nickname}{item.phone}</p>
+                                                    <p><span>{item.nickname}</span><span>{item.phone}</span></p>
                                                     <i className="Shanchu" onClick={this.del.bind(this,item.minutemap)}>删除</i>
                                                 </div>
                                                 <div className="shangxia">
                                                     <span>{item.map}</span>
                                                     <p  ref="minutemap">{item.minutemap}</p>
-                                                    <i className="fa fa-angle-right Syoujiantou" onClick={this.xiugai.bind(this)}></i>
+                                                    <i className="fa fa-angle-right Syoujiantou" onClick={this.xiugai.bind(this,item._id)}>
+                                                    </i>
                                                 </div>
                                             </li>)
                                 })

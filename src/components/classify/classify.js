@@ -23,7 +23,7 @@ export default class Classify extends React.Component{
                     behavior:'smooth',
                     block:'start'
                 });
-
+               
             }
         }
     }
