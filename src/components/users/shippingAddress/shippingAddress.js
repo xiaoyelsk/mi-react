@@ -36,7 +36,9 @@ export default class ShippingAddress extends React.Component{
         }
      })
    }
-   Address(){}
+   xiugai(){
+       this.props.router.push("/SAconsig")
+   }
     render(){
         return (
                 <div className="shippingAddress">
@@ -56,7 +58,7 @@ export default class ShippingAddress extends React.Component{
                                                 <div className="shangxia">
                                                     <span>{item.map}</span>
                                                     <p  ref="minutemap">{item.minutemap}</p>
-                                                    <i className="fa fa-angle-right Syoujiantou"></i>
+                                                    <i className="fa fa-angle-right Syoujiantou" onClick={this.xiugai.bind(this)}></i>
                                                 </div>
                                             </li>)
                                 })
@@ -65,7 +67,7 @@ export default class ShippingAddress extends React.Component{
                         </div>
                         <div className="SA-foot">
                                 <Link to="/SAconsig">
-                                    <input type="button" value="新建地址" className="SA-footAdd" onClick={this.Address.bind(this)}/>
+                                    <input type="button" value="新建地址" className="SA-footAdd"/>
                                 </Link>
                         </div>
                 </div>
