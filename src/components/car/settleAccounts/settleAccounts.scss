@@ -2,14 +2,14 @@
    
     display: flex;
     .settle-head{
-        height: 50px;
+        height: 60px;
         width: 100%;
         position:fixed;
         top: 0;
         left: 0;
         z-index:100;
-        border-bottom: 4px solid #13a9ee;
-        background-color:hsla(0, 19%, 93%,1);
+        margin-bottom: 10px;
+        background:#f2f2f2 url('//s1.mi.com/m/images/m/bd1.png') 0 50px repeat-x;
         .jiesuan{
             font-size: 30px;
             margin-left: 20px;
@@ -34,11 +34,17 @@
             .settle-shouhuo{
                 background-color: #fff;
                         h5{
-                        font-size: 16px;
+                        font-size: 14px;
                         color:#000; 
-                        line-height: 50px;
+                        line-height: 10px;
                         margin-left: 20px;
-                        margin-top: -1px;
+                        margin-top: 10px;
+                            p{
+                                padding: 10px 0;
+                                span{
+                                    margin-right: 20px;
+                                }
+                            }
                         i{
                             color:#645f5f;
                             position: absolute;

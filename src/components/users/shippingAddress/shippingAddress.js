@@ -19,6 +19,10 @@ export default class ShippingAddress extends React.Component{
             })
         })
    }
+   footAdd(){
+    //    console.log(this)
+       this.props.router.push('/SAconsig/shippingAddress')
+   }
    del(minutemap){
       
         console.log(minutemap)
@@ -70,9 +74,9 @@ export default class ShippingAddress extends React.Component{
                             </ul>
                         </div>
                         <div className="SA-foot">
-                                <Link to="/SAconsig">
-                                    <input type="button" value="新建地址" className="SA-footAdd"/>
-                                </Link>
+                                
+                                    <input type="button" value="新建地址" className="SA-footAdd" onClick={this.footAdd.bind(this)}/>
+                                
                         </div>
                 </div>
         )
