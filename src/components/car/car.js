@@ -92,6 +92,10 @@ export default class Car extends React.Component{
            }
         })
     }
+    // 封一个跳转到商品详情的函数
+    toDetails(product_id){
+        this.props.router.push('/goods/'+product_id);
+    }
     componentWillMount(){
         // 获取用户名
         let username = window.localStorage.getItem('un');
@@ -142,12 +146,12 @@ export default class Car extends React.Component{
                         {
                             this.state.userData.map((item,idx)=>{
                                 return (
-                                    <li key={idx}>
+                                    <li key={idx} >
                                         <div className="user-input">
                                             <input type="checkbox" onChange={this.checkStatus
-                                                .bind(this,{isSelected:item.isSelected,id:item.p_id})} checked = {item.isSelected == 'true' ? true : false} />
+                                                .bind(this,{isSelected:item.isSelected,id:item.p_id})} checked = {item.isSelected == 'true' ? true : false} className="checked-input"/>
                                         </div>
-                                        <div className="user-img">
+                                        <div className="user-img" onClick={this.toDetails.bind(this,item.p_id)}>
                                             <img src={item.img}/>
                                         </div>
                                         <div className="user-info">
@@ -176,7 +180,7 @@ export default class Car extends React.Component{
                         <p className="totalPrice"><span>{this.state.totalPrice}</span> 元</p>
                     </li>
                     <li>
-                        <Link to="/">继续购物</Link>
+                        <Link to="/classify">继续购物</Link>
                     </li>
                     <li>
                         <Link to="/settleAccounts">去结算</Link>
