@@ -1,3 +1,4 @@
+import http from '../utils/httpclient.js'
 import {Router,Route,hashHistory,IndexRoute} from 'react-router'
 import React from 'react'
 
@@ -29,7 +30,20 @@ import ServerHome from '../components/server/serverhome.js'
 import Serverproduct from '../components/server/serverproduct.js'
 import Serverusers from '../components/server/serverusers.js'
 
-
+// 方汉佳
+// 封一个检测用户是否登陆的函数
+let isLogin = (nextState,replace,next)=>{
+    // 获取用户是否已经登陆
+    http.post('getStatus',{}).then(res=>{
+        if(!res.status){
+            // 跳转到登陆页面
+            replace({pathname:'/login'});
+            next();
+        }else{
+            next();
+        }
+    })
+}
 
 
 
@@ -39,7 +53,7 @@ export default class Routers extends React.Component{
             <Router history={hashHistory}>
                 <Route path="/" component={Index} />
                 <Route path="/classify" component={Classify} />
-                <Route path="/car(/:p_id)" component={Car} />
+                <Route path="/car(/:p_id)" component={Car} onEnter={isLogin}/>
                 <Route path="/goods(/:product_id)" component={Datelist} />
             
                 <Route path="/users" component={Users} />
