@@ -34,31 +34,25 @@
     .warpbox{
         .table_card{
 
-            .tab{margin-top:0.666667rem; 
+        .tab{
+                margin-top:0.666667rem; 
                 height:0.666667rem;
                 background: #f2f2f2;
                 display:flex;border-bottom:1px solid rgba(0, 0, 0, 0.3);
-                justify-content:space-around;  background-color:#fff;
+                justify-content:space-around;background-color:#fff;
                 li{
                     height:0.666667rem;
                     line-height:0.666667rem;
                     text-align:center;font-size:14px;
                 }
-            .activ{
-                    color:#f90;border-bottom:2px solid red;
+                .activ{
+                        color:#f90;border-bottom:2px solid red;
+                }
+                li:hover.activ{
+                    color:#f90;
+                }
             }
-            li:hover.activ{
-                color:#f90;
-            }
-
-      
-            }
-        
-    }
-
-
-
-
+        }
     .tabCon{
         flex:1;overflow-y:scroll;
         overflow-x:hidden;
@@ -66,82 +60,68 @@
         div{
             display:none;
         }
-       .on{display:block;}
+       .on{display:block;padding:0.15625rem;display:block;}
+        .ding{margin-top: 1.5625rem;
 
-
-
-        .newslist01{
-
-
-            // overflow:hidden;
-
-               .emtyTips{
-            // padding-top:0.46875rem;
-            text-align:center;margin-bottom:1.5625rem;
-         
-            h1{
-                font-size:0.213333rem;
-                color:#666;margin-bottom:0.3125rem;
-                
-            }
-            .tipsImg{
-                width:1.333333rem;
-                margin:0 auto;
-                padding-top: 0.625rem;
-                // margin-bottom:0.666667rem;
-               img{
-                    width:100%;
-                } 
-
-            }
-            
-        }
+        h3{
+            font-size:16px;
            
         }
+        i{
+        font-size:14px;
+        }
+        h4{
+            float: right;font-size:20px;color:red;
+        }
+    }
+        .newslist01{
+            li{margin:0.0625rem;height:0.78125rem;
+               
+                .pl{
+                    width: 0.78125rem;height:0.78125rem;display:line-block;float:left;
+                }
+                .zi{
+                    font-size:14px;float: left;padding: 0.125rem 0 0 0.15625rem; 
+                }
+            }
+               .emtyTips{
+            // padding-top:0.46875rem;
+                    text-align:center;margin-bottom:1.5625rem;
+                    h1{
+                        font-size:0.213333rem;
+                        color:#666;margin-bottom:0.3125rem;
+                    
+                    }
+                    .tipsImg{
+                        width:1.333333rem;
+                        margin:0 auto;
+                        padding-top: 0.625rem;
+                        // margin-bottom:0.666667rem;
+                       img{
+                            width:100%;
+                        } 
 
-      
-        // }
+                    }
+            
+                }
+           
+        }
+        .liji{margin-left: 1.5625rem;
 
-    
+            p{
+                font-size:16px;
 
+            }
+            input{margin-bottom: 0.3125rem;
+                width:0.9375rem;height: 0.46875rem;font-size:16px;padding:0.046875rem;color:#ccc;background:#fff;border:1px solid #ddd;margin-right: 0.0625rem;
+            }
+            input:hover{color:red;}
 
+            }
 
+    }
+    }
 
-
-
-
-
-
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
+    }
 
 }

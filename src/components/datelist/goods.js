@@ -1,4 +1,4 @@
-import './goods.scss'
+ import './goods.scss'
 import '../../../node_modules/swiper/dist/css/swiper.css'
 import ReactDOM from 'react-dom'
 
@@ -19,12 +19,7 @@ export default class Goods extends React.Component{
         type:"",
         text:"",
         goods:[]
-
-
-     
     }
-
-
 
     render(){
         return (

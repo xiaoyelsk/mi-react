@@ -2,7 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 
 import http from '../../utils/httpclient.js'
-import './c.scss'
+import './like.scss'
 import {Link}from'react-router'
 
 export default class Nav extends React.Component{
