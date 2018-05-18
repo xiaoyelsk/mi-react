@@ -43,7 +43,7 @@ export default class Order extends React.Component{
                         <div className="tabCon">
                             <div className="on">
                             <span className="ding">
-                            <h3>订单日期:<i id="time"></i></h3>
+                            <h3>订单日期：2018/5/18 12:04<i id="time"></i></h3>
                             <i>订单编号：1233424322342</i>
                             <h4>等待付款</h4>
                             </span>
@@ -101,52 +101,52 @@ export default class Order extends React.Component{
     }
 
 
-    componentDidMount(){
+    // componentDidMount(){
 
-        var time = document.getElementById('time');
+    //     var time = document.getElementById('time');
 
-        autoPlay();
-            function autoPlay(){
-            //得到运行这行代码时的时间
-            //年月日，时分秒，毫秒，星期，时区
-            var now = new Date();
+    //     autoPlay();
+    //         function autoPlay(){
+    //         //得到运行这行代码时的时间
+    //         //年月日，时分秒，毫秒，星期，时区
+    //         var now = new Date();
         
-            // 获取年份:0~11
-            var year = now.getFullYear();
+    //         // 获取年份:0~11
+    //         var year = now.getFullYear();
 
-            // 获取月份
-            var month = now.getMonth()+1;
+    //         // 获取月份
+    //         var month = now.getMonth()+1;
 
-            // 获取日
-            var date = now.getDate();
+    //         // 获取日
+    //         var date = now.getDate();
 
-            // 获取星期：0-6（星期日-星期6）
-            // var week = now.getDay();
-
-
-            // 获取时分秒
-            var h = now.getHours();
-            var m = now.getMinutes();
-            var s = now.getSeconds();
-
-            // 补0操作
-            h = h<10 ? '0'+h : h;
-            m = m<10 ? '0'+m : m;
-            s = s<10 ? '0'+s : s;
+    //         // 获取星期：0-6（星期日-星期6）
+    //         // var week = now.getDay();
 
 
-            // var arr = '日一二三四五六'
+    //         // 获取时分秒
+    //         var h = now.getHours();
+    //         var m = now.getMinutes();
+    //         var s = now.getSeconds();
 
-            time.innerHTML = year + '/' + month + '/' + date +'&nbsp;'+ h + ':' + m;
-        }
+    //         // 补0操作
+    //         h = h<10 ? '0'+h : h;
+    //         m = m<10 ? '0'+m : m;
+    //         s = s<10 ? '0'+s : s;
 
 
+    //         // var arr = '日一二三四五六'
+
+    //         time.innerHTML = year + '/' + month + '/' + date +'&nbsp;'+ h + ':' + m;
+    //     }
 
 
 
 
 
-    }
+
+
+    // }
 
 
 
