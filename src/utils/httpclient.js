@@ -1,3 +1,4 @@
+import {hashHistory} from 'react-router';
 import axios from 'axios'
 
 const baseUrl = 'http://10.3.133.39:88/'
@@ -57,11 +58,12 @@ export default {
                 }], 
             }).then(res => {
                 if(!res.data.status && res.data.message == "unauth"){
-                    
+                    resolve(res.data);
+                    $loadingBox.delay(500).hide(0);
                     return false;
                 }               
                 
-                resolve(res.data)
+                resolve(res.data);
                 // 隐藏loading
                 $loadingBox.delay(500).hide(0);
             }).catch(error => {

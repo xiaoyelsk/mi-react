@@ -13,7 +13,9 @@ export default class Car extends React.Component{
         // 保存商品总数量
         totalQty:0,
         // 保存商品总价格
-        totalPrice:0
+        totalPrice:0,
+        // 保存用户名
+        username:''
     }
     // 封一个计算商品总价和总数量的函数
     computed(res){
@@ -49,9 +51,9 @@ export default class Car extends React.Component{
         // 获取商品id和数量
         let countType = e.target.innerText;console.log(countType)
         // let countType = '+';
-        http.post('upProductqty',{username:'admin',id:obj.id,type:countType}).then(res=>{
+        http.post('upProductqty',{username:this.state.username,id:obj.id,type:countType}).then(res=>{
             if(res){
-                http.post('getProductCar',{username:'admin'}).then(res=>{
+                http.post('getProductCar',{username:this.state.username}).then(res=>{
                     // 调用计算总价格和总数量的函数
                     this.computed(res);
                 })
@@ -64,7 +66,7 @@ export default class Car extends React.Component{
             console.log(res)
             // 调用计算总价和总数量的函数
             if(res.status){
-                http.post('getProductCar',{username:'admin'}).then(res=>{
+                http.post('getProductCar',{username:this.state.username}).then(res=>{
                     // 调用计算总价格和总数量的函数
                     this.computed(res);
                 })
@@ -79,10 +81,10 @@ export default class Car extends React.Component{
         }else{
             reverSelected = 'true';
         }
-        http.post('upProductqty',{username:'admin',id:obj.id,ischecked:reverSelected}).then(res=>{
+        http.post('upProductqty',{username:this.state.username,id:obj.id,ischecked:reverSelected}).then(res=>{
            console.log(res)
            if(res){
-                http.post('getProductCar',{username:'admin'}).then(res=>{
+                http.post('getProductCar',{username:this.state.username}).then(res=>{
                     console.log(res)
                     // 调用函数
                     this.computed(res);
@@ -90,11 +92,17 @@ export default class Car extends React.Component{
            }
         })
     }
-
+    componentWillMount(){
+        // 获取用户名
+        let username = window.localStorage.getItem('un');
+        this.setState({
+            username
+        })
+    }
    
     componentDidMount(){
         // 初始化获取用户商品数据
-        http.post('getProductCar',{username:'admin'}).then(res=>{
+        http.post('getProductCar',{username:this.state.username}).then(res=>{
             if(res.status){
                 console.log(res)
                 // 调用计算总价和总数量的函数
@@ -129,12 +137,7 @@ export default class Car extends React.Component{
                             <p>购物车还是空的 <Link to="">去逛逛</Link></p>
                         </div>
                     </div>
-                    <div className="all-check">
-                        <label htmlFor="allCheck">
-                            <input type="checkbox" id="allCheck" />
-                            <span>全选</span>
-                        </label>
-                    </div>
+                    
                     <ul className="main-user" >
                         {
                             this.state.userData.map((item,idx)=>{
@@ -176,7 +179,7 @@ export default class Car extends React.Component{
                         <Link to="/">继续购物</Link>
                     </li>
                     <li>
-                        <Link to="">去结算</Link>
+                        <Link to="/settleAccounts">去结算</Link>
                     </li>
                 </ul>
 
