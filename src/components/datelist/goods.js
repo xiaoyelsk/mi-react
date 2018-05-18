@@ -210,7 +210,7 @@ export default class Goods extends React.Component{
     }
     toCar(){
 
-        let user=window.localStorage.getItem("username");
+        let user=window.localStorage.getItem("un");
                 // this.props.router.push('/car/'+ p_id);
                 // console.log(p_id)
            let data = {
@@ -219,7 +219,7 @@ export default class Goods extends React.Component{
                     p_name:this.state.p_name,
                     p_id:this.state.p_id,
                     p_price:this.state.p_price,
-                    username:'admin',
+                    username:user,
                     isSelected:true
               }  
           
