@@ -74,7 +74,7 @@ export default class Login extends React.Component{
                         
                         //token(写进本地)
                         window.localStorage.setItem('un',res.data.username);
-                        window.localStorage.setItem('pd',res.data.password);
+                        window.localStorage.setItem('token',res.data.token);
                         //判断验证码和请求的状态
                         if(result && res.status){
                             this.props.router.push('/')

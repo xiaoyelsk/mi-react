@@ -117,32 +117,39 @@ export default class SettleAccounts extends React.Component{
                         <ul className="settle-zffs" >
                             <div ref="xianshi">
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_wx.png" />
                                     <span>微信支付</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_zfb2.png" />
                                     <span>支付宝</span><span className="beizhu">支付订单，赢1999元红包</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/micash_wap.png" />
                                     <span>小米钱包</span><span className="beizhu">绑新卡支付，享最高立减99元</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                             </div>
                             <div className="yincang">
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_yl1.png" />
                                     <span>银联在线支付</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_yzf.png" />
                                     <span>翼支付</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_mifinanceinstal.png" />
                                     <span>小米分期</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
                                 <li>
+                                    <img src="//s1.mi.com/m/images/m/pay_antinstalment.png" />
                                     <span>花呗分期</span>
                                     <input type="radio" className="danxuan" name="danxuan" />
                                 </li>
