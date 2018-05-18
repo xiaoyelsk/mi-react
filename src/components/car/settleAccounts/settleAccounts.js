@@ -3,14 +3,16 @@ import React from 'react'
 import {Link} from 'react-router'
 
 import $ from 'jquery'
-
+import http from '../../../utils/httpclient'
 export default class SettleAccounts extends React.Component{
     state = {
         peisong:'不限送货时间',
         zong:'0',
         total:'0',
         mz:'',
-        addmap:'添加收货地址',
+        addmap1:'添加收货地址',
+        addmap2:'',
+        addmap3:'',
 
         productData:[
             {
@@ -42,16 +44,24 @@ export default class SettleAccounts extends React.Component{
     }
     componentDidMount(){
         // 收货地址
-            this.mz = window.localStorage.getItem('mz')
-            this.dizhi = window.localStorage.getItem('dizhi')
-            
-            // console.log(this.dizhi)
-            this.setState({mz:this.mz})
-            this.setState({addmap:this.dizhi})
+        var uResult=  window.localStorage.getItem('un');
 
-            if( this.mz == null && this.dizhi == null ){
-                this.setState({addmap:'添加收货地址'})
-            }
+        http.post('getSite',{username:uResult}).then((res) =>{
+            // console.log(res)
+            // console.log(res.data.length-1)
+            var idx = res.data.length-1;
+            console.log(res.data[idx])
+            this.setState({
+                addmap1:res.data[idx].nickname,
+                addmap2:res.data[idx].phone,
+                addmap3:res.data[idx].map +res.data[idx].minutemap
+            })
+            
+        })
+
+
+
+        
 
         //计算总数、总价
         // console.log(this.state.productData[0].product_price)
@@ -70,6 +80,9 @@ export default class SettleAccounts extends React.Component{
          
          
           
+    }
+    toSAconsig(){
+        this.props.router.push('/SAconsig/settleAccounts')
     }
     switchover(){
       
@@ -106,11 +119,16 @@ export default class SettleAccounts extends React.Component{
                 <div className="settle-main">
                    
                         <div className="settle-shouhuo">
-                            <Link to='/consig'> 
-                                <h5>{this.state.mz}{this.state.addmap}
+                            
+                                <h5 onClick={this.toSAconsig.bind(this)}>
+                                   <p>
+                                       <span>{this.state.addmap1}</span>
+                                       <span>{this.state.addmap2}</span>
+                                    </p>
+                                   <p>{this.state.addmap3}</p>
                                     <i className="fa fa-angle-right shouhuo"></i>
                                 </h5> 
-                            </Link>   
+                              
                         </div>
                          
                     <div className="settle-zhifu">

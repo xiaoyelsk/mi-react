@@ -11,12 +11,14 @@ export default class SAconsig extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-             name:'真实姓名',
-             phone:' 手机号',
-             map:'省 市 区  街道信息',
-             minutemap:'详细地址',
-             tacitlyApprove:'设置为默认地址'
+             name:'',
+             phone:'',
+             map:'',
+             minutemap:'',
+             tacitlyApprove:'设置为默认地址',
+             type:''
         }
+
     }
     change1 = (e) => {
            this.setState({name:e.target.value})
@@ -33,9 +35,14 @@ export default class SAconsig extends React.Component{
 
     componentDidMount(){
         console.log(this.props.params.id)
-            $('.city-Map').hide()
-            addressInit('area','cmbProvince','cmbCity','cmbArea','华南地区', '广东', '广州市', '天河区');
-            if(this.props.params.id){
+        //判断跳转的类型
+        var type = this.props.params.id;
+        if(type == 'shippingAddress'){
+            this.setState({type})
+        }else if(type=='settleAccounts'){
+            this.setState({type})
+        }else{
+            if(type){
                 http.post('getSite',{id:this.props.params.id}).then((res)=>{
                     console.log(res)
                     // console.log(res.data[0])`
@@ -46,18 +53,29 @@ export default class SAconsig extends React.Component{
                 })
 
             }
-    }
-       
-        map(){
-
-            $('.city-Map').toggle()
-            this.setState({map:$('#cmbProvince').val() +$('#cmbCity').val()+$('#cmbArea').val()})
-            $('input').addClass('in-acive')
-           
         }
-    baocun(){
-        if(this.props.params.id){
+        $('.city-Map').hide()
+        addressInit('area','cmbProvince','cmbCity','cmbArea','华南地区', '广东', '广州市', '天河区');
+            
+           
+    }
+    toToggle(){
+        this.props.router.push('/'+this.state.type)
+    }   
+    map(){
 
+        $('.city-Map').toggle()
+        this.setState({map:$('#cmbProvince').val() +$('#cmbCity').val()+$('#cmbArea').val()})
+        $('input').addClass('in-acive')
+        
+    }
+    baocun(){
+        
+        if(this.refs.name.value == ''){
+            alert('真实姓名不能为空');
+            return;
+        }else if(this.state.type != 'shippingAddress' && this.state.type != 'settleAccounts'){
+        //有id就修改
             let data={
                  id:this.props.params.id,
                   nickname:this.refs.name.value,
@@ -67,8 +85,9 @@ export default class SAconsig extends React.Component{
                   morenmap:this.refs.checkbox.checked,
                   state:'alter'
           }  
+        //   console.log(data)
           http.post('addSite',data).then((res)=>{
-              console.log(res)
+            //   console.log(res)
               if(res.status){
 
                   this.props.router.push('/shippingAddress')
@@ -77,6 +96,8 @@ export default class SAconsig extends React.Component{
               }
           })
        }else{
+           console.log(666)
+           //没有id就添加
            var uResult=  window.localStorage.getItem('un')
               let data={
                     username:uResult,
@@ -87,17 +108,18 @@ export default class SAconsig extends React.Component{
                     morenmap:this.refs.checkbox.checked,
                     state:'add'
             }  
-            console.log(data) 
+            // console.log(data) 
             http.post('addSite',data).then((res)=>{
-                console.log(res)
+                // console.log(res)
                 if(res.status){
 
-                    this.props.router.push('/shippingAddress')
+                    this.props.router.push('/' + this.state.type)
                 } else {
                     alert('收货地址有误！')
                 }
             })
          }
+       
        }
         
             
@@ -106,28 +128,28 @@ export default class SAconsig extends React.Component{
         return (
             <div className="consig">
                  <div className="consig-head">
-                    <p><Link to='/shippingAddress'><i className="fa fa-angle-left jiesuan"></i></Link><span>新增地址</span></p> 
+                    <p><i className="fa fa-angle-left jiesuan" onClick={this.toToggle.bind(this)}></i><span>新增地址</span></p> 
                 </div>
                 <div className="consig-main">
                     <from>
                         <div>
                             <label>收货人:</label>
-                            <input type="type" className="consig-name " value={this.state.name} onChange={this.change1} ref="name"/>
+                            <input type="type" className="consig-name " placeholder="真实姓名" value={this.state.name} onChange={this.change1} ref="name"/>
                         </div>
                         <br/>
                         <div>
                             <label>手机号码:</label>
-                            <input type="type" className="consig-phone" value={this.state.phone} onChange={this.change2} ref="phone"/>
+                            <input type="type" className="consig-phone" placeholder="手机号" value={this.state.phone} onChange={this.change2} ref="phone"/>
                         </div>
                         <br/>
                         <div>
                             <label>所在地区:</label>
-                            <input type="type" className="consig-map select-value form-control" value={this.state.map} onChange={this.change3} ref="map" onClick={this.map.bind(this)}/>
+                            <input type="type" className="consig-map select-value form-control" placeholder="省 市 区  街道信息" value={this.state.map} onChange={this.change3} ref="map" onClick={this.map.bind(this)}/>
                         </div>
                         <br/>
                         <div>
                             <label>详细地址:</label>
-                            <input type="type" className="consig-minutemap" value={this.state.minutemap} onChange={this.change4} ref="minutemap"/>
+                            <input type="type" className="consig-minutemap" placeholder="详细地址" value={this.state.minutemap} onChange={this.change4} ref="minutemap"/>
                         </div>
                         <br/>
                         <div>
