@@ -72,7 +72,7 @@ export default class Routers extends React.Component{
                 <Route path="/quit" component={Quit} />
                 <Route path="/order" component={Order} />
                 <Route path="/shippingAddress" component={ShippingAddress} />
-                <Route path="/SAconsig" component={SAconsig} />
+                <Route path="/SAconsig(/:id)" component={SAconsig} />
                 
                 
                 

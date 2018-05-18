@@ -32,9 +32,20 @@ export default class SAconsig extends React.Component{
          } 
 
     componentDidMount(){
+        console.log(this.props.params.id)
             $('.city-Map').hide()
-            addressInit('area','cmbProvince','cmbCity','cmbArea','华南地区', '广东', '广州市', '天河区'); 
-            
+            addressInit('area','cmbProvince','cmbCity','cmbArea','华南地区', '广东', '广州市', '天河区');
+            if(this.props.params.id){
+                http.post('getSite',{id:this.props.params.id}).then((res)=>{
+                    console.log(res)
+                    // console.log(res.data[0])`
+                    this.setState({name:res.data[0].nickname})
+                    this.setState({phone:res.data[0].phone})
+                    this.setState({map:res.data[0].map})
+                    this.setState({minutemap:res.data[0].minutemap})
+                })
+
+            }
     }
        
         map(){
@@ -45,14 +56,36 @@ export default class SAconsig extends React.Component{
            
         }
     baocun(){
-            var uResult=  window.localStorage.getItem('un')
+        if(this.props.params.id){
+
+            let data={
+                 id:this.props.params.id,
+                  nickname:this.refs.name.value,
+                  phone:this.refs.phone.value,
+                  map:this.refs.map.value,
+                  minutemap:this.refs.minutemap.value,
+                  morenmap:this.refs.checkbox.checked,
+                  state:'alter'
+          }  
+          http.post('addSite',data).then((res)=>{
+              console.log(res)
+              if(res.status){
+
+                  this.props.router.push('/shippingAddress')
+              } else {
+                  alert('收货地址有误！')
+              }
+          })
+       }else{
+           var uResult=  window.localStorage.getItem('un')
               let data={
                     username:uResult,
                     nickname:this.refs.name.value,
                     phone:this.refs.phone.value,
                     map:this.refs.map.value,
                     minutemap:this.refs.minutemap.value,
-                    morenmap:this.refs.checkbox.checked
+                    morenmap:this.refs.checkbox.checked,
+                    state:'add'
             }  
             console.log(data) 
             http.post('addSite',data).then((res)=>{
@@ -65,6 +98,9 @@ export default class SAconsig extends React.Component{
                 }
             })
          }
+       }
+        
+            
              
     render(){
         return (
@@ -76,12 +112,12 @@ export default class SAconsig extends React.Component{
                     <from>
                         <div>
                             <label>收货人:</label>
-                            <input type="type" className="consig-name " placeholder={this.state.name} onChange={this.change1} ref="name"/>
+                            <input type="type" className="consig-name " value={this.state.name} onChange={this.change1} ref="name"/>
                         </div>
                         <br/>
                         <div>
                             <label>手机号码:</label>
-                            <input type="type" className="consig-phone" placeholder={this.state.phone} onChange={this.change2} ref="phone"/>
+                            <input type="type" className="consig-phone" value={this.state.phone} onChange={this.change2} ref="phone"/>
                         </div>
                         <br/>
                         <div>
@@ -91,7 +127,7 @@ export default class SAconsig extends React.Component{
                         <br/>
                         <div>
                             <label>详细地址:</label>
-                            <input type="type" className="consig-minutemap" placeholder={this.state.minutemap} onChange={this.change4} ref="minutemap"/>
+                            <input type="type" className="consig-minutemap" value={this.state.minutemap} onChange={this.change4} ref="minutemap"/>
                         </div>
                         <br/>
                         <div>
