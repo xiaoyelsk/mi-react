@@ -56,14 +56,40 @@ export default class SettleAccounts extends React.Component{
 
     // 封一个去付款的函数:获取用户名,商品数据
     toPay(){
-        this.setState({
-            showMasked:{display:'block'}
-        })
-            
+        if(this.state.productData.length < 1){
+            return;
+        }else if(this.state.addmap2 == '' || this.state.addmap3 == ''){
+            alert('地址有误！');
+            return;
+        }else{
+            this.setState({
+                showMasked:{display:'block'}
+            })
+
+        }
     }
 
     componentDidMount(){
         // 收货地址
+
+        var username=  window.localStorage.getItem('un');
+        this.setState({
+            username
+        })
+
+        http.post('getSite',{username:username}).then((res) =>{
+            
+            if(res.status){
+                var idx = res.data.length-1;
+
+                this.setState({
+                    addmap1:res.data[idx].nickname || '',
+                    addmap2:res.data[idx].phone || '',
+                    addmap3:res.data[idx].map +res.data[idx].minutemap
+                })
+            }
+            
+        })
         if(this.state.addmap1 == ''){
             this.setState({addmap1:'添加收货地址'})
         }else{
