@@ -18,7 +18,7 @@ module.exports = {
     async insert(_collection,_data){
         try{
             let result = await db.collection(_collection).insert(_data); 
-            console.log(result);
+            
             return apiResult(result.insertedCount > 0,result.result)
         } catch(error) {
             return apiResult(false,error);
