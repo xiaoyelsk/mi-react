@@ -10,7 +10,7 @@ export default class Register extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-             phone:' 手机号码',
+             phone:'手机号码',
              password:'密码',
              zhuce:'注册',
              tishi:''
