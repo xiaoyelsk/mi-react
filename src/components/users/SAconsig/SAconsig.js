@@ -1,4 +1,4 @@
-import '../../car/consig/consig.scss'
+import './consig.scss'
 
 import React from 'react'
 import {Link} from 'react-router'
@@ -96,7 +96,6 @@ export default class SAconsig extends React.Component{
               }
           })
        }else{
-           console.log(666)
            //没有id就添加
            var uResult=  window.localStorage.getItem('un')
               let data={
