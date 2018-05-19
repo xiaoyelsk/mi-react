@@ -120,7 +120,7 @@ export default class List extends React.Component{
         return (
             <div className="f-list">
 
-                <ul className="list-header animate-route">
+                <ul className="list-header">
                     <li onClick={this.backClassify.bind(this)}> <i className="fa fa-angle-left" aria-hidden="true"></i> </li>
                     <li><span>{this.state.title}</span></li>
                     <li onClick={this.toSearch.bind(this)}><i className="fa fa-search"></i></li>
