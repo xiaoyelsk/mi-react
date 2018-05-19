@@ -44,20 +44,26 @@ export default class SettleAccounts extends React.Component{
     }
     componentDidMount(){
         // 收货地址
-        var uResult=  window.localStorage.getItem('un');
 
-        http.post('getSite',{username:uResult}).then((res) =>{
-            // console.log(res)
-            // console.log(res.data.length-1)
-            var idx = res.data.length-1;
-            console.log(res.data[idx])
-            this.setState({
-                addmap1:res.data[idx].nickname,
-                addmap2:res.data[idx].phone,
-                addmap3:res.data[idx].map +res.data[idx].minutemap
+        if(this.state.addmap1 == ''){
+            this.setState({addmap1:'添加收货地址'})
+        }else{
+            var uResult=  window.localStorage.getItem('un');
+
+            http.post('getSite',{username:uResult}).then((res) =>{
+                // console.log(res)
+                // console.log(res.data.length-1)
+                var idx = res.data.length-1;
+                console.log(res.data[idx])
+                this.setState({
+                    addmap1:res.data[idx].nickname,
+                    addmap2:res.data[idx].phone,
+                    addmap3:res.data[idx].map +res.data[idx].minutemap
+                })
+                
             })
-            
-        })
+        }
+       
 
 
 

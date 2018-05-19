@@ -10,7 +10,6 @@ import Users from '../components/users/users.js'
 import Login from '../components/users/login/login.js'
 import Register from '../components/users/register/register.js'
 import SettleAccounts from '../components/car/settleAccounts/settleAccounts.js'
-import Consig from '../components/car/consig/consig.js'
 import Quit from '../components/users/quit/quit.js'
 import ShippingAddress from '../components/users/shippingAddress/shippingAddress.js'
 import SAconsig from '../components/users/SAconsig/SAconsig.js'
@@ -60,7 +59,6 @@ export default class Routers extends React.Component{
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/settleAccounts" component={SettleAccounts} />
-                <Route path="/consig" component={Consig} />
                 <Route path="/list(/:type)(/:num)" component={List} />
                 <Route path="/search" component={Search} />
                 <Route path="/serverlogin" component={ServerLogin} />
