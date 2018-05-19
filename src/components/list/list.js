@@ -126,7 +126,7 @@ export default class List extends React.Component{
                     <li onClick={this.toSearch.bind(this)}><i className="fa fa-search"></i></li>
                 </ul>
 
-                <div className="list-main animate-route">
+                <div className="list-main animate2-route">
 
                     <ul className="main-product">
                         {
