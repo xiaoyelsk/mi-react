@@ -14,41 +14,62 @@ export default class SettleAccounts extends React.Component{
         addmap2:'',
         addmap3:'',
 
-        productData:[
-            {
-                img_url:"//i1.mifile.cn/a1/pms_1521165501.80114213!80x80.jpg",
-                product_name:"红米Note5  全网通版 4GB内存 64GB 金色",
-                product_id:"1",
-                product_price:"1399.00",
-                type:'xinpin',
-                num:1
-            },
-            {
-                img_url:"//i1.mifile.cn/a1/pms_1509612558.56879257!80x80.jpg",
-                product_name:"米加便携电动剃须刀  黑色",
-                product_id:"2",
-                product_price:"179.00",
-                type:'xinpin',
-                num:1
-            },
-            {
-                img_url:"//i1.mifile.cn/a1/pms_1508125822.19716710!80x80.jpg",
-                product_name:"红米5A 2GB内存 铂银灰 16GB",
-                product_id:"3",
-                product_price:"599.00",
-                type:'xinpin',
-                num:1
-            }
-        ]
-
+        productData:[],
+        // 用户名
+        username:'',
+        // 显示弹窗
+        showMasked:{display:'none'}
     }
+    // 封一个确定付款的函数
+    comfirm(){
+        let username = this.state.username;
+        let products = JSON.stringify(this.state.productData);
+        let isPay = 'true';
+        if(username && products){
+            http.post('addorder',{username,products,isPay}).then(res=>{
+                if(res.status){
+                    this.props.router.push('/order');
+                }
+            })
+        }
+        this.setState({
+            showMasked:{display:'none'}
+        })    
+        
+    }
+    // 封一个取消付款的函数
+    cancel(){
+        let username = this.state.username;
+        let products = JSON.stringify(this.state.productData);
+        let isPay = 'false';
+        if(username && products){
+            http.post('addorder',{username,products,isPay}).then(res=>{
+                this.props.router.push('/order');
+            })
+        }    
+        this.setState({
+            showMasked:{display:'none'}
+        })
+        
+    }
+
+
+    // 封一个去付款的函数:获取用户名,商品数据
+    toPay(){
+        this.setState({
+            showMasked:{display:'block'}
+        })
+            
+    }
+
     componentDidMount(){
         // 收货地址
-        var uResult=  window.localStorage.getItem('un');
+        var username=  window.localStorage.getItem('un');
+        this.setState({
+            username
+        })
 
-        http.post('getSite',{username:uResult}).then((res) =>{
-            // console.log(res)
-            // console.log(res.data.length-1)
+        http.post('getSite',{username:username}).then((res) =>{
             var idx = res.data.length-1;
             console.log(res.data[idx])
             this.setState({
@@ -58,28 +79,36 @@ export default class SettleAccounts extends React.Component{
             })
             
         })
+        // 获取用户已勾选的商品
+        if(username){
+            let productData = [];
+            http.post('getProductCar',{username}).then(res=>{
+                if(res.status){
+                    for(var i=0;i<res.data.length;i++){
+                        if(res.data[i].isSelected == 'true'){
+                            console.log(res.data[i])
+                            productData.push(res.data[i])
+                        }
+                    }
+                    this.setState({
+                        productData
+                    })
 
-
-
-        
-
-        //计算总数、总价
-        // console.log(this.state.productData[0].product_price)
-            var totalPrice=0;
-            var totalNum=0;
-        for(var i=0;i<this.state.productData.length;i++){
-            var product= this.state.productData;
-        //    console.log(product[i].product_price)
-            totalPrice += Number(product[i].product_price);
-            totalNum += Number(product[i].num); 
+                    //计算总数、总价
+                    var totalPrice=0;
+                    var totalNum=0;
+                    for(var i=0;i<this.state.productData.length;i++){
+                        var product= this.state.productData;
+                    //    console.log(product[i].product_price)
+                        totalPrice += Number(product[i].p_price);
+                        totalNum += Number(product[i].qty); 
+                    }
+                    //   console.log(totalPrice)
+                    this.setState({total:totalPrice})
+                    this.setState({zong:totalNum})
+                }
+            })
         }
-            //   console.log(totalPrice)
-              this.setState({total:totalPrice})
-              this.setState({zong:totalNum})
-          //选择收货地址的高亮效果  
-         
-         
-          
     }
     toSAconsig(){
         this.props.router.push('/SAconsig/settleAccounts')
@@ -221,11 +250,11 @@ export default class SettleAccounts extends React.Component{
                                 this.state.productData.map((item,index)=>{
                                     return (<li key={index}>
                                                 <div className="S-img">
-                                                    <img src={item.img_url}/>
+                                                    <img src={item.img}/>
                                                 </div>
                                                 <div className="S-info">
-                                                    <p className="content">{item.product_name}</p>
-                                                    <span className="price">￥{item.product_price}</span>
+                                                    <p className="content">{item.p_name}</p>
+                                                    <span className="price">{item.qty} &times; ￥{item.p_price}</span>
                                                 </div>
                                             </li>)
                                 })
@@ -248,10 +277,17 @@ export default class SettleAccounts extends React.Component{
                             <span className="totalNum">共{this.state.zong} 件</span>
                              <span className="totalPrice">合计:{this.state.total}元</span>
                         </div>
-                        <div className="settle-goright">
+                        <div className="settle-goright" onClick={this.toPay.bind(this)}>
                            去付款
                         </div>
                     </div>
+                <div className="f-masked" style={this.state.showMasked}>
+                    <div className="masked-box">
+                        <p>确定付款?</p>
+                        <button className="btn-comfim" onClick={this.comfirm.bind(this)}>确定</button>
+                        <button className="btn-cancel" onClick={this.cancel.bind(this)}>取消</button>
+                    </div>
+                </div>
             </div>
         )
     }

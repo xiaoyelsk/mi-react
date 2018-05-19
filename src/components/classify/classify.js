@@ -102,7 +102,7 @@ export default class Classify extends React.Component{
     render(){
         return (
             <div className="f-classify">
-                <ul className="f-header animate-route">
+                <ul className="f-header ">
                     <li onClick={this.backIndex.bind(this)}> <i className="fa fa-angle-left" aria-hidden="true"></i> </li>
                     <li><span>分类</span></li>
                     <li onClick={this.toSearch.bind(this)}><i className="fa fa-search"></i></li>

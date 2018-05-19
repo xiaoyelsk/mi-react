@@ -3,34 +3,31 @@
     display:flex;
     flex-direction:column;
     .car-header{
-        height:50px;
-        background:#f2f2f2;
+        height:0.666667rem;
+        background: #f2f2f2;
         display:flex;
         justify-content:space-around;
         li{
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
+            height:0.666667rem;
+            line-height:0.666667rem;
             text-align:center;
-            color:#666;
             i{
-                color:#666;
+                color: rgba(0, 0, 0, 0.3);
             }
         }
         li:first-child{
             width:0.8rem;
-            font-size:34px;
+            font-size:0.453333rem;
             
         }
         li:nth-child(2){
             flex:1;
-            span{
-                font-size:0.24rem;
-            }
+            font-size:0.24rem;
+            color:#666;
         }
         li:last-child{
             width:0.8rem;
-            font-size:26px;
+            font-size:0.32rem;
         }
     }
     .car-main{
@@ -61,6 +58,7 @@
                         border:1px solid #ccc;
                         padding:4px 5px;
                         color:#333;
+                        text-decoration:none;
                     }
                 }
             }

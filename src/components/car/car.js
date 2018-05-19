@@ -35,6 +35,14 @@ export default class Car extends React.Component{
             // totalQty = totalQty + Number(res.data[i].qty);
             // totalPrice = totalPrice + Number(res.data[i].p_price)*Number(res.data[i].qty);
         }
+        // 判断购物车是否为空
+        if(res.data.length < 1){
+            this.setState({
+                showCar:{
+                    display:'block'
+                }
+            })
+        }
         this.setState({
             userData:res.data,
             totalQty,
@@ -121,7 +129,7 @@ export default class Car extends React.Component{
     render(){
         return (
             <div className="f-car">
-                <ul className="car-header animate-route">
+                <ul className="car-header ">
                     <li > 
                         <Link to="/">
                             <i className="fa fa-angle-left" aria-hidden="true"></i> 
@@ -132,13 +140,13 @@ export default class Car extends React.Component{
                         <Link to="/search"><i className="fa fa-search"></i></Link>
                     </li>
                 </ul>
-                <main className="car-main">
+                <main className="car-main animate2-route">
                     <div className="main-emtyCar" style={this.state.showCar}>
                         <div className="car-img car-box">
                             <img src="src/components/img/emptyCar.png" />
                         </div>
                         <div className="car-box">
-                            <p>购物车还是空的 <Link to="">去逛逛</Link></p>
+                            <p>购物车还是空的 <Link to="/classify">去逛逛</Link></p>
                         </div>
                     </div>
                     
@@ -160,7 +168,7 @@ export default class Car extends React.Component{
                                             <div className="handleCount">
                                                 <div className="countBox">
                                                     <span className="count minus" onClick={this.handle.bind(this,{id:item.p_id,qty:item.qty})}>-</span>
-                                                    <span className="qty">{item.qty }</span>
+                                                    <span className="qty">{item.qty}</span>
                                                     <span className="count add" onClick={this.handle.bind(this,{id:item.p_id,qty:item.qty})}>+</span>
                                                 </div>
                                                 <div className="delIcon" onClick={this.deleteProduct.bind(this,item.p_id)}>
