@@ -34,7 +34,7 @@ export default class SAconsig extends React.Component{
          } 
 
     componentDidMount(){
-        console.log(this.props.params.id)
+        // console.log(this.props.params.id)
         //判断跳转的类型
         var type = this.props.params.id;
         if(type == 'shippingAddress'){

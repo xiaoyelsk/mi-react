@@ -25,14 +25,14 @@ export default class ShippingAddress extends React.Component{
    }
    del(minutemap){
       
-        console.log(minutemap)
+        // console.log(minutemap)
       
        http.post('delSite',{minutemap}).then((res)=>{
-        console.log(res)
+        // console.log(res)
         if(res){
             var uResult=  window.localStorage.getItem('un');
             http.post('getSite',{username:uResult}).then((res) =>{
-                console.log(res)
+                // console.log(res)
                 this.setState({
                     addmap:res.data
                 })
@@ -41,10 +41,8 @@ export default class ShippingAddress extends React.Component{
      })
    }
    xiugai(_id){
-       console.log(_id)
+    //    console.log(_id)
        this.props.router.push("/SAconsig/" +_id)
-    
-    //    this.props.router.push("/SAconsig")
    }
     render(){
         return (
