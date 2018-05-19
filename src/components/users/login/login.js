@@ -70,7 +70,7 @@ export default class Login extends React.Component{
                     }
                     // console.log(data)
                     http.post('login',data).then((res)=>{
-                        console.log(res)
+                        // console.log(res)
                         
                         //token(写进本地)
                         window.localStorage.setItem('un',res.data.username);
@@ -121,7 +121,9 @@ export default class Login extends React.Component{
                     </div>
                     
                     <ul className="mi-xuanze" >
+                        <li><Link to="/"><span>首页</span></Link></li>
                         <li><Link to="/register"><span>立即注册</span></Link></li>
+                        <li><Link to="/users"><span>个人中心</span></Link></li>
                         <li className="mi-null"><span>忘记密码</span></li>
                     </ul>
                     <div className="mi-qita" >
