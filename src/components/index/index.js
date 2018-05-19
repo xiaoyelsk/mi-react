@@ -216,7 +216,7 @@ export default class Index extends React.Component{
         let isEmty = this.state.miIntelligence.productData.length;
         return (
             <div id="index">
-                <ul className="index-header animate-route">
+                <ul className="index-header ">
                     <li><img src='src/components/img/logo.png'/></li>
                     <li>
                         <i className="fa fa-search fdj" aria-hidden="true"></i>

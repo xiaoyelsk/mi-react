@@ -1,6 +1,7 @@
 const db = require('../api/db.js')
 const apiResult = require('../api/apiResult.js')
 const jwt = require('jsonwebtoken');
+const ObjectId = require('mongodb').ObjectId;
 
 // 判断用户是否已登陆
 let filter = function(req,res,next){
@@ -25,10 +26,6 @@ module.exports = {
         app.post('/register',async (req,res) =>{
             let username = req.body.username;
             let password = req.body.password;
-
-            let nickname = '';
-            let map = '';
-            let minutemap = '';
             
             let result = await db.select('user',{username});
             
@@ -51,13 +48,17 @@ module.exports = {
             // 如果用户存在则设置token
             if(result.status){
 
-                let token = jwt.sign({username},'1234',{'expiresIn':60*60})
+                let token = jwt.sign({username},'1234',{'expiresIn':600*60})
 
                 res.send(apiResult(result.status,{token,username}));
             }else{
                 res.send(result);
             }
         });
+        // 获取用户登陆状态
+        app.post('/getStatus', filter,(req,res)=>{
+            res.send(apiResult(true));
+        })
         //获取所有用户
         app.get('/getUser', async (req,res) =>{
 
@@ -65,36 +66,36 @@ module.exports = {
 
             res.send(result.data)
         })
-        //修改用户地址
-        app.post('/update',async (req,res) =>{
-
-            let username = req.body.username;
-
-            let nickname = req.body.nickname;
-            let map = req.body.map;
-            let minutemap = req.body.minutemap;
-
-            let result = await db.update('user',{username},{nickname,map,minutemap})
-
-            res.send(apiResult(result.status,{nickname,minutemap}))
-        });
-        //插入用户地址
+        //插入/修改用户地址
         app.post('/addSite',async (req,res) =>{
 
             let username = req.body.username;
 
-            let nickname = req.body.nickname;
-            let pohone = req.body.pohone;
-            let map = req.body.map;
-            let minutemap = req.body.minutemap;
-            let morenmap = req.body.morenmap;
+            let nickname = req.body.nickname || '';
+            let phone = req.body.phone || '';
+            let map = req.body.map || '';
+            let minutemap = req.body.minutemap || '';
+            let morenmap = req.body.morenmap || '';
+            let type = req.body.state;
+            let _id = req.body.id;
 
-            let result = await db.insert('userSite',{username,pohone,map,minutemap,morenmap})
+            if(type == 'alter'){
 
-            if(result.status){
-                res.send(apiResult(result.status))
+                let result = await db.update('userSite',{_id:new ObjectId(_id)},{nickname,phone,map,minutemap,morenmap})
+
+                if(result.status){
+                    res.send(apiResult(result.status))
+                } else {
+                    res.send(apiResult(false))
+                }
             } else {
-                res.send(apiResult(false))
+                let result = await db.insert('userSite',{username,nickname,phone,map,minutemap,morenmap})
+
+                if(result.status){
+                    res.send(apiResult(result.status))
+                } else {
+                    res.send(apiResult(false))
+                }
             }
 
         });
@@ -102,10 +103,23 @@ module.exports = {
         app.post('/getSite',async (req,res) =>{
             let username = req.body.username;
 
-            let result = await db.select('userSite',{username})
+            let _id = req.body.id || '';
 
-            res.send(result)
-        })
+            if(_id !== ''){
+                let result = await db.select('userSite',{_id:new ObjectId(_id)})
+
+                if(result.status){
+                    res.send(result);
+                } else {
+                    res.send(apiResult(false));
+                }
+            } else {
+                let result = await db.select('userSite',{username})
+
+                res.send(result)
+            }
+            
+        });
         //删除用户地址
         app.post('/delSite',async (req,res) =>{
 

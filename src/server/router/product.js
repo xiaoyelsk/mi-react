@@ -45,19 +45,21 @@ module.exports = {
         //修改商品
         app.post('/upProduct',async (req,res) =>{
 
-            let product_id = req.body.product_id;
+            let product_id = Number(req.body.product_id);
             let img_url = req.body.img_url;
             let product_brief = req.body.product_brief;
             let product_name = req.body.product_name;
             let product_price = req.body.product_price;
             let type_text = req.body.type_text;
 
+            console.log(product_id,img_url,product_brief,product_name,product_price,type_text)
+
             let result = await db.update('goodslist',{product_id},{img_url,product_brief,product_name,product_price,type_text})
 
-            res.send(result.status);
+            res.send(result);
         })
 
-        //修改商品qty
+        //修改商品qty/isSelected    
         app.post('/upProductqty',async (req,res) =>{
 
             let username = req.body.username;
@@ -156,6 +158,63 @@ module.exports = {
             // 调用数据库模块
             let result = await db.search('goodslist',reg);
             res.send(result);
+        });
+        // 生成订单
+        app.post('/addorder',async (req,res) =>{
+
+            let username = req.body.username;
+
+            let isPay = req.body.isPay;
+
+            // let orderNumber = req.body.orderNumder;
+
+            let products = JSON.parse(req.body.products);
+
+            let time = '';
+
+            // 生成订单号
+            let orderNumber = 0;
+            if(username){
+                orderNumber = parseInt(Math.random() * 10000000000);
+                
+                let d = new Date();
+
+                let year = d.getFullYear();
+                let month = d.getMonth()+1;
+                let day = d.getDate();
+
+                let h = d.getHours();
+                let m = d.getMinutes();
+                let s = d.getSeconds();
+
+                h = h>10? h : '0' + h
+                m = m>10? m : '0' + m
+                s = s>10? s : '0' + s
+
+                time = year + '-' + month + '-' + day + ' ' + h + ':' + m + ':' + s
+
+            }
+
+            let result = await db.insert('order',{username,orderNumber,isPay,time,products});
+
+            if(result.status){
+                res.send(apiResult(true))
+            } else {
+                res.send(apiResult(false))
+            }
+  
+        });
+        //获取订单
+        app.post('/getorder',async (req,res) =>{
+            let username = req.body.username;
+
+            let result = await db.select('order',{username});
+
+            if(result.status){
+                res.send(apiResult(result))
+            } else {
+                res.send(apiResult(false))
+            }
         })
     }
 }
