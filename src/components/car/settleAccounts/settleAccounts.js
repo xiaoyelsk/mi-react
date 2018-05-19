@@ -78,7 +78,7 @@ export default class SettleAccounts extends React.Component{
         })
 
         http.post('getSite',{username:username}).then((res) =>{
-            
+            console.log(res)
             if(res.status){
                 var idx = res.data.length-1;
 
@@ -103,11 +103,14 @@ export default class SettleAccounts extends React.Component{
                 // console.log(res.data.length-1)
                 var idx = res.data.length-1;
                 console.log(res.data[idx])
-                this.setState({
-                    addmap1:res.data[idx].nickname,
-                    addmap2:res.data[idx].phone,
-                    addmap3:res.data[idx].map +res.data[idx].minutemap
-                })
+                if(res.status){
+
+                    this.setState({
+                        addmap1:res.data[idx].nickname,
+                        addmap2:res.data[idx].phone,
+                        addmap3:res.data[idx].map +res.data[idx].minutemap
+                    })
+                }
                 
             })
         }
