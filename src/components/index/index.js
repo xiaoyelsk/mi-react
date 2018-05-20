@@ -11,6 +11,10 @@ import '../../../node_modules/swiper/dist/css/swiper.css'
 import http from '../../utils/httpclient.js'
 
 export default class Index extends React.Component{
+    // 跳到个人中心
+    toUser(){
+        this.props.router.push('/users')
+    }
     // 跳到列表
     toList(){
         this.props.router.push('/list');
@@ -80,21 +84,6 @@ export default class Index extends React.Component{
 
     componentDidMount(){
 
-        // 轮播图
-        var mySwiper = new Swiper ('.swiper-container', {
-            direction: 'horizontal',//方向设置，垂直滚动
-            loop:true,//循环滚动
-            autoplay: {
-                delay: 3000,
-                stopOnLastSlide: false,
-                disableOnInteraction: false,
-            },
-            // 如果需要分页器
-            pagination: {
-              el: '.swiper-pagination',
-              clickable :true,
-            }
-        });
       
 
         $('.home').addClass('ative').siblings('a').removeClass('ative')
@@ -222,7 +211,7 @@ export default class Index extends React.Component{
                         <i className="fa fa-search fdj" aria-hidden="true"></i>
                         <input type="text" className="f-search" placeholder="搜索商品" onClick={this.toSearch.bind(this)}/>
                     </li>
-                    <li><i className="fa fa-user-o" aria-hidden="true"></i></li>
+                    <li onClick={this.toUser.bind(this)}><i className="fa fa-user-o" aria-hidden="true"></i></li>
                 </ul>
                 <div className="index-main animate-route" onScroll={this.showButton.bind(this)}>
                     <div className="swiper-container">
