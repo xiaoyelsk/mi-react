@@ -47,16 +47,16 @@
                 }
             }
             .car-box{
-                height:60px;
+                height:0.8rem;
                 display:flex;
                 flex-direction:column;
                 justify-content:center;
                 p{
-                    font-size:16px;
+                    font-size:0.213333rem;
                     color:rgba(0,0,0,0.27);
                     a{
-                        border:1px solid #ccc;
-                        padding:4px 5px;
+                        border:0.013333rem solid #ccc;
+                        padding:0.053333rem 0.066667rem;
                         color:#333;
                         text-decoration:none;
                     }
@@ -64,25 +64,25 @@
             }
         }
         .all-check{
-            height:40px;
+            height:0.533333rem;
             display:flex;
             label{
                 input{
-                    width:36px;
+                    width:0.48rem;
                 }
                 span{
-                    font-size:18px;
+                    font-size:0.24rem;
                 }
             }
         }
         .main-user{
             li{
                 display:flex;
-                padding:8px 0;
-                border-bottom:1px solid #ccc;
+                padding:0.106667rem 0;
+                border-bottom:0.013333rem solid #ccc;
                 .user-input{
-                    width:40px;
-                    padding-left:10px;
+                    width:0.533333rem;
+                    padding-left:0.133333rem;
                     display:flex;
                     flex-direction:column;
                     justify-content:center;
@@ -90,29 +90,29 @@
                     }
                 }
                 .user-img{
-                    width:80px;
+                    width:1.066667rem;
                     img{
                         width:100%;
                     }
                 }
                 .user-info{
                     flex:1;
-                    padding-left:15px;
+                    padding-left:0.2rem;
                     p{
-                        font-size:16px;
-                        line-height:26px;
+                        font-size:0.213333rem;
+                        line-height:0.346667rem;
                     }
                     .handleCount{
                         display:flex;
                         justify-content:space-between;
-                        padding-right:20px;
+                        padding-right:0.266667rem;
                         .countBox{
-                            width:100px;
-                            height:30px;
-                            border:1px solid #ccc;
+                            width:1.333333rem;
+                            height:0.4rem;
+                            border:0.013333rem solid #ccc;
                             display:flex;
                             .qty{
-                                font-size:16px;
+                                font-size:0.213333rem;
                             }
                             span{
                                 flex:1;
@@ -120,7 +120,7 @@
                                 display:flex;
                                 flex-direction:column;
                                 justify-content:center;
-                                border-right:1px solid #ccc;
+                                border-right:0.013333rem solid #ccc;
                                 color:#333;
                             }
                             span:nth-of-type(1){
@@ -140,7 +140,7 @@
         }
     }
     .car-footer{
-        height:52px;
+        height:0.693333rem;
         background:#fff;
         display:flex;
         li{
@@ -155,12 +155,12 @@
         }
         li:first-child{
             p{
-                font-size:14px;
+                font-size:0.186667rem;
             }
             .totalPrice{
                 span{
                     color:#ff5722;
-                    font-size:20px;
+                    font-size:0.266667rem;
                     font-weight:bold;
                 }
             }
@@ -168,7 +168,7 @@
         li:nth-child(2){
             background:#f2f2f2;
             a{
-                font-size:18px;
+                font-size:0.24rem;
                 color:#333;
             }
         }
@@ -176,7 +176,7 @@
             background:#ff5722;
             a{
                 color:#fff;
-                font-size:18px;
+                font-size:0.24rem;
             }
         }
     }
