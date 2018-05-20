@@ -5,7 +5,7 @@
             
             li{
                 width:49.5%;
-                margin-top:0.026667rem;padding-left: 0.15625rem;
+                margin-top:0.026667rem;
                 img{
                     width:100%;
                 }
@@ -25,7 +25,11 @@
                         color:#ea625b;
                     }
                 }
+
             }
+            li:first-child .brief{display:none;}
+            li:first-child .price{display:none;}
+            li:first-child{height:0.828125rem;}
             li:first-child{
                width:100%;
                img{width:100%;height:auto;}

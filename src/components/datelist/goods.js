@@ -124,7 +124,7 @@ export default class Goods extends React.Component{
     }
     componentDidMount(){
         var countDown = document.getElementById('countDown');
-        var end = Date.parse('2018-05-18 15:50:20');
+        var end = Date.parse('2018-05-24 15:50:20');
         showTime();
         var timer = setInterval(showTime,1000);
         function showTime(){
@@ -186,9 +186,6 @@ export default class Goods extends React.Component{
             }
 
           })
-
-
-
           http.post('getproduct').then((res)=>{
              this.setState({
                     goods:res.data
@@ -230,12 +227,4 @@ export default class Goods extends React.Component{
 
             })
     }
-
-
-
-
-
-
-
-
 }
