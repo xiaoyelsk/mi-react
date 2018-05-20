@@ -37,6 +37,8 @@ let isLogin = (nextState,replace,next)=>{
         if(!res.status){
             // 跳转到登陆页面
             replace({pathname:'/login'});
+            // 删除用户存储
+            window.localStorage.removeItem('un');
             next();
         }else{
             next();
