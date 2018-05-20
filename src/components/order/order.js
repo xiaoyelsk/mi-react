@@ -187,7 +187,7 @@ export default class Order extends React.Component{
                                         }
                                             <section className="liji">
                                                 <p className="tatol">
-                                                     共 {item.products.qty}件商品：总金额:<i>{(item.qty*item.p_price)}</i>
+                                                     共 {item.totalNums}件商品：总金额:<i>{item.totalPrice}</i>
                                                 </p> 
                                                 <article className="anniu">
                                                     <input type="button" value="取消订单"className="del" onClick={this.del.bind(this,item._id)}/>
@@ -232,7 +232,7 @@ export default class Order extends React.Component{
                                         }
                                             <section className="liji">
                                                 <p className="tatol">
-                                                    共 {item.products.qty}件商品：总金额:<i>{(item.qty*item.p_price)}</i> 
+                                                    共 {item.totalNums}件商品：总金额:<i>{item.totalPrice}</i> 
                                                 </p> 
                                                 <article className="anniu">
                                                      <input type="button" value="取消订单"className="del" onClick={this.del.bind(this,item._id)}/>
