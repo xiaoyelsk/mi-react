@@ -1,4 +1,4 @@
-import '../../car/consig/consig.scss'
+import './consig.scss'
 
 import React from 'react'
 import {Link} from 'react-router'
@@ -34,7 +34,7 @@ export default class SAconsig extends React.Component{
          } 
 
     componentDidMount(){
-        console.log(this.props.params.id)
+        // console.log(this.props.params.id)
         //判断跳转的类型
         var type = this.props.params.id;
         if(type == 'shippingAddress'){
@@ -96,7 +96,6 @@ export default class SAconsig extends React.Component{
               }
           })
        }else{
-           console.log(666)
            //没有id就添加
            var uResult=  window.localStorage.getItem('un')
               let data={
