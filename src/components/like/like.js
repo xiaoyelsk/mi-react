@@ -27,11 +27,11 @@ export default class Nav extends React.Component{
                                       
                                         <span className="love-info" >
                                             
-                                             <p className="brief" style={item.product_brief ? {display:'block' } : {display:'none'}}>
-                                                {item.product_brief}
+                                             <p className="brief" >
+                                                {idx == 0 ? '':item.product_brief}
                                             </p>
-                                            <p className="price"style={item.product_price ? {display:'block' } : {display:'none'}} >
-                                                ￥{item.product_id}
+                                            <p className="price"style={idx== 0 ? {display:'none' } : {display:'block'}} >
+                                                ￥{item.product_price}
                                             </p>
                                         </span>
                                     </li>
@@ -43,16 +43,22 @@ export default class Nav extends React.Component{
     }
    componentDidMount(){
 http.post('searchProduct').then((res)=>{
-            console.log(res);
-            this.setState({
-                    date:res.data,
-                })
+            // console.log(res);
+           
                     let dataList = res.data;
                     let prl = [];
                 for(var i=0;i<dataList.length;i++){
-                    prl.push(dataList[i]);
+                    if(dataList[i].type_goods=='goods'){
+
+                        prl.push(dataList[i]);
+                    }
+                    
                 }
-                    this.date=prl;
+                 this.setState({
+                    date:prl,
+                })
+
+                 // this.date=prl;
                     console.log(this.date)
 
         })
