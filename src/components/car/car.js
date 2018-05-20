@@ -34,7 +34,10 @@ export default class Car extends React.Component{
             }
             // totalQty = totalQty + Number(res.data[i].qty);
             // totalPrice = totalPrice + Number(res.data[i].p_price)*Number(res.data[i].qty);
+            
         }
+        
+
         // 判断购物车是否为空
         if(res.data.length < 1){
             this.setState({
@@ -51,14 +54,16 @@ export default class Car extends React.Component{
     }
     // 封一个增加/减少商品的函数
     handle(obj,e){
-        // 商品数量少于1即默认删除该商品
-        if(obj.qty < 1){
-            // 调用删除商品的函数
-            this.deleteProduct(obj.id);
-        }
         // 获取商品id和数量
         let countType = e.target.innerText;console.log(countType)
-        // let countType = '+';
+        // 商品数量少于1即默认删除该商品
+        if(obj.qty <= 1 && countType == '-'){
+            // 调用删除商品的函数
+            // this.deleteProduct(obj.id);
+            obj.qty = 1;
+            return;
+        }
+       
         http.post('upProductqty',{username:this.state.username,id:obj.id,type:countType}).then(res=>{
             if(res){
                 http.post('getProductCar',{username:this.state.username}).then(res=>{
@@ -167,7 +172,7 @@ export default class Car extends React.Component{
                                             <p className="price">售价：{item.p_price}元</p>
                                             <div className="handleCount">
                                                 <div className="countBox">
-                                                    <span className="count minus" onClick={this.handle.bind(this,{id:item.p_id,qty:item.qty})}>-</span>
+                                                    <span className="count minus" onClick={this.handle.bind(this,{id:item.p_id,qty:item.qty,idx})}>-</span>
                                                     <span className="qty">{item.qty}</span>
                                                     <span className="count add" onClick={this.handle.bind(this,{id:item.p_id,qty:item.qty})}>+</span>
                                                 </div>
