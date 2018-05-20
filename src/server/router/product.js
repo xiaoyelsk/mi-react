@@ -1,5 +1,6 @@
 const db = require('../api/db.js')
 const apiResult = require('../api/apiResult.js')
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     edit(app){
@@ -166,11 +167,13 @@ module.exports = {
 
             let isPay = req.body.isPay;
 
-            // let orderNumber = req.body.orderNumder;
-
             let products = JSON.parse(req.body.products);
 
             let time = '';
+
+            let totalPrice = req.body.totalPrice;
+
+            let totalNums = req.body.totalNums;
 
             // 生成订单号
             let orderNumber = 0;
@@ -195,7 +198,7 @@ module.exports = {
 
             }
 
-            let result = await db.insert('order',{username,orderNumber,isPay,time,products});
+            let result = await db.insert('order',{username,orderNumber,isPay,time,totalPrice,totalNums,products});
 
             if(result.status){
                 res.send(apiResult(true))
@@ -206,15 +209,43 @@ module.exports = {
         });
         //获取订单
         app.post('/getorder',async (req,res) =>{
+
             let username = req.body.username;
 
             let result = await db.select('order',{username});
 
             if(result.status){
-                res.send(apiResult(result))
+                res.send(result)
             } else {
                 res.send(apiResult(false))
             }
+        });
+        //删除订单
+        app.post('/delorder',async (req,res) =>{
+
+            let id = req.body.id;
+
+            let result = await db.delete('order',{_id:new ObjectId(id)})
+            
+            res.send(apiResult(true));
+
+        });
+        //修改订单
+        app.post('/alterorder',async (req,res) =>{
+
+            let isPay = req.body.isPay;
+
+            let id = req.body.id;
+
+            if(isPay == 'false'){
+
+                isPay = 'true'
+
+            }
+
+            let result = await db.update('order',{_id:new ObjectId(id)},{isPay})
+
+            res.send(apiResult(true));
         })
     }
 }

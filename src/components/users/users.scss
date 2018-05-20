@@ -1,104 +1,104 @@
 
 .wo-main{
-    height: 558px;
+    height: 7.44rem;
     background:#F5F5F5;
 }
 .w-header{
-    height: 60px;
-    line-height: 50px;
+    height: 0.8rem;
+    line-height: 0.666667rem;
     background:#F37D0F url("../img/wode10.png");
 }
 .w-headlogin1{
     
-    font-size: 14px;
+    font-size: 0.186667rem;
     color:#fff;
 }
 .w-headlogin{
-    padding-top: 10px;
+    padding-top: 0.133333rem;
     a{
-         font-size: 14px;
+         font-size: 0.186667rem;
         color:#fff;
     } 
 }
 .w-headportrait{
-    width: 50px;
-    height: 50px;
-    border: 3px solid #FFB500;
+    width: 0.666667rem;
+    height: 0.666667rem;
+    border: 0.04rem solid #FFB500;
     border-radius: 50%;
     float: left;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-top: 6px;
+    margin-right: 0.266667rem;
+    margin-left: 0.266667rem;
+    margin-top: 0.08rem;
     background-color: #fff;
 }
 .w-tou{
-    width: 45px;
-    height: 45px;
+    width: 0.6rem;
+    height: 0.6rem;
 }
 
 
 .w-indent{
-    height: 40px;
+    height: 0.533333rem;
     background-color: #fff;
 } 
 
 .w-dingdan{
-    font-size: 14px;
-    line-height: 40px;
-    margin-left: 20px;   
+    font-size: 0.186667rem;
+    line-height: 0.533333rem;
+    margin-left: 0.266667rem;   
 }
 .w-abiaoqian{
     color:#000;
 }
 .w-alldingdan{
-    margin-left: 200px;
+    margin-left: 2.666667rem;
     position: relative;
     .youjiantou{
         position: absolute;
         top: 0;
-        right: -12px;
+        right: -0.16rem;
     }
 }
 .fa-angle-double-right{
-    margin-left: 10px;
+    margin-left: 0.133333rem;
 }
 .w-fukuan{
-    height: 86px;
+    height: 1.146667rem;
     border-top: 1px solid #ccc;
     background-color: #fff;
 
     li{
         float:left;
-        font-size: 14px;
-        margin: 10px 40px;
+        font-size: 0.186667rem;
+        margin: 0.24rem 0.533333rem;
         i{
-            font-size: 20px;
+            font-size: 0.266667rem;
             display: block;
             color:hsl(0, 5%, 57%);
-            margin-left: 10px;
-            margin-bottom: 10px;
+            margin-left: 0.133333rem;
+            margin-bottom: 0.133333rem;
         }
 
     }
         
 }
 .w-xiangtong{
-    height: 110px;
+    height: 1.466667rem;
     background-color: #fff;
-    margin-top: 10px;
-
+    margin-top: 0.133333rem;
+    display:flex;
+    flex-direction:column;
     li{
-        height: 50px;
-        margin-bottom: 10px;
-        font-size: 14px;
-        line-height: 50px;
-        margin-left: 20px;
+        flex:1;
+        font-size: 0.186667rem;
+        line-height: 0.666667rem;
+        margin-left: 0.266667rem;
         position: relative;
         .zibig{
             float: left; 
-            font-size: 30px; 
-            margin-top: 10px;
-            margin-right: 10px;
+            font-size: 0.4rem; 
+            margin-top: 0.133333rem;
+            margin-right: 0.133333rem;
         }
         .fa-user-o{
             color:#f3dc0b;
@@ -115,33 +115,33 @@
        
       div{
           i{
-              margin-left: 230px;
+              margin-left: 3.066667rem;
           }
       }
 
     }
 }
 .w-bb{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.013333rem solid #ccc;
 }
 .w-xiangtong2{
-    height: 55px;
+    height: 0.733333rem;
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 0.133333rem;
     
 
     li{
-        height: 50px;
-        font-size: 14px;
-        line-height: 50px;
-        margin-left: 20px;
+        height: 0.666667rem;
+        font-size: 0.186667rem;
+        line-height: 0.666667rem;
+        margin-left: 0.266667rem;
         position: relative;
       
         .zibig{
             float: left; 
-            font-size: 30px; 
-            margin-top: 10px; 
-            margin-right: 10px;
+            font-size: 0.4rem; 
+            margin-top: 0.133333rem; 
+            margin-right: 0.133333rem;
         }
         .fa-square-o{
             color:#d9ff00;
@@ -151,20 +151,20 @@
         }
       div{
           i{
-              margin-left: 236px;
+              margin-left: 3.146667rem;
           }
           .shezhi{
-            margin-left: 254px;
+            margin-left: 3.386667rem;
         } 
       }
 
     }
 }
 .fa-angle-right{
-    font-size: 20px;
+    font-size: 0.266667rem;
     position: absolute;
-    top: 16px;
-    right: 26px;
+    top: 0.213333rem;
+    right: 0.346667rem;
 }
 
 .U-aa{
