@@ -70,6 +70,14 @@ export default class Classify extends React.Component{
                 let luyou = [];
                 // 智能
                 let zhineng = [];
+                // 电脑
+                let diannao = [];
+                // 全面屏
+                let allScreen = [];
+                // 生活
+                let shenghuo = [];
+                // 盒子
+                let hezi = [];
                 for(var i =0;i<data.length;i++){
                     let type_text = data[i].type_text;
                     if(type_text == '新品'){
@@ -84,6 +92,14 @@ export default class Classify extends React.Component{
                         luyou.push(data[i]);
                     }else if(type_text == '智能'){
                         zhineng.push(data[i]);
+                    }else if(type_text == '电脑'){
+                        diannao.push(data[i]);
+                    }else if(type_text == '全面屏'){
+                        allScreen.push(data[i]);
+                    }else if(type_text == '生活'){
+                        shenghuo.push(data[i]);
+                    }else if(type_text == '盒子'){
+                        hezi.push(data[i]);
                     }
                 }
                 this.setState({
@@ -93,7 +109,11 @@ export default class Classify extends React.Component{
                         {_2:dianshi},
                         {_3:jiadian},
                         {_4:luyou},
-                        {_5:zhineng}
+                        {_5:zhineng},
+                        {_6:diannao},
+                        {_7:allScreen},
+                        {_8:shenghuo},
+                        {_9:hezi}
                     ]
                 })
             }
