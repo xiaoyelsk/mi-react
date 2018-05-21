@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 
 import React from 'react'
 import Swiper from 'swiper'
+import Nav from '../like/like.js'
 
 import http from '../../utils/httpclient.js'
 import {Router,Route, hashHistory, browserHistory,Link} from 'react-router'
@@ -90,25 +91,9 @@ export default class Goods extends React.Component{
                         <p>精致纤薄“杨柳腰”收弧设计，精雕细琢的全金属机身，细腻饱满的磨砂质感，入手瞬间便已怦然心动</p>
                     </div>
                     <div className="tuijian">
-                        <p>为你推荐</p>
-                        <ul>
-                             {
-                            this.state.goods.map((item,idx)=>{
-                                return (
-                                    <li key={idx}>
-                                        <div className="tp">
-                                            <img src={item.img_url}/>
-                                        </div>
-                                        <div className="t-info">
-                                            <h4>{item.type}</h4>
-                                         
-                                            <span>￥{item.product_id}元</span>
-                                        </div>
-                                    </li>
-                                )
-                            })
-                        }
-                        </ul>
+                        <p className="title">为你推荐</p>
+                       
+                        <Nav/>
                     </div>
                 </div>
           

@@ -16,6 +16,33 @@ export default class Order extends React.Component{
         // 保存用户名
         username:''
     }
+    
+    get(){
+        let quan =[];
+        let fukuan=[];
+        let shouhuo=[];
+        console.log(res)
+        if(res.status){ 
+            let data = res.data;
+          
+            for(var i=0;i<data.length;i++){
+                if(data[i].isPay=='true'){
+                    shouhuo.push(data[i])
+
+                } else if(data[i].isPay=='false'){
+                   fukuan.push(data[i])
+                } 
+
+            }    
+            this.setState({
+                fukuan,
+               shouhuo,
+               quan:fukuan.concat(shouhuo),
+              
+            })
+            console.log(this.state.quan)
+        }
+    }
     componentDidMount(){
         $(document).ready(function(e) {
             $(".tab li").click(function(){
@@ -26,7 +53,7 @@ export default class Order extends React.Component{
 
         var username = window.localStorage.getItem('un');
         this.setState({username})
-        http.post('getorder',{username}).then((res) =>{    
+        http.post('getorder',{username}).then((res) =>{ 
             let quan =[];
             let fukuan=[];
             let shouhuo=[];
@@ -53,36 +80,15 @@ export default class Order extends React.Component{
             }
         })
     }
+    //取消订单
     del(id){
         http.post('delorder',{id}).then(res=>{
             var username = window.localStorage.getItem('un');
             if(res.status){
                 console.log(username)
-                http.post('getorder',{username}).then((res) =>{    
-                    let quan =[];
-                    let fukuan=[];
-                    let shouhuo=[];
-                    console.log(res)
-                    if(res.status){ 
-                        let data = res.data;
-                      
-                        for(var i=0;i<data.length;i++){
-                            if(data[i].isPay=='true'){
-                                shouhuo.push(data[i])
+                http.post('getorder',{username}).then((res) =>{
 
-                            } else if(data[i].isPay=='false'){
-                               fukuan.push(data[i])
-                            } 
-
-                        }    
-                        this.setState({
-                            fukuan,
-                           shouhuo,
-                           quan:fukuan.concat(shouhuo),
-                          
-                        })
-                        console.log(this.state.quan)
-                    }
+                get();
                 })
             }
         })
@@ -155,6 +161,7 @@ export default class Order extends React.Component{
                                     )
                                 })
                             } 
+                            <Nav/>
                         </div>
                         <div className="box">
                                     {
@@ -198,6 +205,7 @@ export default class Order extends React.Component{
                                     )
                                 })
                             }
+                             <Nav/>
                         </div>
                         <div className="box">
                                 {
@@ -243,6 +251,7 @@ export default class Order extends React.Component{
                                     )
                                 })
                             }
+                             <Nav/>
                         </div>
                     </div>
                 </div>
