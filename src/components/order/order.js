@@ -12,51 +12,83 @@ export default class Order extends React.Component{
     state={
         quan:[],
         fukuan:[],
-       shouhuo:[]
+        shouhuo:[],
+        // 保存用户名
+        username:''
     }
-componentDidMount(){
-    $(document).ready(function(e) {
-        $(".tab li").click(function(){
-            $(".tab li").eq($(this).index()).addClass("activ").siblings().removeClass("activ");
-            $(".tabCon div").hide().eq($(this).index()).show();
+    componentDidMount(){
+        $(document).ready(function(e) {
+            $(".tab li").click(function(){
+                $(".tab li").eq($(this).index()).addClass("activ").siblings().removeClass("activ");
+                $(".tabCon div").hide().eq($(this).index()).show();
+            })
+        });
+
+        var username = window.localStorage.getItem('un');
+        this.setState({username})
+        http.post('getorder',{username}).then((res) =>{    
+            let quan =[];
+            let fukuan=[];
+            let shouhuo=[];
+
+            if(res.status){ 
+                let data = res.data;
+              
+                for(var i=0;i<data.length;i++){
+                    if(data[i].isPay=='true'){
+                        shouhuo.push(data[i])
+
+                    } else if(data[i].isPay=='false'){
+                       fukuan.push(data[i])
+                    } 
+
+                }    
+                    this.setState({
+                        fukuan,
+                       shouhuo,
+                       quan:fukuan.concat(shouhuo),
+                      
+                    })
+                    console.log(this.state.quan)
+            }
         })
-    });
+    }
+    del(id){
+        http.post('delorder',{id}).then(res=>{
+            var username = window.localStorage.getItem('un');
+            if(res.status){
+                console.log(username)
+                http.post('getorder',{username}).then((res) =>{    
+                    let quan =[];
+                    let fukuan=[];
+                    let shouhuo=[];
+                    console.log(res)
+                    if(res.status){ 
+                        let data = res.data;
+                      
+                        for(var i=0;i<data.length;i++){
+                            if(data[i].isPay=='true'){
+                                shouhuo.push(data[i])
 
-   var username = window.localStorage.getItem('un');
- 
-   http.post('getorder',{username}).then((res) =>{    
-        let quan =[];
-        let fukuan=[];
-        let shouhuo=[];
+                            } else if(data[i].isPay=='false'){
+                               fukuan.push(data[i])
+                            } 
 
-        if(res.status){ 
-            let data = res.data;
-          
-            for(var i=0;i<data.length;i++){
-                if(data[i].isPay=='true'){
-                    shouhuo.push(data[i])
-
-                } else if(data[i].isPay=='false'){
-                   fukuan.push(data[i])
-                } 
-
-            }    
-                this.setState({
-                    fukuan,
-                   shouhuo,
-                   quan:fukuan.concat(shouhuo),
-                  
+                        }    
+                        this.setState({
+                            fukuan,
+                           shouhuo,
+                           quan:fukuan.concat(shouhuo),
+                          
+                        })
+                        console.log(this.state.quan)
+                    }
                 })
-                console.log(this.state.quan)
-        }
-    })
-  }
-   del(id){
-    console.log(id)
-    var username = window.localStorage.getItem('un');
-       if(res.status){
-            alert('删除成功')
-       }
+            }
+        })
+    }
+    toUser(){
+        this.props.router.push('/users')
     }
 
     render(){
@@ -64,8 +96,8 @@ componentDidMount(){
             <div className="order ">
                 <div className="nav">
                     <ul className="order-header animate-route">
-                        <li>
-                            <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        <li onClick={this.toUser.bind(this)}>
+                            <i className="fa fa-angle-left" aria-hidden="true"></i>
                         </li>
                         <li>我的订单</li>
                         <li>
@@ -112,7 +144,7 @@ componentDidMount(){
                                         }
                                             <section className="liji">
                                                 <p className="tatol">
-                                                    共 {item.products.qty}件商品：总金额:<i>{(item.qty*item.p_price)}</i>
+                                                    共 {item.totalNums}件商品：总金额:<i>{item.totalPrice}</i>
                                                 </p> 
                                                 <article className="anniu">
                                                     <input type="button" value="取消订单"className="del" onClick={this.del.bind(this,item._id)}/>
@@ -123,7 +155,6 @@ componentDidMount(){
                                     )
                                 })
                             } 
-                            <Nav/>
                         </div>
                         <div className="box">
                                     {
@@ -156,7 +187,7 @@ componentDidMount(){
                                         }
                                             <section className="liji">
                                                 <p className="tatol">
-                                                     共 {item.products.qty}件商品：总金额:<i>{(item.qty*item.p_price)}</i>
+                                                     共 {item.totalNums}件商品：总金额:<i>{item.totalPrice}</i>
                                                 </p> 
                                                 <article className="anniu">
                                                     <input type="button" value="取消订单"className="del" onClick={this.del.bind(this,item._id)}/>
@@ -167,7 +198,6 @@ componentDidMount(){
                                     )
                                 })
                             }
-                            <Nav/>
                         </div>
                         <div className="box">
                                 {
@@ -202,7 +232,7 @@ componentDidMount(){
                                         }
                                             <section className="liji">
                                                 <p className="tatol">
-                                                    共 {item.products.qty}件商品：总金额:<i>{(item.qty*item.p_price)}</i> 
+                                                    共 {item.totalNums}件商品：总金额:<i>{item.totalPrice}</i> 
                                                 </p> 
                                                 <article className="anniu">
                                                      <input type="button" value="取消订单"className="del" onClick={this.del.bind(this,item._id)}/>
@@ -213,7 +243,6 @@ componentDidMount(){
                                     )
                                 })
                             }
-                            <Nav/>
                         </div>
                     </div>
                 </div>

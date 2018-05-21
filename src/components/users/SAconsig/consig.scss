@@ -2,32 +2,32 @@
     // margin: 20px 20px;
     
     .consig-head{
-        height: 50px;
+        height: 0.666667rem;
         width: 100%;
         background-color:hsla(0, 19%, 93%, 0.863);
         .jiesuan{
-            font-size: 30px;
-            margin-left: 20px;
+            font-size: 0.4rem;
+            margin-left: 0.266667rem;
             color:#666;
             
         }
         span{
-            font-size: 20px;
+            font-size: 0.266667rem;
             color:#535353;
-            line-height: 50px;
-            margin-left: 125px;
+            line-height: 0.666667rem;
+            margin-left: 1.666667rem;
             
         }
     }
     .consig-main{
-        margin: 20px 20px;
+        margin: 0.266667rem 0.266667rem;
         div{
             border-bottom: 1px solid #ccc;
-            line-height: 40px;
+            line-height: 0.533333rem;
              label{
-                font-size: 16px;
+                font-size: 0.213333rem;
                 color:#535353;
-                margin-right: 8px;
+                margin-right: 0.106667rem;
             }
             input{
                 border: 0px;
@@ -35,13 +35,13 @@
                 cursor: pointer; 
             }
             .consig-tacitlyApprove{
-                font-size: 16px;
+                font-size: 0.213333rem;
                 color:#535353;
                 .consig-morenMap{
-                    width: 14px;
-                    height: 14px;
-                    border-radius: 5px;
-                    margin-left: 180px;
+                    width: 0.186667rem;
+                    height: 0.186667rem;
+                    border-radius: 0.066667rem;
+                    margin-left: 2.4rem;
                 }
             }
         }
@@ -49,9 +49,9 @@
     }
     .consig-saveMap{
         width: 100%;
-        line-height: 50px;
+        line-height: 0.666667rem;
         text-align: center;
-        font-size: 16px;
+        font-size: 0.213333rem;
         border: 0px;
         outline:none;
         cursor: pointer;
@@ -64,25 +64,25 @@
     .city-Map{
         display: block;
         width: 100%;
-        height: 60px;
+        height: 0.8rem;
         background-color:hsla(0, 19%, 93%, 0.863);
         ul li{
             float: left;
-            margin-top: 8px;
-            margin-left: 10px;
-            font-size: 16px;
+            margin-top: 0.106667rem;
+            margin-left: 0.133333rem;
+            font-size: 0.213333rem;
             select{
                 border: 0px;
                 outline:none;
                 cursor: pointer;
-                width: 80px;
-                height: 40px;
+                width: 1.066667rem;
+                height: 0.533333rem;
             
             }
         }
     }
     .in-acive{
-        font-size: 14px;
+        font-size: 0.186667rem;
         color:#000;
     }
 }

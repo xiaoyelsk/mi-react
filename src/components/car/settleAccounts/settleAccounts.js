@@ -25,8 +25,10 @@ export default class SettleAccounts extends React.Component{
         let username = this.state.username;
         let products = JSON.stringify(this.state.productData);
         let isPay = 'true';
+        let totalPrice = this.state.total;
+        let totalNums = this.state.zong;
         if(username && products){
-            http.post('addorder',{username,products,isPay}).then(res=>{
+            http.post('addorder',{username,products,isPay,totalPrice,totalNums}).then(res=>{
                 if(res.status){
                     this.props.router.push('/order');
                 }
@@ -42,8 +44,10 @@ export default class SettleAccounts extends React.Component{
         let username = this.state.username;
         let products = JSON.stringify(this.state.productData);
         let isPay = 'false';
+        let totalPrice = this.state.total;
+        let totalNums = this.state.zong;
         if(username && products){
-            http.post('addorder',{username,products,isPay}).then(res=>{
+            http.post('addorder',{username,products,isPay,totalPrice,totalNums}).then(res=>{
                 this.props.router.push('/order');
             })
         }    
@@ -136,7 +140,7 @@ export default class SettleAccounts extends React.Component{
                     for(var i=0;i<this.state.productData.length;i++){
                         var product= this.state.productData;
                     //    console.log(product[i].product_price)
-                        totalPrice += Number(product[i].p_price);
+                        totalPrice += Number(product[i].p_price) * Number(product[i].qty);
                         totalNum += Number(product[i].qty); 
                     }
                     //   console.log(totalPrice)
